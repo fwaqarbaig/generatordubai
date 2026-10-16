@@ -3,54 +3,23 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules\Password;
-use Illuminate\View\View;
 
 class RegisterController extends Controller
 {
     /**
-     * Show the application registration form.
+     * Show the application registration form (disabled - redirects to login).
      */
-    public function showRegistrationForm(): View|RedirectResponse
+    public function showRegistrationForm(): RedirectResponse
     {
-        if (Auth::check()) {
-            return redirect()->route('admin.dashboard');
-        }
-
-        return view('auth.register');
+        return redirect()->route('login');
     }
 
     /**
-     * Handle a registration request for the application.
+     * Handle a registration request for the application (disabled - aborts 403).
      */
-    public function register(Request $request): RedirectResponse
+    public function register(): never
     {
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'password' => ['required', 'confirmed', Password::defaults()],
-        ]);
-
-        // First registered user becomes admin, subsequent become editor
-        $isFirstUser = User::count() === 0;
-
-        $user = User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => Hash::make($validated['password']),
-            'role' => $isFirstUser ? 'admin' : 'editor',
-            'is_active' => true,
-        ]);
-
-        $request->session()->put('auth.2fa.user_id', $user->id);
-        $request->session()->put('auth.2fa.remember', false);
-
-        return redirect()->route('login.two-factor.setup')
-            ->with('success', 'Your account has been created! Please configure Google Authenticator to secure your account.');
+        abort(403, 'Public registration is disabled. Only administrators can create new users.');
     }
 }
