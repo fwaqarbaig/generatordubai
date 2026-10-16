@@ -124,7 +124,11 @@ class Product extends Model
             return Str::limit(strip_tags($this->summary), 160);
         }
 
-        return Str::limit(strip_tags($this->content ?? ''), 160);
+        if (! empty($this->content)) {
+            return Str::limit(strip_tags($this->content), 160);
+        }
+
+        return "Hire {$this->title} in Dubai and across the UAE. Turnkey setup, 24/7 fuel support, and rapid emergency power deployment from Generator Dubai.";
     }
 
     /**

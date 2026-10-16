@@ -56,14 +56,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -77,7 +77,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -255,21 +255,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -6889,14 +6889,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -6910,7 +6910,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -7088,21 +7088,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -7817,14 +7817,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -7838,7 +7838,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -8016,21 +8016,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -8746,14 +8746,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -8767,7 +8767,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -8945,21 +8945,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -9708,14 +9708,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -9729,7 +9729,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -9907,21 +9907,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -10670,14 +10670,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -10691,7 +10691,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -10869,21 +10869,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -11632,14 +11632,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -11653,7 +11653,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -11831,21 +11831,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -12594,14 +12594,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -12615,7 +12615,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -12793,21 +12793,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -13556,14 +13556,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -13577,7 +13577,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -13755,21 +13755,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -14518,14 +14518,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -14539,7 +14539,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -14717,21 +14717,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -15480,14 +15480,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -15501,7 +15501,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -15679,21 +15679,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -16442,14 +16442,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -16463,7 +16463,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -16641,21 +16641,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -17404,14 +17404,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -17425,7 +17425,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -17603,21 +17603,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -18366,14 +18366,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -18387,7 +18387,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -18565,21 +18565,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -19328,14 +19328,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -19349,7 +19349,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -19527,21 +19527,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -20290,14 +20290,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -20311,7 +20311,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -20489,21 +20489,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -21858,7 +21858,7 @@
         }
     },
     "services/power-plant": {
-        "url": "https://generatordubai.com/services/power-plant",
+        "url": "https://generatordubai.com/service/power-plant",
         "component": "blog/PowerPlant",
         "props": {
             "errors": [],
@@ -21914,14 +21914,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -21935,7 +21935,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -22113,21 +22113,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -22780,7 +22780,7 @@
                         ]
                     }
                 },
-                "location": "https://generatordubai.com/services/power-plant"
+                "location": "https://generatordubai.com/service/power-plant"
             },
             "category": {
                 "id": 2,
@@ -23533,10 +23533,10 @@
             "posts": {
                 "current_page": 1,
                 "data": [],
-                "first_page_url": "https://generatordubai.com/services/power-plant?page=1",
+                "first_page_url": "https://generatordubai.com/service/power-plant?page=1",
                 "from": null,
                 "last_page": 1,
-                "last_page_url": "https://generatordubai.com/services/power-plant?page=1",
+                "last_page_url": "https://generatordubai.com/service/power-plant?page=1",
                 "links": [
                     {
                         "url": null,
@@ -23545,7 +23545,7 @@
                         "active": false
                     },
                     {
-                        "url": "https://generatordubai.com/services/power-plant?page=1",
+                        "url": "https://generatordubai.com/service/power-plant?page=1",
                         "label": "1",
                         "page": 1,
                         "active": true
@@ -23558,7 +23558,7 @@
                     }
                 ],
                 "next_page_url": null,
-                "path": "https://generatordubai.com/services/power-plant",
+                "path": "https://generatordubai.com/service/power-plant",
                 "per_page": 6,
                 "prev_page_url": null,
                 "to": null,
@@ -23568,7 +23568,7 @@
         }
     },
     "services/amc-generator": {
-        "url": "https://generatordubai.com/services/amc-generator",
+        "url": "https://generatordubai.com/service/amc-generator",
         "component": "blog/AmcGenerator",
         "props": {
             "errors": [],
@@ -23624,14 +23624,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -23645,7 +23645,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -23823,21 +23823,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -24490,7 +24490,7 @@
                         ]
                     }
                 },
-                "location": "https://generatordubai.com/services/amc-generator"
+                "location": "https://generatordubai.com/service/amc-generator"
             },
             "category": {
                 "id": 3,
@@ -25245,10 +25245,10 @@
             "posts": {
                 "current_page": 1,
                 "data": [],
-                "first_page_url": "https://generatordubai.com/services/amc-generator?page=1",
+                "first_page_url": "https://generatordubai.com/service/amc-generator?page=1",
                 "from": null,
                 "last_page": 1,
-                "last_page_url": "https://generatordubai.com/services/amc-generator?page=1",
+                "last_page_url": "https://generatordubai.com/service/amc-generator?page=1",
                 "links": [
                     {
                         "url": null,
@@ -25257,7 +25257,7 @@
                         "active": false
                     },
                     {
-                        "url": "https://generatordubai.com/services/amc-generator?page=1",
+                        "url": "https://generatordubai.com/service/amc-generator?page=1",
                         "label": "1",
                         "page": 1,
                         "active": true
@@ -25270,7 +25270,7 @@
                     }
                 ],
                 "next_page_url": null,
-                "path": "https://generatordubai.com/services/amc-generator",
+                "path": "https://generatordubai.com/service/amc-generator",
                 "per_page": 6,
                 "prev_page_url": null,
                 "to": null,
@@ -25280,7 +25280,7 @@
         }
     },
     "services/portacabin": {
-        "url": "https://generatordubai.com/services/portacabin",
+        "url": "https://generatordubai.com/service/portacabin",
         "component": "blog/Portacabin",
         "props": {
             "errors": [],
@@ -25336,14 +25336,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -25357,7 +25357,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -25535,21 +25535,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -26202,7 +26202,7 @@
                         ]
                     }
                 },
-                "location": "https://generatordubai.com/services/portacabin"
+                "location": "https://generatordubai.com/service/portacabin"
             },
             "category": {
                 "id": 4,
@@ -26957,10 +26957,10 @@
             "posts": {
                 "current_page": 1,
                 "data": [],
-                "first_page_url": "https://generatordubai.com/services/portacabin?page=1",
+                "first_page_url": "https://generatordubai.com/service/portacabin?page=1",
                 "from": null,
                 "last_page": 1,
-                "last_page_url": "https://generatordubai.com/services/portacabin?page=1",
+                "last_page_url": "https://generatordubai.com/service/portacabin?page=1",
                 "links": [
                     {
                         "url": null,
@@ -26969,7 +26969,7 @@
                         "active": false
                     },
                     {
-                        "url": "https://generatordubai.com/services/portacabin?page=1",
+                        "url": "https://generatordubai.com/service/portacabin?page=1",
                         "label": "1",
                         "page": 1,
                         "active": true
@@ -26982,7 +26982,7 @@
                     }
                 ],
                 "next_page_url": null,
-                "path": "https://generatordubai.com/services/portacabin",
+                "path": "https://generatordubai.com/service/portacabin",
                 "per_page": 6,
                 "prev_page_url": null,
                 "to": null,
@@ -27048,14 +27048,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -27069,7 +27069,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -27247,21 +27247,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -27976,14 +27976,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -27997,7 +27997,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -28175,21 +28175,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -28904,14 +28904,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -28925,7 +28925,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -29103,21 +29103,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -29833,14 +29833,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -29854,7 +29854,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -30032,21 +30032,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -30784,7 +30784,7 @@
                             "Automated bulk fuel farms (50,000L – 250,000L) with filtration loops",
                             "Round-the-clock resident electrical and mechanical plant engineers"
                         ],
-                        "ctaLink": "/services/power-plant",
+                        "ctaLink": "/service/power-plant",
                         "ctaText": "Explore Power Plant Hire"
                     },
                     {
@@ -30798,7 +30798,7 @@
                             "50-point quarterly preventive inspection & ASTM fuel spectrometry",
                             "Genuine spare parts inventory (Perkins, Cummins, CAT, Volvo Penta)"
                         ],
-                        "ctaLink": "/services/amc-generator",
+                        "ctaLink": "/service/amc-generator",
                         "ctaText": "View Dubai AMC Plans"
                     },
                     {
@@ -30812,7 +30812,7 @@
                             "Customizable room partitions, pantry fixtures, and executive restrooms",
                             "Turnkey package with synchronized silent generator power and water hookups"
                         ],
-                        "ctaLink": "/services/portacabin",
+                        "ctaLink": "/service/portacabin",
                         "ctaText": "Rent / Buy Portacabins"
                     },
                     {
@@ -30959,14 +30959,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -30980,7 +30980,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -31158,21 +31158,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -31910,7 +31910,7 @@
                             "ADDC parallel grid interconnection and island mode auto-governing",
                             "Double-skin bunded bulk diesel storage with environmental spill containment"
                         ],
-                        "ctaLink": "/services/power-plant",
+                        "ctaLink": "/service/power-plant",
                         "ctaText": "Explore Abu Dhabi Power Plants"
                     },
                     {
@@ -31924,7 +31924,7 @@
                             "Fluid spectrometry, mega-ohm insulation tests, and full resistive load banking",
                             "24/7 dedicated breakdown hotline with 90-minute Mussafah/ICAD dispatch"
                         ],
-                        "ctaLink": "/services/amc-generator",
+                        "ctaLink": "/service/amc-generator",
                         "ctaText": "View Abu Dhabi AMC"
                     },
                     {
@@ -31938,7 +31938,7 @@
                             "Ablution units with high-capacity holding tanks and water booster pumps",
                             "Turnkey compound setup with silent generator power & waste piping"
                         ],
-                        "ctaLink": "/services/portacabin",
+                        "ctaLink": "/service/portacabin",
                         "ctaText": "Abu Dhabi Portacabin Solutions"
                     },
                     {
@@ -32081,14 +32081,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -32102,7 +32102,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -32280,21 +32280,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -33032,7 +33032,7 @@
                             "Complete containment fuel systems with smart automated telemetry",
                             "Full civil and mechanical setup by certified electrical engineers"
                         ],
-                        "ctaLink": "/services/power-plant",
+                        "ctaLink": "/service/power-plant",
                         "ctaText": "Explore Sharjah Power Plants"
                     },
                     {
@@ -33046,7 +33046,7 @@
                             "Complete SEWA & Civil Defense preventive inspection protocols",
                             "Stocked spare parts warehouse in Sharjah Industrial Area 10"
                         ],
-                        "ctaLink": "/services/amc-generator",
+                        "ctaLink": "/service/amc-generator",
                         "ctaText": "Sharjah Maintenance Plans"
                     },
                     {
@@ -33203,14 +33203,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -33224,7 +33224,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -33402,21 +33402,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -34144,7 +34144,7 @@
                             "Automated fuel refill scheduling with pure low-sulfur diesel",
                             "Step-up transformers available for medium voltage distribution"
                         ],
-                        "ctaLink": "/services/power-plant",
+                        "ctaLink": "/service/power-plant",
                         "ctaText": "Inquire Ajman Power Plants"
                     },
                     {
@@ -34158,7 +34158,7 @@
                             "Load testing, battery replacements, and control panel diagnostics",
                             "Affordable AMC contract packages tailored for SMEs and factories"
                         ],
-                        "ctaLink": "/services/amc-generator",
+                        "ctaLink": "/service/amc-generator",
                         "ctaText": "Book Ajman Generator Service"
                     },
                     {
@@ -34172,7 +34172,7 @@
                             "Available in 10ft, 20ft, and 40ft standard and customized configurations",
                             "Quick crane setup and leveling on your site within hours"
                         ],
-                        "ctaLink": "/services/portacabin",
+                        "ctaLink": "/service/portacabin",
                         "ctaText": "Ajman Portacabins"
                     },
                     {
@@ -34311,14 +34311,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -34332,7 +34332,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -34510,21 +34510,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -35252,7 +35252,7 @@
                             "Automated bulk fuel farms with continuous telemetry monitoring",
                             "Resident electrical engineers deployed on site 24/7"
                         ],
-                        "ctaLink": "/services/power-plant",
+                        "ctaLink": "/service/power-plant",
                         "ctaText": "Explore RAK Power Plants"
                     },
                     {
@@ -35266,7 +35266,7 @@
                             "Emergency 60-minute dispatch from Al Hamra depot",
                             "OEM spare parts and factory-trained engine technicians"
                         ],
-                        "ctaLink": "/services/amc-generator",
+                        "ctaLink": "/service/amc-generator",
                         "ctaText": "View RAK Maintenance"
                     },
                     {
@@ -35280,7 +35280,7 @@
                             "High-capacity tropical split air conditioning installed",
                             "Full plumbing and electrical hookup ready upon crane placement"
                         ],
-                        "ctaLink": "/services/portacabin",
+                        "ctaLink": "/service/portacabin",
                         "ctaText": "RAK Portacabin Hire"
                     },
                     {
@@ -35419,14 +35419,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -35440,7 +35440,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -35618,21 +35618,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -36360,7 +36360,7 @@
                             "Double-walled ISO container bulk diesel fuel storage with leak detection",
                             "24/7 on-site supervisory team with marine and industrial certifications"
                         ],
-                        "ctaLink": "/services/power-plant",
+                        "ctaLink": "/service/power-plant",
                         "ctaText": "Explore Fujairah Power Plants"
                     },
                     {
@@ -36374,7 +36374,7 @@
                             "Vibration analysis, megger insulation testing, and load-bank validation",
                             "Fully stocked mobile repair vans equipped for rapid dockside service"
                         ],
-                        "ctaLink": "/services/amc-generator",
+                        "ctaLink": "/service/amc-generator",
                         "ctaText": "Fujairah Maintenance Contracts"
                     },
                     {
@@ -36388,7 +36388,7 @@
                             "Ablution cabins with marine-grade sanitary fixtures and pressurized pumps",
                             "Flatbed crane transport directly to port terminals or mountain projects"
                         ],
-                        "ctaLink": "/services/portacabin",
+                        "ctaLink": "/service/portacabin",
                         "ctaText": "Fujairah Portacabin Solutions"
                     },
                     {
@@ -36527,14 +36527,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -36548,7 +36548,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -36726,21 +36726,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -37462,7 +37462,7 @@
                             "Continuous prime power with dedicated on-site technician support",
                             "Environmentally sealed bulk fuel storage"
                         ],
-                        "ctaLink": "/services/power-plant",
+                        "ctaLink": "/service/power-plant",
                         "ctaText": "UAQ Power Solutions"
                     },
                     {
@@ -37475,7 +37475,7 @@
                             "Genuine filters, lubricants, and electronic control parts",
                             "Rapid response mobile vans covering all UAQ districts"
                         ],
-                        "ctaLink": "/services/amc-generator",
+                        "ctaLink": "/service/amc-generator",
                         "ctaText": "Book UAQ Maintenance"
                     },
                     {
@@ -37488,7 +37488,7 @@
                             "Pre-fitted tropical split air conditioners and LED lighting",
                             "Quick same-day setup and leveling"
                         ],
-                        "ctaLink": "/services/portacabin",
+                        "ctaLink": "/service/portacabin",
                         "ctaText": "UAQ Portacabins"
                     },
                     {
@@ -37622,14 +37622,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -37643,7 +37643,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -37821,21 +37821,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -38553,7 +38553,7 @@
                             "Bulk fuel farms (100,000L+) with fuel polishing and smart level telemetry",
                             "Resident station operations crew and electrical engineers on site"
                         ],
-                        "ctaLink": "/services/power-plant",
+                        "ctaLink": "/service/power-plant",
                         "ctaText": "Explore Oman Power Plants"
                     },
                     {
@@ -38566,7 +38566,7 @@
                             "Comprehensive preventative maintenance protocols and fluid testing",
                             "Rapid parts dispatch from our UAE central distribution warehouses"
                         ],
-                        "ctaLink": "/services/amc-generator",
+                        "ctaLink": "/service/amc-generator",
                         "ctaText": "Oman Operations & Maintenance"
                     },
                     {
@@ -38579,7 +38579,7 @@
                             "Turnkey camp utility setup: power generation, water distribution & sewage",
                             "Flatbed transport coordination and border customs processing handled"
                         ],
-                        "ctaLink": "/services/portacabin",
+                        "ctaLink": "/service/portacabin",
                         "ctaText": "Oman Modular Camp Cabins"
                     },
                     {
@@ -38713,14 +38713,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -38734,7 +38734,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -38912,21 +38912,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -44994,14 +44994,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -45015,7 +45015,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -45193,21 +45193,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -45922,14 +45922,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -45943,7 +45943,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -46121,21 +46121,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -47555,14 +47555,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -47576,7 +47576,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -47754,21 +47754,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -48421,7 +48421,7 @@
                         ]
                     }
                 },
-                "location": "https://generatordubai.com/services/power-plant"
+                "location": "https://generatordubai.com/service/power-plant"
             },
             "category": {
                 "id": 2,
@@ -49174,10 +49174,10 @@
             "posts": {
                 "current_page": 1,
                 "data": [],
-                "first_page_url": "https://generatordubai.com/services/power-plant?page=1",
+                "first_page_url": "https://generatordubai.com/service/power-plant?page=1",
                 "from": null,
                 "last_page": 1,
-                "last_page_url": "https://generatordubai.com/services/power-plant?page=1",
+                "last_page_url": "https://generatordubai.com/service/power-plant?page=1",
                 "links": [
                     {
                         "url": null,
@@ -49186,7 +49186,7 @@
                         "active": false
                     },
                     {
-                        "url": "https://generatordubai.com/services/power-plant?page=1",
+                        "url": "https://generatordubai.com/service/power-plant?page=1",
                         "label": "1",
                         "page": 1,
                         "active": true
@@ -49199,7 +49199,7 @@
                     }
                 ],
                 "next_page_url": null,
-                "path": "https://generatordubai.com/services/power-plant",
+                "path": "https://generatordubai.com/service/power-plant",
                 "per_page": 6,
                 "prev_page_url": null,
                 "to": null,
@@ -49265,14 +49265,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -49286,7 +49286,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -49464,21 +49464,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -50131,7 +50131,7 @@
                         ]
                     }
                 },
-                "location": "https://generatordubai.com/services/amc-generator"
+                "location": "https://generatordubai.com/service/amc-generator"
             },
             "category": {
                 "id": 3,
@@ -50886,10 +50886,10 @@
             "posts": {
                 "current_page": 1,
                 "data": [],
-                "first_page_url": "https://generatordubai.com/services/amc-generator?page=1",
+                "first_page_url": "https://generatordubai.com/service/amc-generator?page=1",
                 "from": null,
                 "last_page": 1,
-                "last_page_url": "https://generatordubai.com/services/amc-generator?page=1",
+                "last_page_url": "https://generatordubai.com/service/amc-generator?page=1",
                 "links": [
                     {
                         "url": null,
@@ -50898,7 +50898,7 @@
                         "active": false
                     },
                     {
-                        "url": "https://generatordubai.com/services/amc-generator?page=1",
+                        "url": "https://generatordubai.com/service/amc-generator?page=1",
                         "label": "1",
                         "page": 1,
                         "active": true
@@ -50911,7 +50911,7 @@
                     }
                 ],
                 "next_page_url": null,
-                "path": "https://generatordubai.com/services/amc-generator",
+                "path": "https://generatordubai.com/service/amc-generator",
                 "per_page": 6,
                 "prev_page_url": null,
                 "to": null,
@@ -50977,14 +50977,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -50998,7 +50998,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -51176,21 +51176,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -51843,7 +51843,7 @@
                         ]
                     }
                 },
-                "location": "https://generatordubai.com/services/portacabin"
+                "location": "https://generatordubai.com/service/portacabin"
             },
             "category": {
                 "id": 4,
@@ -52598,10 +52598,10 @@
             "posts": {
                 "current_page": 1,
                 "data": [],
-                "first_page_url": "https://generatordubai.com/services/portacabin?page=1",
+                "first_page_url": "https://generatordubai.com/service/portacabin?page=1",
                 "from": null,
                 "last_page": 1,
-                "last_page_url": "https://generatordubai.com/services/portacabin?page=1",
+                "last_page_url": "https://generatordubai.com/service/portacabin?page=1",
                 "links": [
                     {
                         "url": null,
@@ -52610,7 +52610,7 @@
                         "active": false
                     },
                     {
-                        "url": "https://generatordubai.com/services/portacabin?page=1",
+                        "url": "https://generatordubai.com/service/portacabin?page=1",
                         "label": "1",
                         "page": 1,
                         "active": true
@@ -52623,7 +52623,7 @@
                     }
                 ],
                 "next_page_url": null,
-                "path": "https://generatordubai.com/services/portacabin",
+                "path": "https://generatordubai.com/service/portacabin",
                 "per_page": 6,
                 "prev_page_url": null,
                 "to": null,
@@ -52689,14 +52689,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -52710,7 +52710,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -52888,21 +52888,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -54313,14 +54313,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -54334,7 +54334,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -54512,21 +54512,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -55937,14 +55937,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -55958,7 +55958,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -56136,21 +56136,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -57560,14 +57560,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -57581,7 +57581,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -57759,21 +57759,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -59183,14 +59183,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -59204,7 +59204,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -59382,21 +59382,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -60111,14 +60111,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -60132,7 +60132,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -60310,21 +60310,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -61062,7 +61062,7 @@
                             "Automated bulk fuel farms (50,000L – 250,000L) with filtration loops",
                             "Round-the-clock resident electrical and mechanical plant engineers"
                         ],
-                        "ctaLink": "/services/power-plant",
+                        "ctaLink": "/service/power-plant",
                         "ctaText": "Explore Power Plant Hire"
                     },
                     {
@@ -61076,7 +61076,7 @@
                             "50-point quarterly preventive inspection & ASTM fuel spectrometry",
                             "Genuine spare parts inventory (Perkins, Cummins, CAT, Volvo Penta)"
                         ],
-                        "ctaLink": "/services/amc-generator",
+                        "ctaLink": "/service/amc-generator",
                         "ctaText": "View Dubai AMC Plans"
                     },
                     {
@@ -61090,7 +61090,7 @@
                             "Customizable room partitions, pantry fixtures, and executive restrooms",
                             "Turnkey package with synchronized silent generator power and water hookups"
                         ],
-                        "ctaLink": "/services/portacabin",
+                        "ctaLink": "/service/portacabin",
                         "ctaText": "Rent / Buy Portacabins"
                     },
                     {
@@ -61237,14 +61237,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -61258,7 +61258,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -61436,21 +61436,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -62188,7 +62188,7 @@
                             "ADDC parallel grid interconnection and island mode auto-governing",
                             "Double-skin bunded bulk diesel storage with environmental spill containment"
                         ],
-                        "ctaLink": "/services/power-plant",
+                        "ctaLink": "/service/power-plant",
                         "ctaText": "Explore Abu Dhabi Power Plants"
                     },
                     {
@@ -62202,7 +62202,7 @@
                             "Fluid spectrometry, mega-ohm insulation tests, and full resistive load banking",
                             "24/7 dedicated breakdown hotline with 90-minute Mussafah/ICAD dispatch"
                         ],
-                        "ctaLink": "/services/amc-generator",
+                        "ctaLink": "/service/amc-generator",
                         "ctaText": "View Abu Dhabi AMC"
                     },
                     {
@@ -62216,7 +62216,7 @@
                             "Ablution units with high-capacity holding tanks and water booster pumps",
                             "Turnkey compound setup with silent generator power & waste piping"
                         ],
-                        "ctaLink": "/services/portacabin",
+                        "ctaLink": "/service/portacabin",
                         "ctaText": "Abu Dhabi Portacabin Solutions"
                     },
                     {
@@ -62359,14 +62359,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -62380,7 +62380,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -62558,21 +62558,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -63310,7 +63310,7 @@
                             "Complete containment fuel systems with smart automated telemetry",
                             "Full civil and mechanical setup by certified electrical engineers"
                         ],
-                        "ctaLink": "/services/power-plant",
+                        "ctaLink": "/service/power-plant",
                         "ctaText": "Explore Sharjah Power Plants"
                     },
                     {
@@ -63324,7 +63324,7 @@
                             "Complete SEWA & Civil Defense preventive inspection protocols",
                             "Stocked spare parts warehouse in Sharjah Industrial Area 10"
                         ],
-                        "ctaLink": "/services/amc-generator",
+                        "ctaLink": "/service/amc-generator",
                         "ctaText": "Sharjah Maintenance Plans"
                     },
                     {
@@ -63481,14 +63481,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -63502,7 +63502,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -63680,21 +63680,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -64422,7 +64422,7 @@
                             "Automated fuel refill scheduling with pure low-sulfur diesel",
                             "Step-up transformers available for medium voltage distribution"
                         ],
-                        "ctaLink": "/services/power-plant",
+                        "ctaLink": "/service/power-plant",
                         "ctaText": "Inquire Ajman Power Plants"
                     },
                     {
@@ -64436,7 +64436,7 @@
                             "Load testing, battery replacements, and control panel diagnostics",
                             "Affordable AMC contract packages tailored for SMEs and factories"
                         ],
-                        "ctaLink": "/services/amc-generator",
+                        "ctaLink": "/service/amc-generator",
                         "ctaText": "Book Ajman Generator Service"
                     },
                     {
@@ -64450,7 +64450,7 @@
                             "Available in 10ft, 20ft, and 40ft standard and customized configurations",
                             "Quick crane setup and leveling on your site within hours"
                         ],
-                        "ctaLink": "/services/portacabin",
+                        "ctaLink": "/service/portacabin",
                         "ctaText": "Ajman Portacabins"
                     },
                     {
@@ -64589,14 +64589,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -64610,7 +64610,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -64788,21 +64788,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -65530,7 +65530,7 @@
                             "Automated bulk fuel farms with continuous telemetry monitoring",
                             "Resident electrical engineers deployed on site 24/7"
                         ],
-                        "ctaLink": "/services/power-plant",
+                        "ctaLink": "/service/power-plant",
                         "ctaText": "Explore RAK Power Plants"
                     },
                     {
@@ -65544,7 +65544,7 @@
                             "Emergency 60-minute dispatch from Al Hamra depot",
                             "OEM spare parts and factory-trained engine technicians"
                         ],
-                        "ctaLink": "/services/amc-generator",
+                        "ctaLink": "/service/amc-generator",
                         "ctaText": "View RAK Maintenance"
                     },
                     {
@@ -65558,7 +65558,7 @@
                             "High-capacity tropical split air conditioning installed",
                             "Full plumbing and electrical hookup ready upon crane placement"
                         ],
-                        "ctaLink": "/services/portacabin",
+                        "ctaLink": "/service/portacabin",
                         "ctaText": "RAK Portacabin Hire"
                     },
                     {
@@ -65697,14 +65697,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -65718,7 +65718,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -65896,21 +65896,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -66638,7 +66638,7 @@
                             "Double-walled ISO container bulk diesel fuel storage with leak detection",
                             "24/7 on-site supervisory team with marine and industrial certifications"
                         ],
-                        "ctaLink": "/services/power-plant",
+                        "ctaLink": "/service/power-plant",
                         "ctaText": "Explore Fujairah Power Plants"
                     },
                     {
@@ -66652,7 +66652,7 @@
                             "Vibration analysis, megger insulation testing, and load-bank validation",
                             "Fully stocked mobile repair vans equipped for rapid dockside service"
                         ],
-                        "ctaLink": "/services/amc-generator",
+                        "ctaLink": "/service/amc-generator",
                         "ctaText": "Fujairah Maintenance Contracts"
                     },
                     {
@@ -66666,7 +66666,7 @@
                             "Ablution cabins with marine-grade sanitary fixtures and pressurized pumps",
                             "Flatbed crane transport directly to port terminals or mountain projects"
                         ],
-                        "ctaLink": "/services/portacabin",
+                        "ctaLink": "/service/portacabin",
                         "ctaText": "Fujairah Portacabin Solutions"
                     },
                     {
@@ -66805,14 +66805,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -66826,7 +66826,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -67004,21 +67004,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -67740,7 +67740,7 @@
                             "Continuous prime power with dedicated on-site technician support",
                             "Environmentally sealed bulk fuel storage"
                         ],
-                        "ctaLink": "/services/power-plant",
+                        "ctaLink": "/service/power-plant",
                         "ctaText": "UAQ Power Solutions"
                     },
                     {
@@ -67753,7 +67753,7 @@
                             "Genuine filters, lubricants, and electronic control parts",
                             "Rapid response mobile vans covering all UAQ districts"
                         ],
-                        "ctaLink": "/services/amc-generator",
+                        "ctaLink": "/service/amc-generator",
                         "ctaText": "Book UAQ Maintenance"
                     },
                     {
@@ -67766,7 +67766,7 @@
                             "Pre-fitted tropical split air conditioners and LED lighting",
                             "Quick same-day setup and leveling"
                         ],
-                        "ctaLink": "/services/portacabin",
+                        "ctaLink": "/service/portacabin",
                         "ctaText": "UAQ Portacabins"
                     },
                     {
@@ -67900,14 +67900,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -67921,7 +67921,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -68099,21 +68099,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -68831,7 +68831,7 @@
                             "Bulk fuel farms (100,000L+) with fuel polishing and smart level telemetry",
                             "Resident station operations crew and electrical engineers on site"
                         ],
-                        "ctaLink": "/services/power-plant",
+                        "ctaLink": "/service/power-plant",
                         "ctaText": "Explore Oman Power Plants"
                     },
                     {
@@ -68844,7 +68844,7 @@
                             "Comprehensive preventative maintenance protocols and fluid testing",
                             "Rapid parts dispatch from our UAE central distribution warehouses"
                         ],
-                        "ctaLink": "/services/amc-generator",
+                        "ctaLink": "/service/amc-generator",
                         "ctaText": "Oman Operations & Maintenance"
                     },
                     {
@@ -68857,7 +68857,7 @@
                             "Turnkey camp utility setup: power generation, water distribution & sewage",
                             "Flatbed transport coordination and border customs processing handled"
                         ],
-                        "ctaLink": "/services/portacabin",
+                        "ctaLink": "/service/portacabin",
                         "ctaText": "Oman Modular Camp Cabins"
                     },
                     {
@@ -68991,14 +68991,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -69012,7 +69012,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -69190,21 +69190,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -69967,14 +69967,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -69988,7 +69988,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -70166,21 +70166,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"
@@ -70943,14 +70943,14 @@
                         {
                             "id": 240,
                             "label": "Power Plant",
-                            "url": "/services/power-plant",
+                            "url": "/service/power-plant",
                             "target": "_self",
                             "children": []
                         },
                         {
                             "id": 241,
                             "label": "AMC Generator",
-                            "url": "/services/amc-generator",
+                            "url": "/service/amc-generator",
                             "target": "_self",
                             "children": []
                         },
@@ -70964,7 +70964,7 @@
                         {
                             "id": 243,
                             "label": "Portacabin & Site Offices",
-                            "url": "/services/portacabin",
+                            "url": "/service/portacabin",
                             "target": "_self",
                             "children": []
                         },
@@ -71142,21 +71142,21 @@
                         ]
                     },
                     "blog.power-plant": {
-                        "uri": "services/power-plant",
+                        "uri": "service/power-plant",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.amc-generator": {
-                        "uri": "services/amc-generator",
+                        "uri": "service/amc-generator",
                         "methods": [
                             "GET",
                             "HEAD"
                         ]
                     },
                     "blog.portacabin": {
-                        "uri": "services/portacabin",
+                        "uri": "service/portacabin",
                         "methods": [
                             "GET",
                             "HEAD"

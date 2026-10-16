@@ -8,7 +8,17 @@
     @if($post->meta_keywords)
         <meta name="keywords" content="{{ $post->meta_keywords }}">
     @endif
-    <link rel="canonical" href="{{ $post->canonical_url ?: url()->current() }}">
+    @php
+        $canonicalUrl = route('post.show', $post->slug);
+        if (! empty($post->canonical_url) && ! str_contains($post->canonical_url, 'localhost') && ! str_contains($post->canonical_url, '127.0.0.1')) {
+            $parsedCanonical = parse_url($post->canonical_url);
+            // Allow external canonicals (e.g. syndicated on Medium/external domain)
+            if (! empty($parsedCanonical['host']) && ! in_array(strtolower($parsedCanonical['host']), ['generatordubai.com', 'www.generatordubai.com'], true)) {
+                $canonicalUrl = $post->canonical_url;
+            }
+        }
+    @endphp
+    <link rel="canonical" href="{{ $canonicalUrl }}">
     <meta name="robots" content="{{ $post->is_indexable ? 'index, follow' : 'noindex, nofollow' }}">
 
     <!-- Open Graph / Facebook -->

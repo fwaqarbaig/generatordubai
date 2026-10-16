@@ -51,7 +51,16 @@ class BlogController extends Controller
                 ->where('published_at', '<=', now());
         }
 
-        $post = $postQuery->firstOrFail();
+        $post = $postQuery->first();
+
+        if (! $post) {
+            // Gracefully 301 redirect legacy/retired portacabin and site compound articles to the official Portacabin service page
+            if (str_contains($slug, 'portacabin') || str_contains($slug, 'cabin') || str_contains($slug, 'compound') || str_contains($slug, 'ablution')) {
+                return redirect()->route('service.show', 'portacabin', 301);
+            }
+
+            abort(404);
+        }
 
         // Match targeted commercial recovery service for contextual internal linking
         $targetedService = $linker->matchServiceForPost($post);
