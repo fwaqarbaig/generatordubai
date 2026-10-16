@@ -106,6 +106,24 @@ class MediaController extends Controller
 
             $path = $file->storeAs('uploads/'.date('Y/m'), $safeName, 'public');
 
+            // Mirror between public/storage and storage/app/public for universal server compatibility
+            $publicFile = public_path('storage/'.$path);
+            $appStorageFile = storage_path('app/public/'.$path);
+
+            if (file_exists($publicFile) && ! file_exists($appStorageFile)) {
+                $dir = dirname($appStorageFile);
+                if (! is_dir($dir)) {
+                    mkdir($dir, 0755, true);
+                }
+                @copy($publicFile, $appStorageFile);
+            } elseif (file_exists($appStorageFile) && ! file_exists($publicFile)) {
+                $dir = dirname($publicFile);
+                if (! is_dir($dir)) {
+                    mkdir($dir, 0755, true);
+                }
+                @copy($appStorageFile, $publicFile);
+            }
+
             $mime = $file->getMimeType();
             $size = $file->getSize();
             $dimensions = null;
@@ -174,6 +192,16 @@ class MediaController extends Controller
     {
         if (Storage::disk($medium->disk ?? 'public')->exists($medium->file_path)) {
             Storage::disk($medium->disk ?? 'public')->delete($medium->file_path);
+        }
+
+        $publicFile = public_path('storage/'.ltrim($medium->file_path, '/'));
+        if (file_exists($publicFile)) {
+            @unlink($publicFile);
+        }
+
+        $appStorageFile = storage_path('app/public/'.ltrim($medium->file_path, '/'));
+        if (file_exists($appStorageFile)) {
+            @unlink($appStorageFile);
         }
 
         $medium->delete();

@@ -204,6 +204,35 @@ Route::middleware(['auth', 'two_factor', 'content.manager'])->prefix('admin')->n
 
 /*
 |--------------------------------------------------------------------------
+| Storage File Serving & Fallback Sync
+|--------------------------------------------------------------------------
+| Serves media files and syncs uploads between storage/app/public and public/storage
+| ensuring uploaded images never 404 or 403 across shared hosting environments.
+*/
+Route::get('/storage/{path}', function (string $path) {
+    // 1. Direct check in public/storage
+    $publicFile = public_path('storage/'.$path);
+    if (file_exists($publicFile) && ! is_dir($publicFile)) {
+        return response()->file($publicFile);
+    }
+
+    // 2. Check in storage/app/public
+    $appPublicFile = storage_path('app/public/'.$path);
+    if (file_exists($appPublicFile) && ! is_dir($appPublicFile)) {
+        $targetDir = dirname($publicFile);
+        if (! is_dir($targetDir)) {
+            mkdir($targetDir, 0755, true);
+        }
+        @copy($appPublicFile, $publicFile);
+
+        return response()->file($appPublicFile);
+    }
+
+    abort(404);
+})->where('path', '.*');
+
+/*
+|--------------------------------------------------------------------------
 | Dynamic Slug Resolution (Matching WordPress Permalinks)
 |--------------------------------------------------------------------------
 */
