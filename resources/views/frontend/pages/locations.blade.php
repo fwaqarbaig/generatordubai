@@ -3,28 +3,47 @@
 @section('seo_meta')
     <title>{{ $page->meta_title ?? 'Service Locations | Generator Rental Network Dubai & UAE' }}</title>
     <meta name="description" content="{{ $page->meta_description ?? 'Strategic generator rental depots in Dubai, Abu Dhabi, Sharjah, Ajman, RAK, Fujairah, UAQ, and Oman. Rapid 24/7 delivery in 45-90 minutes.' }}">
+    <meta name="keywords" content="generator rental dubai, generator rental abu dhabi, generator rental sharjah, ajman power rental, rak generator hire, fujairah generator rental, uae equipment depots">
     <link rel="canonical" href="{{ route('locations.index') }}">
     <meta property="og:title" content="{{ $page->meta_title ?? 'Service Locations | Generator Rental UAE' }}">
+    <meta property="og:description" content="{{ $page->meta_description ?? 'Strategic generator and chiller rental depots in Dubai, Abu Dhabi, Sharjah, Ajman, RAK, Fujairah, and UAQ with 24/7 delivery.' }}">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ route('locations.index') }}">
+    <meta property="og:image" content="{{ ($page?->seo_image) ?: asset('storage/media/rental-generator.webp') }}">
 
     <!-- Schema.org BreadcrumbList JSON-LD -->
     <script type="application/ld+json">
     {!! json_encode([
       '@@context' => 'https://schema.org',
-      '@type' => 'BreadcrumbList',
+      '@@type' => 'BreadcrumbList',
       'itemListElement' => [
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 1,
           'name' => 'Home',
           'item' => route('home'),
         ],
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 2,
           'name' => 'Locations',
           'item' => route('locations.index'),
         ],
+      ],
+    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
+
+    <!-- Schema.org CollectionPage JSON-LD -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@@context' => 'https://schema.org',
+      '@@type' => 'CollectionPage',
+      'name' => 'Generator Rental Service Locations across UAE',
+      'description' => 'Strategic generator and cooling rental depots across Dubai, Abu Dhabi, Sharjah, Ajman, RAK, Fujairah, and UAQ.',
+      'url' => route('locations.index'),
+      'primaryImageOfPage' => [
+        '@@type' => 'ImageObject',
+        'url' => asset('storage/media/rental-generator.webp'),
       ],
     ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
     </script>

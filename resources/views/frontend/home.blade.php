@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('seo_meta')
-    <title>Generator Rental in Dubai & UAE | 50 kVA to 2500 kVA Silent Power Hire</title>
-    <meta name="description" content="Rent silent diesel generators across Dubai, Abu Dhabi, Sharjah & all 7 Emirates. 50 kVA to 2500 kVA fleet, 24/7 emergency dispatch within 60-120 minutes, fuel management & turnkey setup.">
-    <meta name="keywords" content="generator rental dubai, generator rental uae, diesel generator hire dubai, silent generator rental, temporary power solutions dubai, 500 kva generator rental, industrial generator hire uae">
+    <title>Rental Power & Rental Cooling in UAE | Diesel Generators & Industrial Chillers</title>
+    <meta name="description" content="We provide high-quality Perkins and Cummins generators for rental power solutions, and chillers & AC units for efficient cooling across Dubai, Abu Dhabi, Sharjah & all UAE.">
+    <meta name="keywords" content="rental power uae, rental cooling uae, generator rental dubai, chiller rental uae, packaged ac units rental, portacabin for sale in uae, portable generator rental">
     <link rel="canonical" href="{{ route('home') }}">
-    <meta property="og:title" content="Generator Rental in Dubai & UAE | Turnkey Diesel Power Hire">
-    <meta property="og:description" content="50 kVA to 2500 kVA soundproof diesel generator rental, multi-megawatt synchronized power plants, and 24/7 emergency dispatch across all 7 Emirates.">
+    <meta property="og:title" content="Rental Power and Rental Cooling in UAE | Power & Cooling On Demand">
+    <meta property="og:description" content="Diesel generators, industrial chillers, AC units and portacabins — rented, delivered and supported across Dubai, Abu Dhabi and Sharjah. 24/7 backup.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ route('home') }}">
     <meta name="twitter:card" content="summary_large_image">
@@ -15,13 +15,19 @@
     <script type="application/ld+json">
     {!! json_encode([
       '@@context' => 'https://schema.org',
-      '@type' => 'WebSite',
-      'name' => 'Generator Dubai',
+      '@@type' => 'WebSite',
+      '@id' => route('home') . '#website',
+      'name' => config('app.name', 'Rental Power UAE'),
+      'alternateName' => 'Rental Power & Cooling Solutions UAE',
       'url' => route('home'),
+      'description' => 'Turnkey generator rental, temporary cooling, air cooled chillers, and emergency power plants across Dubai and UAE.',
+      'publisher' => [
+        '@id' => url('/#organization'),
+      ],
       'potentialAction' => [
-        '@type' => 'SearchAction',
+        '@@type' => 'SearchAction',
         'target' => [
-          '@type' => 'EntryPoint',
+          '@@type' => 'EntryPoint',
           'urlTemplate' => route('blog.index') . '?q={search_term_string}',
         ],
         'query-input' => 'required name=search_term_string',
@@ -33,46 +39,46 @@
     <script type="application/ld+json">
     {!! json_encode([
       '@@context' => 'https://schema.org',
-      '@type' => 'FAQPage',
+      '@@type' => 'FAQPage',
       'mainEntity' => [
         [
-          '@type' => 'Question',
-          'name' => 'How much does it cost to rent a generator in Dubai and the UAE?',
+          '@@type' => 'Question',
+          'name' => 'How much does it cost to rent a generator or chiller in Dubai and the UAE?',
           'acceptedAnswer' => [
-            '@type' => 'Answer',
-            'text' => 'Generator rental costs depend on required capacity (kVA/kW), rental duration (daily, weekly, or monthly), delivery distance, and whether fuel logistics are included. A 50 kVA silent unit typically starts from competitive daily or monthly rates, while large industrial generators (500-1250 kVA) are quoted on customized commercial project terms. Contact Generator Dubai for an immediate, transparent, itemized quote with zero hidden charges.',
+            '@@type' => 'Answer',
+            'text' => 'Rental costs depend on required capacity (kVA/kW or Tons), rental duration (daily, weekly, or monthly), delivery distance, and site logistics. A silent generator unit or packaged AC typically starts from competitive daily or monthly rates, while large industrial chillers and high-capacity generators are quoted on customized commercial terms. Contact Rental Power UAE for an immediate, transparent, itemized quote with zero hidden charges.',
           ],
         ],
         [
-          '@type' => 'Question',
-          'name' => 'How quickly can Generator Dubai deliver an emergency rental generator to my site?',
+          '@@type' => 'Question',
+          'name' => 'How quickly can Rental Power UAE deliver emergency rental equipment to my site?',
           'acceptedAnswer' => [
-            '@type' => 'Answer',
-            'text' => 'We maintain 24/7 emergency dispatch centers across Dubai, Abu Dhabi, and Sharjah. For critical power failures, transformer outages, or emergency site shutdowns, our mobile crane trailers mobilize and deliver generators to most UAE locations within 60 to 120 minutes of confirmation.',
+            '@@type' => 'Answer',
+            'text' => 'We maintain 24/7 emergency dispatch centers across Dubai, Abu Dhabi, and Sharjah. For critical power failures, cooling breakdowns, or emergency shutdowns, our trailers mobilize and deliver equipment to most UAE locations within 60 to 120 minutes of confirmation.',
           ],
         ],
         [
-          '@type' => 'Question',
-          'name' => 'What generator sizes (kVA/kW) do you have available for immediate hire?',
+          '@@type' => 'Question',
+          'name' => 'What generator and chiller capacities do you have available for immediate hire?',
           'acceptedAnswer' => [
-            '@type' => 'Answer',
-            'text' => 'Our active rental fleet ranges from 50 kVA (40 kW) up to 2500 kVA (2000 kW) single units, running on premium Cummins, Perkins, and Caterpillar engines. For massive power demands, we synchronize multiple containerized generators in parallel to create temporary power plants up to 20 Megawatts.',
+            '@@type' => 'Answer',
+            'text' => 'Our active rental fleet includes generators from 50 kVA up to 2500 kVA running on premium Cummins, Perkins, and Caterpillar engines, alongside air-cooled and water-cooled industrial chillers (50 to 500 Tons) and packaged AC units.',
           ],
         ],
         [
-          '@type' => 'Question',
+          '@@type' => 'Question',
           'name' => 'Do you supply silent generators suitable for residential areas and VIP events?',
           'acceptedAnswer' => [
-            '@type' => 'Answer',
-            'text' => 'Yes. Our silent generator fleet is housed in specialized acoustic, sound-attenuated steel canopies with residential-grade internal silencers that keep sound levels below 65 dBA at 7 meters, fully complying with UAE municipal environmental noise regulations.',
+            '@@type' => 'Answer',
+            'text' => 'Yes. Our silent generator fleet is housed in specialized acoustic sound-attenuated steel canopies with residential-grade internal silencers that keep sound levels below 65 dBA at 7 meters, fully complying with UAE municipal noise regulations.',
           ],
         ],
         [
-          '@type' => 'Question',
-          'name' => 'Is electrical installation, cabling, and technical setup included with the rental?',
+          '@@type' => 'Question',
+          'name' => 'Is installation, cabling, and technical setup included with the rental?',
           'acceptedAnswer' => [
-            '@type' => 'Answer',
-            'text' => 'Yes. Generator Dubai provides complete turnkey power solutions. Our certified electrical technicians handle delivery, offloading, positioning, armored cable connection, automatic transfer switch (ATS) installation, and comprehensive load-testing before site handover.',
+            '@@type' => 'Answer',
+            'text' => 'Yes. Rental Power UAE provides complete turnkey power and cooling solutions. Our certified technicians handle delivery, offloading, positioning, armored cable and chiller hose connections, automatic transfer switch (ATS) installation, and comprehensive testing before handover.',
           ],
         ],
       ],
@@ -100,35 +106,41 @@
                     <!-- Hero Top Badge -->
                     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-bold text-amber-300 shadow-lg shadow-amber-950/40">
                         <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
-                        <span>50 kVA - 2500 kVA Power Fleet</span>
+                        <span>Rental Power & Cooling Fleet UAE</span>
                         <span class="text-white/40">|</span>
-                        <span class="text-slate-300 font-semibold">24/7 Emergency Mobilization</span>
+                        <span class="text-slate-300 font-semibold">24/7 Fast Mobilization</span>
                     </div>
 
                     <!-- Main Headline -->
                     <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight leading-[1.1] text-white">
-                        Turnkey Diesel Generator Rental in Dubai & <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-200">Temporary Power Solutions Across UAE</span>
+                        Chill Out and Plug In — <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-200">We’ve Got the Power You Need</span>
                     </h1>
 
-                    <!-- Paragraph 1 & 2 -->
-                    <p class="text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
-                        Generator Dubai is the UAE's premier provider of heavy-duty temporary power solutions, delivering fuel-efficient, sound-attenuated diesel generators from <strong>50 kVA to 2500 kVA</strong> across Dubai, Abu Dhabi, Sharjah, and all Northern Emirates. Engineered to perform reliably in extreme desert temperatures exceeding 50°C.
-                    </p>
-                    <p class="text-xs sm:text-sm text-slate-400 font-normal leading-relaxed hidden sm:block">
-                        From rapid emergency blackout restoration to synchronized multi-megawatt temporary power plants, every generator is load-bank tested and deployed with certified electrical technicians, automatic transfer switches (ATS), external bunded fuel storage, and complete turnkey distribution.
-                    </p>
+                    <!-- Tagline / Subtitle -->
+                    <div class="space-y-3">
+                        <p class="text-base sm:text-lg text-amber-300 font-bold leading-snug">
+                            Generator and Chiller Rental UAE — Power &amp; Cooling On Demand
+                        </p>
+                        <p class="text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
+                            Diesel generators, industrial chillers, AC units and portacabins — rented, delivered and supported across Dubai, Abu Dhabi and Sharjah. One reliable supplier for power and cooling rental solutions UAE-wide. No long-term commitment. No downtime. Same-day quotes, fast site delivery, 24/7 backup.
+                        </p>
+                        <p class="text-xs sm:text-sm text-slate-400 font-normal leading-relaxed hidden sm:block">
+                            From emergency power outage response to synchronized multi-megawatt setups and temporary HVAC cooling, every unit is load-bank tested and deployed with certified technicians, cabling, and full turnkey support.
+                        </p>
+                    </div>
 
                     <!-- CTAs -->
                     <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                        <a href="tel:+971569213754" 
+                        <a href="https://wa.me/971569213754?text={{ urlencode('Hello Rental Power UAE, I would like to inquire about rental power and cooling solutions.') }}" 
+                           target="_blank"
                            class="px-8 py-4 rounded-full bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 hover:from-amber-600 hover:to-yellow-500 text-slate-950 font-extrabold text-sm shadow-xl shadow-amber-500/30 hover:scale-105 transition-all flex items-center justify-center gap-2 group">
-                            <i data-lucide="phone-call" class="w-4 h-4 text-slate-950"></i>
+                            <i data-lucide="message-circle" class="w-4 h-4 text-slate-950"></i>
                             <span>Call 24/7 Hotline: +971 56 921 3754</span>
                         </a>
-                        <a href="#kva-selector" 
+                        <a href="{{ route('fleet.index') }}" 
                            class="px-7 py-4 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/20 backdrop-blur-md transition flex items-center justify-center gap-2">
                             <span>Browse Fleet Capacities</span>
-                            <i data-lucide="arrow-down" class="w-4 h-4 text-amber-400"></i>
+                            <i data-lucide="layers" class="w-4 h-4 text-amber-400"></i>
                         </a>
                     </div>
 
@@ -136,7 +148,7 @@
                     <div class="pt-4 flex flex-wrap items-center gap-5 text-xs text-slate-400 font-medium">
                         <div class="flex items-center gap-2">
                             <i data-lucide="shield-check" class="w-4 h-4 text-amber-400"></i>
-                            <span>ISO 8528 Certified Fleet</span>
+                            <span>ISO Certified Equipment</span>
                         </div>
                         <span class="text-slate-700 hidden sm:inline">&bull;</span>
                         <div class="flex items-center gap-2">
@@ -146,16 +158,28 @@
                         <span class="text-slate-700 hidden sm:inline">&bull;</span>
                         <div class="flex items-center gap-2">
                             <i data-lucide="award" class="w-4 h-4 text-sky-400"></i>
-                            <span>99.98% Power Uptime SLA</span>
+                            <span>99.98% Reliability SLA</span>
                         </div>
                     </div>
+
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Rental%20Power%20%2B971569213754"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="View Rental Power on Google Maps: rated 5 out of 5 from 5 reviews"
+                       class="inline-flex flex-wrap items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2.5 text-xs text-slate-200 hover:bg-white/10 transition">
+                        <span class="font-bold">Google rating</span>
+                        <span class="tracking-wide text-amber-400" aria-hidden="true">★★★★★</span>
+                        <strong class="text-white">5.0/5</strong>
+                        <span class="text-slate-400">from 5 reviews</span>
+                        <span class="font-semibold text-amber-300">View on Google Maps <span aria-hidden="true">↗</span></span>
+                    </a>
                 </div>
 
                 <!-- Right Column: Hero Visual Card -->
                 <div class="lg:col-span-5">
                     <div class="relative rounded-3xl overflow-hidden border border-slate-800 bg-slate-900/60 shadow-2xl p-2">
-                        <img src="{{ asset('storage/media/2026/09/1-y7ja6x.webp') }}" 
-                             alt="Diesel Generator Rental Fleet in Dubai" 
+                        <img src="{{ asset('storage/media/rental-generator.webp') }}" 
+                             alt="Rental Power and Rental Cooling in UAE" 
                              width="800"
                              height="500"
                              loading="eager"
@@ -164,11 +188,11 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent rounded-2xl"></div>
                         <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-slate-900/90 backdrop-blur-md border border-slate-700/60 text-white space-y-2">
                             <div class="flex items-center justify-between">
-                                <span class="text-xs font-extrabold uppercase text-amber-400 tracking-wider">Heavy Power Ready</span>
+                                <span class="text-xs font-extrabold uppercase text-amber-400 tracking-wider">Power & Cooling Ready</span>
                                 <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold border border-emerald-500/30">In Stock</span>
                             </div>
-                            <h4 class="text-sm font-bold text-white">Tier-1 Cummins, Perkins & Caterpillar Gensets</h4>
-                            <p class="text-xs text-slate-300">Synchronized containers up to 20MW with residential-grade super-silent sound attenuation (&lt;65 dBA).</p>
+                            <h4 class="text-sm font-bold text-white">Tier-1 Cummins & Perkins Gensets & Chillers</h4>
+                            <p class="text-xs text-slate-300">Generators from 50 kVA to 2500 kVA, air & water cooled chillers, and packaged AC with 24/7 service.</p>
                         </div>
                     </div>
                 </div>
@@ -221,18 +245,18 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @php
                 $kvaList = [
-                    ['kva' => '50', 'kw' => '40', 'label' => '50 kVA (40 kW)', 'desc' => 'Compact power for commercial site offices, telecom masts, and temporary retail kiosks.', 'consumption' => '9.1 L/hr'],
-                    ['kva' => '100', 'kw' => '80', 'label' => '100 kVA (80 kW)', 'desc' => 'Versatile three-phase power for tower cranes, concrete vibrators, and outdoor event stages.', 'consumption' => '16.5 L/hr'],
-                    ['kva' => '150', 'kw' => '120', 'label' => '150 kVA (120 kW)', 'desc' => 'Steady electrical supply for medium construction sites, workshops, and commercial facilities.', 'consumption' => '24.5 L/hr'],
-                    ['kva' => '200', 'kw' => '160', 'label' => '200 kVA (160 kW)', 'desc' => 'Reliable capacity for construction hoist motors, dewatering pumps, and batching plants.', 'consumption' => '31.0 L/hr'],
-                    ['kva' => '250', 'kw' => '200', 'label' => '250 kVA (200 kW)', 'desc' => 'High-performance workhorse for industrial fabrication yards and large residential compounds.', 'consumption' => '38.2 L/hr'],
-                    ['kva' => '300', 'kw' => '240', 'label' => '300 kVA (240 kW)', 'desc' => 'Heavy-duty power for multi-crane civil sites, camp accommodations, and event lighting rigs.', 'consumption' => '45.5 L/hr'],
-                    ['kva' => '350', 'kw' => '280', 'label' => '350 kVA (280 kW)', 'desc' => 'Continuous prime power for deep foundation drilling rigs and water treatment facilities.', 'consumption' => '52.8 L/hr'],
-                    ['kva' => '500', 'kw' => '400', 'label' => '500 kVA (400 kW)', 'desc' => 'Industrial-grade output supporting major infrastructure, asphalt plants, and hotel chiller backup.', 'consumption' => '74.0 L/hr'],
-                    ['kva' => '600', 'kw' => '480', 'label' => '600 kVA (480 kW)', 'desc' => 'Sustained continuous power for heavy manufacturing lines, marine docks, and quarry crushers.', 'consumption' => '89.0 L/hr'],
-                    ['kva' => '800', 'kw' => '640', 'label' => '800 kVA (640 kW)', 'desc' => 'High-capacity generator for large-scale industrial projects, cooling plants, and hospital backups.', 'consumption' => '118.0 L/hr'],
-                    ['kva' => '1000', 'kw' => '800', 'label' => '1000 kVA (800 kW)', 'desc' => 'Containerized megawatt unit for oil & gas terminals, major developments, and data centers.', 'consumption' => '145.0 L/hr'],
-                    ['kva' => '1250', 'kw' => '1000', 'label' => '1250 kVA (1000 kW)', 'desc' => 'Utility-grade synchronized power for sub-stations, refinery turnarounds, and multi-MW plants.', 'consumption' => '185.0 L/hr'],
+                    ['kva' => '50', 'kw' => '40', 'slug' => '50-kva-generator-rental', 'label' => '50 kVA (40 kW)', 'desc' => 'Compact power for commercial site offices, telecom masts, and temporary retail kiosks.', 'consumption' => '9.1 L/hr'],
+                    ['kva' => '100', 'kw' => '80', 'slug' => '100-kva-generator-rental', 'label' => '100 kVA (80 kW)', 'desc' => 'Versatile three-phase power for tower cranes, concrete vibrators, and outdoor event stages.', 'consumption' => '16.5 L/hr'],
+                    ['kva' => '150', 'kw' => '120', 'slug' => '150-kva-generator-rental', 'label' => '150 kVA (120 kW)', 'desc' => 'Steady electrical supply for medium construction sites, workshops, and commercial facilities.', 'consumption' => '24.5 L/hr'],
+                    ['kva' => '200', 'kw' => '160', 'slug' => '200-kva-generator-rental', 'label' => '200 kVA (160 kW)', 'desc' => 'Reliable capacity for construction hoist motors, dewatering pumps, and batching plants.', 'consumption' => '31.0 L/hr'],
+                    ['kva' => '250', 'kw' => '200', 'slug' => '250-kva-generator-rental', 'label' => '250 kVA (200 kW)', 'desc' => 'High-performance workhorse for industrial fabrication yards and large residential compounds.', 'consumption' => '38.2 L/hr'],
+                    ['kva' => '300', 'kw' => '240', 'slug' => '300-kva-generator-rental', 'label' => '300 kVA (240 kW)', 'desc' => 'Heavy-duty power for multi-crane civil sites, camp accommodations, and event lighting rigs.', 'consumption' => '45.5 L/hr'],
+                    ['kva' => '350', 'kw' => '280', 'slug' => '350-kva-generator-rental', 'label' => '350 kVA (280 kW)', 'desc' => 'Continuous prime power for deep foundation drilling rigs and water treatment facilities.', 'consumption' => '52.8 L/hr'],
+                    ['kva' => '500', 'kw' => '400', 'slug' => '500kva-generator-hire', 'label' => '500 kVA (400 kW)', 'desc' => 'Industrial-grade output supporting major infrastructure, asphalt plants, and hotel chiller backup.', 'consumption' => '74.0 L/hr'],
+                    ['kva' => '600', 'kw' => '480', 'slug' => '600-kva-generator-rental', 'label' => '600 kVA (480 kW)', 'desc' => 'Sustained continuous power for heavy manufacturing lines, marine docks, and quarry crushers.', 'consumption' => '89.0 L/hr'],
+                    ['kva' => '800', 'kw' => '640', 'slug' => '800-kva-generator-rental', 'label' => '800 kVA (640 kW)', 'desc' => 'High-capacity generator for large-scale industrial projects, cooling plants, and hospital backups.', 'consumption' => '118.0 L/hr'],
+                    ['kva' => '1000', 'kw' => '800', 'slug' => '1000-kva-generator-rental', 'label' => '1000 kVA (800 kW)', 'desc' => 'Containerized megawatt unit for oil & gas terminals, major developments, and data centers.', 'consumption' => '145.0 L/hr'],
+                    ['kva' => '1250', 'kw' => '1000', 'slug' => '1250-kva-generator-rental', 'label' => '1250 kVA (1000 kW)', 'desc' => 'Utility-grade synchronized power for sub-stations, refinery turnarounds, and multi-MW plants.', 'consumption' => '185.0 L/hr'],
                 ];
             @endphp
 
@@ -257,7 +281,7 @@
                     </div>
 
                     <div class="pt-5 mt-4 border-t border-slate-100 flex items-center justify-between">
-                        <a href="{{ route('fleet.show', $item['kva'] . '-kva') }}" class="text-xs font-bold text-amber-600 group-hover:text-amber-700 flex items-center gap-1">
+                        <a href="{{ route('fleet.show', $item['slug']) }}" class="text-xs font-bold text-amber-600 group-hover:text-amber-700 flex items-center gap-1">
                             <span>Full Specifications</span>
                             <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
                         </a>
@@ -450,7 +474,7 @@
                 Turnkey Electrical Engineering & Site Support Services
             </h2>
             <p class="text-sm text-slate-600">
-                Beyond temporary generator rentals, Generator Dubai delivers full-lifecycle electrical engineering, preventative maintenance, cooling, and modular infrastructure:
+                Beyond temporary generator rentals, Rental Power UAE delivers full-lifecycle electrical engineering, preventative maintenance, industrial cooling, and modular infrastructure:
             </p>
         </div>
 
@@ -531,10 +555,10 @@
         <div class="text-center max-w-3xl mx-auto space-y-3 mb-12">
             <span class="text-xs font-extrabold uppercase tracking-wider text-amber-600 bg-amber-100 px-3 py-1 rounded-full border border-amber-300">Sector Specialization</span>
             <h2 class="text-2xl sm:text-4xl font-black font-display text-slate-950 tracking-tight">
-                Critical Sectors Powered by Generator Dubai
+                Critical Sectors Powered by Rental Power UAE
             </h2>
             <p class="text-sm text-slate-600">
-                Delivering proven temporary power solutions across the UAE's critical commercial, industrial, and infrastructure industries:
+                Delivering proven temporary power and cooling solutions across the UAE's critical commercial, industrial, and infrastructure industries:
             </p>
         </div>
 
@@ -566,12 +590,12 @@
         </div>
     </section>
 
-    <!-- ================= 10. WHY CHOOSE GENERATOR DUBAI ================= -->
+    <!-- ================= 10. WHY CHOOSE RENTAL POWER UAE ================= -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto space-y-3 mb-12">
             <span class="text-xs font-extrabold uppercase tracking-wider text-amber-600 bg-amber-100 px-3 py-1 rounded-full border border-amber-300">Engineering Excellence</span>
             <h2 class="text-2xl sm:text-4xl font-black font-display text-slate-950 tracking-tight">
-                Why Industry Leaders Choose Generator Dubai for Critical Site Power
+                Why Industry Leaders Choose Rental Power UAE for Critical Site Power &amp; Cooling
             </h2>
             <p class="text-sm text-slate-600">
                 In demanding commercial and civil projects, power disruptions lead to massive operational losses. Here is how our power engineering leadership safeguards your continuous operations:
@@ -701,7 +725,7 @@
                             </p>
                         </div>
                         <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-                            <span class="text-xs font-bold text-slate-500">Generator Dubai Engineering</span>
+                            <span class="text-xs font-bold text-slate-500">Rental Power Engineering</span>
                             <a href="{{ route('post.show', $article->slug) }}" class="text-xs font-extrabold text-amber-600 hover:text-amber-700 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
                                 <span>Read Guide</span>
                                 <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
@@ -718,20 +742,20 @@
         <div class="text-center space-y-3 mb-10">
             <span class="text-xs font-extrabold uppercase tracking-wider text-amber-600 bg-amber-100 px-3 py-1 rounded-full border border-amber-300">Frequently Asked Questions</span>
             <h2 class="text-2xl sm:text-3xl font-black font-display text-slate-950">
-                Frequently Asked Questions About Generator Rental in Dubai & UAE
+                Frequently Asked Questions About Rental Power &amp; Cooling in UAE
             </h2>
         </div>
 
         <div class="space-y-3" x-data="{ openFaq: null }">
             @php
                 $faqs = [
-                    ['q' => 'How much does it cost to rent a generator in Dubai and the UAE?', 'a' => 'Generator rental costs depend on required capacity (kVA/kW), rental duration (daily, weekly, or monthly), delivery distance, and whether fuel logistics are included. A 50 kVA silent unit typically starts from competitive daily or monthly rates, while large industrial generators (500-1250 kVA) are quoted on customized commercial project terms. Contact Generator Dubai for an immediate, transparent, itemized quote with zero hidden charges.'],
-                    ['q' => 'How quickly can Generator Dubai deliver an emergency rental generator to my site?', 'a' => 'We maintain 24/7 emergency dispatch centers across Dubai, Abu Dhabi, and Sharjah. For critical power failures, transformer outages, or emergency site shutdowns, our mobile crane trailers mobilize and deliver generators to most UAE locations within 60 to 120 minutes of confirmation.'],
-                    ['q' => 'What generator sizes (kVA/kW) do you have available for immediate hire?', 'a' => 'Our active rental fleet ranges from 50 kVA (40 kW) up to 2500 kVA (2000 kW) single units, running on premium Cummins, Perkins, and Caterpillar engines. For massive power demands, we synchronize multiple containerized generators in parallel to create temporary power plants up to 20 Megawatts.'],
+                    ['q' => 'How much does it cost to rent a generator or chiller in Dubai and the UAE?', 'a' => 'Rental costs depend on required capacity (kVA/kW or Tons), rental duration (daily, weekly, or monthly), delivery distance, and site logistics. A 50 kVA silent unit or packaged AC typically starts from competitive daily or monthly rates, while large industrial generators (500-1250 kVA) and chillers are quoted on customized commercial project terms. Contact Rental Power UAE for an immediate, transparent, itemized quote with zero hidden charges.'],
+                    ['q' => 'How quickly can Rental Power UAE deliver an emergency rental generator or chiller to my site?', 'a' => 'We maintain 24/7 emergency dispatch centers across Dubai, Abu Dhabi, and Sharjah. For critical power failures, transformer outages, or cooling shutdowns, our mobile trailers mobilize and deliver equipment to most UAE locations within 60 to 120 minutes of confirmation.'],
+                    ['q' => 'What generator and chiller sizes do you have available for immediate hire?', 'a' => 'Our active rental fleet ranges from 50 kVA (40 kW) up to 2500 kVA (2000 kW) single units running on premium Cummins, Perkins, and Caterpillar engines, alongside 50 to 500 Ton chillers and modular portacabins.'],
                     ['q' => 'Do you supply silent generators suitable for residential areas and VIP events?', 'a' => 'Yes. Our silent generator fleet is housed in specialized acoustic, sound-attenuated steel canopies with residential-grade internal silencers that keep sound levels below 65 dBA at 7 meters, fully complying with UAE municipal environmental noise regulations.'],
-                    ['q' => 'Is electrical installation, cabling, and technical setup included with the rental?', 'a' => 'Yes. Generator Dubai provides complete turnkey power solutions. Our certified electrical technicians handle delivery, offloading, positioning, armored cable connection, automatic transfer switch (ATS) installation, and comprehensive load-testing before site handover.'],
+                    ['q' => 'Is electrical installation, cabling, and technical setup included with the rental?', 'a' => 'Yes. Rental Power UAE provides complete turnkey power solutions. Our certified electrical technicians handle delivery, offloading, positioning, armored cable connection, automatic transfer switch (ATS) installation, and comprehensive load-testing before site handover.'],
                     ['q' => 'What is the difference between "Prime Power" and "Standby Power"?', 'a' => 'Prime Power (PRP) is designed to operate as the primary continuous electrical source for unlimited hours on off-grid sites, featuring a 10% overload capacity. Standby Power (ESP) is engineered strictly for emergency backup during utility outages without overload capability.'],
-                    ['q' => 'How do I determine the right generator size for my project machinery?', 'a' => 'Generator sizing requires calculating continuous running wattage and the high inductive starting surge of electric motors (tower cranes, dewatering pumps, chillers, and compressors). Direct-On-Line (DOL) motors require up to 6x full-load current to start. Our certified engineers conduct free electrical load audits to ensure you receive the exact kVA rating needed without overpaying.'],
+                    ['q' => 'How do I determine the right generator size for my project machinery?', 'a' => 'Generator sizing requires calculating continuous running wattage and the high inductive starting surge of electric motors (tower cranes, dewatering pumps, chillers, and compressors). Direct-On-Line (DOL) motors require up to 6x full-load current to start. Our certified engineers conduct free electrical load audits to ensure you receive the exact rating needed without overpaying.'],
                     ['q' => 'Who is responsible for diesel refueling during the rental period?', 'a' => 'We offer both "Dry Hire" (where you arrange fuel independently) and full "Wet Hire" service. Under our Wet Hire package, we supply double-walled external bunded fuel tanks and our dedicated mobile diesel tankers provide automatic scheduled on-site refueling so your generator never runs dry.'],
                 ];
             @endphp

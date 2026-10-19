@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('seo_meta')
-    <title>Diesel Generator Fleet Rental UAE | 50 kVA to 2500 kVA Capacities | Generator Dubai</title>
+    <title>Diesel Generator Fleet Rental UAE | 50 kVA to 2500 kVA Capacities | {{ config('app.name', 'Rental Power UAE') }}</title>
     <meta name="description" content="Explore our complete rental fleet of soundproof diesel generators from 50 to 2500 kVA. Tier-1 Cummins, Perkins & Caterpillar engines with 24/7 dispatch across Dubai & UAE.">
     <meta name="keywords" content="generator fleet dubai, 50 kva generator, 100 kva generator, 250 kva generator, 500 kva generator, 1000 kva generator, silent diesel generator hire uae">
     <link rel="canonical" href="{{ url()->current() }}">
@@ -9,6 +9,52 @@
     <meta property="og:description" content="Tier-1 Cummins, Perkins, Caterpillar diesel generators. Soundproof canopies, high ambient 55°C desert radiators, 24/7 emergency dispatch.">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
+
+    <!-- Schema.org BreadcrumbList JSON-LD -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@@context' => 'https://schema.org',
+      '@@type' => 'BreadcrumbList',
+      'itemListElement' => [
+        [
+          '@@type' => 'ListItem',
+          'position' => 1,
+          'name' => 'Home',
+          'item' => route('home'),
+        ],
+        [
+          '@@type' => 'ListItem',
+          'position' => 2,
+          'name' => 'Fleet',
+          'item' => route('fleet.index'),
+        ],
+      ],
+    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
+
+    <!-- Schema.org CollectionPage / ItemList JSON-LD -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@@context' => 'https://schema.org',
+      '@@type' => 'CollectionPage',
+      'name' => 'Diesel Generator Fleet Rental UAE | 50 kVA to 2500 kVA Capacities',
+      'description' => 'Explore our complete rental fleet of soundproof diesel generators from 50 to 2500 kVA. Tier-1 Cummins, Perkins & Caterpillar engines with 24/7 dispatch across Dubai & UAE.',
+      'url' => route('fleet.index'),
+      'mainEntity' => [
+        '@@type' => 'ItemList',
+        'itemListElement' => $products->map(function($p, $idx) {
+            return [
+                '@@type' => 'ListItem',
+                'position' => $idx + 1,
+                'name' => $p->title,
+                'url' => route('fleet.show', $p->slug),
+                'description' => $p->seo_description ?: $p->summary,
+                'image' => $p->seo_image ?: ($p->featured_image_url ?: asset('storage/media/rental-generator.webp')),
+            ];
+        })->values()->all(),
+      ],
+    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
 @endsection
 
 @section('content')

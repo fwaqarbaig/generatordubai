@@ -1,29 +1,47 @@
 @extends('layouts.app')
 
 @section('seo_meta')
-    <title>About Generator Dubai | UAE Power Generation & Fleet History</title>
-    <meta name="description" content="Learn about Generator Dubai, the UAE leader in turnkey temporary power generation, heavy diesel fleet operations, and certified electrical engineering across all 7 Emirates.">
-    <meta name="keywords" content="about generator dubai, generator company uae, temporary power supplier dubai, diesel generator fleet uae">
+    <title>About Us | {{ config('app.name', 'Rental Power UAE') }} - Power &amp; Cooling Solutions</title>
+    <meta name="description" content="Learn about Rental Power UAE, the premier provider of reliable generator rental, chiller rental, AC rental, and temporary cooling solutions across Dubai, Abu Dhabi, Sharjah and Northern Emirates.">
+    <meta name="keywords" content="about rental power, rental cooling uae, generator company uae, temporary power supplier dubai, diesel generator fleet uae, chiller rental dubai">
     <link rel="canonical" href="{{ route('about') }}">
-    <meta property="og:title" content="About Generator Dubai | Turnkey Temporary Power Engineering">
-    <meta property="og:description" content="Over a decade of heavy-duty temporary power generation across Dubai, Abu Dhabi, Sharjah and Northern Emirates.">
+    <meta property="og:title" content="About Rental Power UAE | Turnkey Power &amp; Cooling Engineering">
+    <meta property="og:description" content="Reliable power, cooling &amp; support across the UAE. Over a decade of heavy-duty equipment rental operations.">
     <meta property="og:url" content="{{ route('about') }}">
     <meta property="og:type" content="website">
+
+    <!-- Schema.org AboutPage JSON-LD -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@@context' => 'https://schema.org',
+      '@@type' => 'AboutPage',
+      'name' => 'About Rental Power UAE',
+      'description' => 'Over a decade of turnkey power and cooling engineering solutions across Dubai, Abu Dhabi, Sharjah, and all 7 Emirates.',
+      'url' => route('about'),
+      'primaryImageOfPage' => [
+        '@@type' => 'ImageObject',
+        'url' => asset('storage/media/rental-generator.webp'),
+      ],
+      'mainEntity' => [
+        '@id' => url('/#organization'),
+      ],
+    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
 
     <!-- Schema.org BreadcrumbList JSON-LD -->
     <script type="application/ld+json">
     {!! json_encode([
       '@@context' => 'https://schema.org',
-      '@type' => 'BreadcrumbList',
+      '@@type' => 'BreadcrumbList',
       'itemListElement' => [
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 1,
           'name' => 'Home',
           'item' => route('home'),
         ],
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 2,
           'name' => 'About Us',
           'item' => route('about'),
@@ -54,17 +72,17 @@
             <div class="max-w-3xl space-y-4">
                 <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
                     <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                    <span>OVER A DECADE OF UAE POWER ENGINEERING</span>
+                    <span>OVER A DECADE OF UAE POWER &amp; COOLING SOLUTIONS</span>
                 </div>
                 <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black font-display tracking-tight leading-tight">
                     Powering the Nation's Most Critical Infrastructure <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-200">Without Interruption</span>
                 </h1>
                 <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
-                    Generator Dubai was established with an uncompromising mission: to deliver continuous, transient-free electrical power to the fastest-growing civil, industrial, marine, and commercial projects across the United Arab Emirates.
+                    Rental Power UAE was established with an uncompromising mission: to deliver continuous, reliable power and climate cooling solutions to the fastest-growing civil, industrial, marine, and commercial projects across the United Arab Emirates.
                 </p>
                 <div class="pt-4 flex flex-wrap items-center gap-4">
                     <a href="{{ route('fleet.index') }}" class="px-7 py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs shadow-lg transition flex items-center gap-2">
-                        <span>Explore Generator Fleet</span>
+                        <span>Explore Generator &amp; Chiller Fleet</span>
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </a>
                     <a href="{{ route('contact') }}" class="px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/20 transition">
@@ -101,14 +119,14 @@
             <div class="lg:col-span-6 space-y-6">
                 <span class="text-xs font-extrabold uppercase tracking-widest text-amber-600">Company Profile</span>
                 <h2 class="text-2xl sm:text-4xl font-black font-display text-slate-950 tracking-tight leading-tight">
-                    Single-Source Accountable Partner for Heavy Power Infrastructure
+                    Single-Source Accountable Partner for Heavy Power &amp; Cooling Infrastructure
                 </h2>
                 <div class="space-y-4 text-xs sm:text-sm text-slate-600 leading-relaxed">
                     <p>
-                        In extreme desert environments where summer ambient temperatures routinely surge past 50°C, ordinary power generation equipment experiences severe thermal deration, frequent radiator boiling, and catastrophic shutdown.
+                        In extreme desert environments where summer ambient temperatures routinely surge past 50°C, ordinary power generation and cooling equipment experiences severe thermal deration, frequent boiling, and catastrophic shutdown.
                     </p>
                     <p>
-                        Generator Dubai solves this by investing exclusively in high-ambient tropical radiators, Tier-1 industrial diesel engines (Cummins, Perkins, Caterpillar), and certified acoustic steel enclosures designed to maintain 100% continuous prime power under grueling UAE desert conditions.
+                        Rental Power UAE solves this by investing exclusively in high-ambient tropical radiators, Tier-1 industrial diesel engines (Cummins, Perkins, Caterpillar), and certified cooling chillers designed to maintain 100% continuous duty under grueling UAE desert conditions.
                     </p>
                     <p>
                         With dedicated logistics hubs in Dubai, Abu Dhabi, and Sharjah, our mobile cranes and heavy trailers deliver rapid mobilization, certified rigging, armored cabling, and on-site testing within hours of dispatch confirmation.
@@ -118,7 +136,7 @@
 
             <div class="lg:col-span-6">
                 <div class="rounded-3xl overflow-hidden bg-slate-900 border border-slate-200 shadow-xl">
-                    <img src="{{ asset('storage/media/2026/10/5-5gbsbw.jpg') }}" alt="Generator Dubai Fleet" width="800" height="450" loading="lazy" class="w-full h-80 sm:h-96 object-cover">
+                    <img src="{{ asset('storage/media/rental-generator.webp') }}" alt="Rental Power UAE Fleet" width="800" height="450" loading="lazy" class="w-full h-80 sm:h-96 object-cover">
                 </div>
             </div>
         </div>

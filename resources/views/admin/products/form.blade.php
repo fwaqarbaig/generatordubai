@@ -61,7 +61,8 @@
 
             <!-- Product Content Editor (Triple-Mode: Visual WYSIWYG / HTML Source / Live Preview) -->
             <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden" 
-                 x-data="productContentEditor({ initial: @js(old('content', $product->content ?? '')) })">
+                 x-data="productContentEditor({ initial: @js(old('content', $product->content ?? '')) })"
+                 x-init="init()">
                 
                 <!-- Toolbar Header -->
                 <div class="p-4 bg-slate-900 text-white flex flex-wrap items-center justify-between gap-3 border-b border-slate-800">
@@ -119,13 +120,29 @@
                         <button type="button" @click="execCommand('insertUnorderedList')" class="p-1.5 hover:bg-slate-200 rounded" title="Bullet List">&bull; List</button>
                         <button type="button" @click="execCommand('insertOrderedList')" class="p-1.5 hover:bg-slate-200 rounded" title="Numbered List">1. List</button>
                         <span class="text-slate-300">|</span>
+                        <!-- Text Alignment & LTR Controls -->
+                        <button type="button" @click="execCommand('justifyLeft')" class="p-1.5 hover:bg-slate-200 rounded text-xs font-semibold" title="Align Left (English / LTR)">
+                            <i data-lucide="align-left" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <button type="button" @click="execCommand('justifyCenter')" class="p-1.5 hover:bg-slate-200 rounded text-xs font-semibold" title="Align Center">
+                            <i data-lucide="align-center" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <button type="button" @click="execCommand('justifyRight')" class="p-1.5 hover:bg-slate-200 rounded text-xs font-semibold" title="Align Right">
+                            <i data-lucide="align-right" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <button type="button" @click="forceLtrDirection()" class="px-2 py-1 bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 rounded text-xs font-bold flex items-center gap-1 shadow-2xs" title="Force English LTR (Left-To-Right)">
+                            <i data-lucide="arrow-right-left" class="w-3 h-3 text-sky-600"></i>
+                            <span>LTR (English)</span>
+                        </button>
+                        <span class="text-slate-300">|</span>
                         <button type="button" @click="execPromptLink()" class="px-2 py-1 hover:bg-slate-200 rounded text-xs" title="Insert Link">🔗 Link</button>
                         <button type="button" @click="execCommand('removeFormat')" class="px-2 py-1 hover:bg-slate-200 rounded text-xs text-slate-500" title="Clear Formatting">Clear</button>
                     </div>
 
-                    <div id="productVisualEditorContainer" contenteditable="true" @input="syncFromVisual()" 
-                         class="p-6 min-h-[400px] focus:outline-none prose prose-slate max-w-none text-slate-800 text-sm sm:text-base leading-relaxed"
-                         x-html="content">{!! old('content', $product->content ?? '') !!}</div>
+                    <div id="productVisualEditorContainer" contenteditable="true" dir="ltr" lang="en"
+                         style="direction: ltr !important; text-align: left !important; unicode-bidi: isolate !important;"
+                         @input="syncFromVisual()" 
+                         class="p-6 min-h-[400px] focus:outline-none prose prose-slate max-w-none text-slate-800 text-sm sm:text-base leading-relaxed text-left">{!! old('content', $product->content ?? '') !!}</div>
                 </div>
 
                 <!-- TAB 2: HTML Source Code View -->
@@ -134,8 +151,9 @@
                         <span>Raw HTML editor &bull; Preserves all custom classes, tables, grids, and formatting.</span>
                         <span x-text="content.length + ' characters'"></span>
                     </div>
-                    <textarea id="productCodeTextarea" x-model="content" @input="syncFromCode()" rows="20"
-                              class="w-full bg-slate-900 text-emerald-300 p-4 rounded-xl border border-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-500 font-mono text-xs leading-relaxed">{{ old('content', $product->content ?? '') }}</textarea>
+                    <textarea id="productCodeTextarea" x-model="content" @input="syncFromCode()" rows="20" dir="ltr" lang="en"
+                              style="direction: ltr !important; text-align: left !important;"
+                              class="w-full bg-slate-900 text-emerald-300 p-4 rounded-xl border border-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-500 font-mono text-xs leading-relaxed text-left">{{ old('content', $product->content ?? '') }}</textarea>
                 </div>
 
                 <!-- TAB 3: Full Frontend Live Preview -->
@@ -319,6 +337,40 @@
             activeTab: 'visual',
             content: config.initial || '',
 
+            init() {
+                this.$nextTick(() => {
+                    const vis = document.getElementById('productVisualEditorContainer');
+                    if (vis && !vis.innerHTML.trim() && this.content) {
+                        vis.innerHTML = this.content;
+                    }
+                    this.enforceLtr();
+                });
+            },
+
+            enforceLtr() {
+                const vis = document.getElementById('productVisualEditorContainer');
+                if (vis) {
+                    vis.setAttribute('dir', 'ltr');
+                    vis.setAttribute('lang', 'en');
+                    vis.style.direction = 'ltr';
+                    vis.style.textAlign = 'left';
+                    const rtlEls = vis.querySelectorAll('[dir="rtl"], [style*="direction: rtl"]');
+                    if (rtlEls.length > 0) {
+                        rtlEls.forEach(el => {
+                            el.removeAttribute('dir');
+                            el.style.direction = 'ltr';
+                            el.style.textAlign = 'left';
+                        });
+                    }
+                }
+            },
+
+            forceLtrDirection() {
+                this.enforceLtr();
+                document.execCommand('justifyLeft', false, null);
+                this.syncFromVisual();
+            },
+
             setTab(tab) {
                 if (this.activeTab === 'visual') {
                     const vis = document.getElementById('productVisualEditorContainer');
@@ -330,9 +382,10 @@
                 if (tab === 'visual') {
                     this.$nextTick(() => {
                         const vis = document.getElementById('productVisualEditorContainer');
-                        if (vis) {
+                        if (vis && vis.innerHTML !== this.content) {
                             vis.innerHTML = this.content;
                         }
+                        this.enforceLtr();
                     });
                 }
             },
@@ -380,7 +433,15 @@
     // 2. Media insertion into product editor
     function chooseMediaForProduct() {
         openMediaModal(function(item) {
-            const imgHtml = `\n<img src="${item.url}" alt="${item.name || 'Generator Dubai Fleet'}" class="rounded-2xl max-w-full h-auto my-4 shadow-sm" />\n`;
+            const altAttr = item.is_decorative ? '' : (item.alt_text || item.title || item.name || '');
+            const titleAttr = item.title || item.name || '';
+            let imgHtml = '';
+            if (item.caption) {
+                imgHtml = `\n<figure class="my-6 rounded-2xl overflow-hidden border border-slate-200 bg-white">\n    <img src="${item.url}" alt="${altAttr}" title="${titleAttr}" class="w-full h-auto rounded-xl" />\n    <figcaption class="p-3 bg-slate-50 text-center text-xs text-slate-600">${item.caption}</figcaption>\n</figure>\n`;
+            } else {
+                imgHtml = `\n<img src="${item.url}" alt="${altAttr}" title="${titleAttr}" class="rounded-2xl max-w-full h-auto my-4 shadow-sm" />\n`;
+            }
+
             const codeArea = document.getElementById('productCodeTextarea');
             const vis = document.getElementById('productVisualEditorContainer');
             const hiddenInput = document.getElementById('productContentInput');

@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('seo_meta')
-    <title>Generator Rental & Power Services in UAE | Generator Dubai</title>
+    <title>Generator Rental & Power Services in UAE | {{ config('app.name', 'Rental Power UAE') }}</title>
     <meta name="description" content="Turnkey power services across Dubai, Abu Dhabi, Sharjah and Northern Emirates: 50–2500 kVA silent generator rental, temporary power plants, AMC contracts, used & refurbished portacabins, and 24/7 emergency repair.">
     <meta name="keywords" content="generator rental dubai, power rental uae, generator amc contracts dubai, temporary power plants uae, used portacabin buy and sell uae, scrap portacabin dubai, generator repair dubai">
     <link rel="canonical" href="{{ route('service.index') }}">
-    <meta property="og:title" content="Generator Rental & Power Services in UAE | Generator Dubai">
+    <meta property="og:title" content="Generator Rental & Power Services in UAE | {{ config('app.name', 'Rental Power UAE') }}">
     <meta property="og:description" content="Turnkey power solutions: 50–2500 kVA diesel generator hire, multi-MW synchronized plants, certified AMC, and used & refurbished portacabins across UAE.">
     <meta property="og:url" content="{{ route('service.index') }}">
     <meta property="og:type" content="website">
@@ -14,18 +14,82 @@
     <script type="application/ld+json">
     {!! json_encode([
       '@@context' => 'https://schema.org',
-      '@type' => 'ItemList',
+      '@@type' => 'ItemList',
       'name' => 'Commercial Diesel Generator & Power Services UAE',
       'itemListElement' => $services->map(function($s, $idx) {
           return [
-              '@type' => 'ListItem',
+              '@@type' => 'ListItem',
               'position' => $idx + 1,
               'name' => $s->title,
               'url' => route('service.show', $s->slug),
               'description' => $s->seo_description,
-              'image' => $s->featured_image_url,
+              'image' => $s->seo_image ?: ($s->featured_image_url ?: asset('storage/media/rental-generator.webp')),
           ];
       })->values()->all(),
+    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
+
+    <!-- Schema.org BreadcrumbList JSON-LD -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@context' => 'https://schema.org',
+      '@type' => 'BreadcrumbList',
+      'itemListElement' => [
+        [
+          '@type' => 'ListItem',
+          'position' => 1,
+          'name' => 'Home',
+          'item' => route('home'),
+        ],
+        [
+          '@type' => 'ListItem',
+          'position' => 2,
+          'name' => 'Services',
+          'item' => route('service.index'),
+        ],
+      ],
+    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
+
+    <!-- Schema.org FAQPage JSON-LD -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@context' => 'https://schema.org',
+      '@type' => 'FAQPage',
+      'mainEntity' => [
+        [
+          '@type' => 'Question',
+          'name' => 'What size rental generator do I need for a commercial or construction project in Dubai?',
+          'acceptedAnswer' => [
+            '@type' => 'Answer',
+            'text' => 'Sizing depends on total running watts (kW), power factor (standard 0.8), inductive motor starting inrush currents (which draw 3 to 6 times full-load amps for tower cranes and concrete pumps), and the unavoidable 10%–15% high-ambient deration under 50°C UAE summer heat. Read our complete construction generator sizing guide or call our 24/7 engineering desk at +971 56 921 3754 for a complimentary single-line diagram load study.',
+          ],
+        ],
+        [
+          '@type' => 'Question',
+          'name' => 'How do you test and verify the reliability of a refurbished generator before sale?',
+          'acceptedAnswer' => [
+            '@type' => 'Answer',
+            'text' => 'Every refurbished diesel generator undergoes a certified 50-point technical audit in our facility, culminating in a continuous 4-hour resistive load bank test at 100% rated capacity and 1-hour at 110% overload. We test winding insulation with 1000V DC Meggers, inspect engine cylinders with digital borescopes, and replace all wear components, belts, and filters with genuine OEM parts. Buyers receive a certified load test report and mechanical warranty.',
+          ],
+        ],
+        [
+          '@type' => 'Question',
+          'name' => 'What is the procedure for selling our decommissioned generators, chillers, or portacabins to you?',
+          'acceptedAnswer' => [
+            '@type' => 'Answer',
+            'text' => 'Selling equipment to our Buy & Sell Division is fast and hassle-free. Submit equipment photos, nameplate data, and running hours via our contact form or WhatsApp. Our appraisal team visits your facility anywhere in the UAE within 24 to 48 hours, presents a binding cash offer, and handles all crane rigging, decoupling, fluid evacuation, and low-bed transport upon agreement.',
+          ],
+        ],
+        [
+          '@type' => 'Question',
+          'name' => 'Can you synchronize multiple rental generators to provide continuous power for large industrial plants?',
+          'acceptedAnswer' => [
+            '@type' => 'Answer',
+            'text' => 'Yes. Our fleet features intelligent digital synchronizing controllers (Deep Sea DSE 8610 and ComAp InteliGen). We can parallel two, three, or up to twenty generators to create a synchronized multi-megawatt mini-grid with automated load management, progressive engine startup, and N+1 redundancy. If one engine shuts down for routine oil changes, the remaining synchronized units seamlessly carry the essential plant load without a millisecond of power interruption.',
+          ],
+        ],
+      ],
     ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
     </script>
 @endsection
@@ -178,6 +242,9 @@
             @endforelse
         </div>
     </section>
+
+    <!-- Comprehensive UAE Power & Equipment Engineering Guide (2,300+ Words) -->
+    @include('frontend.services.partials.authority-guide')
 
     <!-- 4-Step Engineering Protocol -->
     <section class="py-20 bg-slate-900 text-white">

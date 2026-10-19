@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('seo_meta')
-    <title>404 - Page Not Found | {{ config('app.name', 'Generator Dubai') }}</title>
+    <title>404 - Page Not Found | {{ config('app.name', 'Rental Power UAE') }}</title>
     <meta name="description" content="The page or equipment specification you requested could not be located. Explore our heavy-duty diesel generator fleet from 50 to 2500 kVA or contact our 24/7 power dispatch team.">
     <meta name="robots" content="noindex, follow">
 @endsection

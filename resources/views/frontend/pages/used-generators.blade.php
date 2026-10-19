@@ -1,29 +1,106 @@
 @extends('layouts.app')
 
 @section('seo_meta')
-    <title>{{ $page->meta_title ?? 'Used & Refurbished Generators & Portacabins UAE | Generator Dubai' }}</title>
+    <title>{{ $page->meta_title ?? ('Used & Refurbished Generators & Portacabins UAE | ' . config('app.name', 'Rental Power UAE')) }}</title>
     <meta name="description" content="{{ $page->meta_description ?? 'Certified refurbished diesel generators and site portacabins for sale and instant cash buyback across Dubai, Sharjah and Abu Dhabi. 100% load tested.' }}">
+    <meta name="keywords" content="used generators uae, refurbished diesel generators dubai, buy second hand generator abu dhabi, scrap generator buyback, used portacabin sales uae">
     <link rel="canonical" href="{{ route('page.used-generators') }}">
     <meta property="og:title" content="{{ $page->meta_title ?? 'Used & Refurbished Generators UAE | Certified Power Sets' }}">
+    <meta property="og:description" content="{{ $page->meta_description ?? 'Certified refurbished diesel generators and site portacabins for sale and instant cash buyback across Dubai, Sharjah and Abu Dhabi. 100% load tested.' }}">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ route('page.used-generators') }}">
+    <meta property="og:image" content="{{ ($page?->seo_image) ?: asset('storage/media/used-con.jpg') }}">
 
     <!-- Schema.org BreadcrumbList JSON-LD -->
     <script type="application/ld+json">
     {!! json_encode([
       '@@context' => 'https://schema.org',
-      '@type' => 'BreadcrumbList',
+      '@@type' => 'BreadcrumbList',
       'itemListElement' => [
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 1,
           'name' => 'Home',
           'item' => route('home'),
         ],
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 2,
           'name' => 'Used & Refurbished Equipment',
           'item' => route('page.used-generators'),
+        ],
+      ],
+    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
+
+    <!-- Schema.org CollectionPage JSON-LD -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@@context' => 'https://schema.org',
+      '@@type' => 'CollectionPage',
+      'name' => 'Used & Refurbished Generators & Portacabins UAE',
+      'description' => 'Certified refurbished diesel generators and site portacabins for sale and instant cash buyback across Dubai, Sharjah and Abu Dhabi.',
+      'url' => route('page.used-generators'),
+      'primaryImageOfPage' => [
+        '@@type' => 'ImageObject',
+        'url' => asset('storage/media/used-con.jpg'),
+      ],
+    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
+
+    <!-- Schema.org FAQPage JSON-LD -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@@context' => 'https://schema.org',
+      '@@type' => 'FAQPage',
+      'mainEntity' => [
+        [
+          '@@type' => 'Question',
+          'name' => 'How do you calculate the cash offer for our used or scrap generator?',
+          'acceptedAnswer' => [
+            '@@type' => 'Answer',
+            'text' => 'For functional used generators, valuation is determined by engine make and model, verified running hours from the electronic control module (ECM), overall mechanical condition, presence of soundproof canopies, and secondary market demand. For scrap generators, valuation is calculated strictly on certified scrap metal weight—specifically heavy cast-iron engine blocks, steel enclosures, and high-purity copper windings from alternators.',
+          ],
+        ],
+        [
+          '@@type' => 'Question',
+          'name' => 'Can you dismantle and remove multiple portacabins from our site simultaneously?',
+          'acceptedAnswer' => [
+            '@@type' => 'Answer',
+            'text' => 'Yes. Rental Power UAE has the heavy logistics capacity to clear entire 50-cabin site compounds in a matter of days. We deploy tandem mobile cranes, cutting crews, and a continuous convoy of low-bed trailers to ensure full site demobilization before your land lease or project permit expires.',
+          ],
+        ],
+        [
+          '@@type' => 'Question',
+          'name' => 'What testing do you perform on a refurbished generator before we take delivery?',
+          'acceptedAnswer' => [
+            '@@type' => 'Answer',
+            'text' => 'Every refurbished generator undergoes our certified 50-point technical audit. This culminates in a continuous 4-hour resistive load bank test at 100% rated capacity and 1 hour at 110% overload. Alternators undergo 1000V DC Megger insulation resistance testing, and engine cylinders are inspected with digital borescopes. You receive a certified load bank test certificate and comprehensive workshop warranty.',
+          ],
+        ],
+        [
+          '@@type' => 'Question',
+          'name' => 'Do we need to drain engine oil, coolant, or diesel fuel before you collect our equipment?',
+          'acceptedAnswer' => [
+            '@@type' => 'Answer',
+            'text' => 'No. Our certified mechanical team brings specialized fluid evacuation suction pumps, containment barrels, and spill containment kits. We handle all fluid draining on-site in full compliance with local municipal environmental guidelines at zero cost to you.',
+          ],
+        ],
+        [
+          '@@type' => 'Question',
+          'name' => 'What is the price difference between a scrap portacabin and a refurbished portacabin?',
+          'acceptedAnswer' => [
+            '@@type' => 'Answer',
+            'text' => 'A scrap portacabin has rusted structural steel, water-rotted flooring, or delaminated sandwich panels, and is purchased at raw scrap metal salvage value. A refurbished portacabin has undergone complete structural sandblasting, anti-rust undercoating, installation of new 50mm–100mm PU sandwich panels, certified rewiring, commercial vinyl flooring, and brand-new split air conditioning—delivering a turnkey modular office ready for immediate client use at approximately 50% of the cost of a brand-new cabin.',
+          ],
+        ],
+        [
+          '@@type' => 'Question',
+          'name' => 'Do you also purchase decommissioned chillers, air conditioners, and shipping containers?',
+          'acceptedAnswer' => [
+            '@@type' => 'Answer',
+            'text' => 'Yes. Through our specialized asset recovery divisions, we actively buy decommissioned used industrial chillers, commercial packaged AC units via our used chiller & AC buyer services, 20ft/40ft shipping containers, and mobile accommodation caravans across Dubai, Abu Dhabi, and Sharjah.',
+          ],
         ],
       ],
     ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
@@ -205,6 +282,9 @@
             @endforelse
         </div>
     </section>
+
+    <!-- Authority In-Depth Market Guide: Used & Scrap Equipment (Generators & Portacabins) -->
+    @include('frontend.pages.partials.used-equipment-authority-guide')
 
     <!-- Inspection Protocol Section -->
     <section class="py-20 bg-white border-t border-slate-200">

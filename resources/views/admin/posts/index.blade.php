@@ -85,7 +85,7 @@
                 <tbody class="divide-y divide-slate-100 text-slate-700">
                     @forelse($posts as $post)
                         @php
-                            $score = $post->seo_score ?? 0;
+                            $score = (int) ($post->seo_score > 0 ? $post->seo_score : $post->calculated_seo_score);
                             $rating = $score >= 80 ? 'good' : ($score >= 50 ? 'ok' : 'poor');
                         @endphp
                         <tr id="seo-row-post-{{ $post->id }}" class="hover:bg-slate-50/80 transition group">

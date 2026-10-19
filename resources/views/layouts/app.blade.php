@@ -23,12 +23,12 @@
     @hasSection('seo_meta')
         @yield('seo_meta')
     @else
-        <title>{{ config('app.name', 'Generator Dubai') }} | Generator Rental in UAE | Diesel Generator Hire</title>
-        <meta name="description" content="Generator rental in UAE from 50 to 2500 kVA. Rent silent diesel generators across Dubai, Abu Dhabi, Sharjah and Northern Emirates with 24/7 technical support and rapid emergency dispatch.">
-        <meta name="keywords" content="generator rental in UAE, generator rental Dubai, diesel generator rental UAE, diesel generator hire UAE, generator rental Abu Dhabi, generator rental Sharjah, silent generator rental, industrial generator rental, temporary power solutions UAE">
+        <title>{{ config('app.name', 'Rental Power UAE') }} | Rental Power and Rental Cooling in UAE</title>
+        <meta name="description" content="Rental Power and Rental Cooling solutions across UAE. High-quality Perkins & Cummins diesel generators, chillers, AC units and portacabins with 24/7 support.">
+        <meta name="keywords" content="rental power uae, rental cooling uae, generator rental dubai, chiller rental uae, portable ac rental, temporary power solutions uae">
         <link rel="canonical" href="{{ url()->current() }}">
-        <meta property="og:title" content="Generator Rental in Dubai & UAE | Turnkey Diesel Power Hire">
-        <meta property="og:description" content="50 kVA to 2500 kVA soundproof diesel generator rental, multi-megawatt synchronized power plants, and 24/7 emergency dispatch across all 7 Emirates.">
+        <meta property="og:title" content="Rental Power UAE | Turnkey Power & Rental Cooling Solutions">
+        <meta property="og:description" content="High-quality Perkins and Cummins generators for rental power solutions, chillers & AC units for efficient cooling across UAE.">
         <meta property="og:type" content="website">
         <meta property="og:url" content="{{ url()->current() }}">
         <meta name="twitter:card" content="summary_large_image">
@@ -38,39 +38,31 @@
     <script type="application/ld+json">
     {!! json_encode([
       '@@context' => 'https://schema.org',
-      '@type' => 'HomeAndConstructionBusiness',
-      'name' => 'Generator Dubai',
-      'legalName' => 'Generator Dubai Temporary Power Solutions LLC',
-      'alternateName' => ['Generator Rental Dubai', 'Rental Generator UAE'],
-      'url' => 'https://generatordubai.com',
-      'logo' => 'https://generatordubai.com/images/logo-original.png',
-      'image' => 'https://generatordubai.com/storage/media/2026/09/1-y7ja6x.webp',
+      '@@type' => 'Organization',
+      '@id' => url('/#organization'),
+      'name' => config('app.name', 'Rental Power UAE'),
+      'alternateName' => ['Rental Power UAE', 'Rental Cooling UAE', 'Rental Power'],
+      'url' => url('/'),
+      'logo' => [
+        '@@type' => 'ImageObject',
+        'url' => asset('images/rentalpower-logo.png'),
+      ],
+      'image' => [
+        url('storage/media/rental-generator.webp'),
+        url('images/rentalpower-logo.png'),
+        url('storage/media/generator-rental-uae.webp'),
+      ],
       'telephone' => '+971569213754',
-      'email' => 'hello@generatordubai.com',
-      'priceRange' => '$$$',
-      'address' => [
-        '@type' => 'PostalAddress',
-        'streetAddress' => 'Suit 44, King Faisal Street',
-        'addressLocality' => 'Sharjah',
-        'addressRegion' => 'Sharjah',
-        'postalCode' => '00000',
-        'addressCountry' => 'AE',
-      ],
-      'geo' => [
-        '@type' => 'GeoCoordinates',
-        'latitude' => 25.3463,
-        'longitude' => 55.4209,
-      ],
-      'openingHoursSpecification' => [
-        [
-          '@type' => 'OpeningHoursSpecification',
-          'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-          'opens' => '00:00',
-          'closes' => '23:59',
-        ],
+      'email' => 'sales@rentalpower.ae',
+      'contactPoint' => [
+        '@@type' => 'ContactPoint',
+        'telephone' => '+971569213754',
+        'contactType' => 'customer service',
+        'areaServed' => 'AE',
+        'availableLanguage' => ['English'],
       ],
       'areaServed' => [
-        'Dubai', 'Abu Dhabi', 'Sharjah', 'Ajman', 'Ras Al Khaimah', 'Fujairah', 'Umm Al Quwain', 'Oman'
+        'Dubai', 'Abu Dhabi', 'Sharjah', 'Ajman', 'Ras Al Khaimah', 'Fujairah', 'Umm Al Quwain'
       ],
       'sameAs' => [
         'https://wa.me/971569213754',
@@ -106,7 +98,7 @@
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-1.5"></span> 24/7 UAE DISPATCH
                 </span>
                 <span class="text-slate-300 truncate">
-                    Turnkey Diesel Generator Rental • 50 kVA to 2500 kVA • <strong>Emergency Response &lt;60 Mins</strong> Across 7 Emirates
+                    Turnkey Rental Power & Rental Cooling • Generators 50 kVA to 2500 kVA, Chillers & AC Units • <strong>Emergency Response &lt;60 Mins</strong> Across UAE
                 </span>
             </div>
             <div class="hidden sm:flex items-center gap-4 shrink-0 text-slate-300 font-medium">
@@ -133,38 +125,47 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 
-                <!-- Brand Logo (Generator Dubai) -->
+                <!-- Brand Logo (Rental Power UAE) -->
                 <div class="flex items-center gap-6 xl:gap-8">
                     <a href="{{ route('home') }}" class="flex items-center gap-2.5 shrink-0 py-1 group">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-amber-400 to-yellow-300 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-amber-500/25 group-hover:scale-105 transition-transform">
-                            <i data-lucide="zap" class="w-6 h-6 fill-current"></i>
-                        </div>
-                        <div class="flex flex-col">
-                            <div class="flex items-center gap-1.5">
-                                <span class="text-xl sm:text-2xl font-black font-display tracking-tight text-slate-950 leading-none">GENERATOR</span>
-                                <span class="text-xl sm:text-2xl font-black font-display tracking-tight text-amber-500 leading-none">DUBAI</span>
-                            </div>
-                            <span class="text-[9px] uppercase tracking-widest text-slate-500 font-bold mt-0.5">Temporary Power & Fleet Rental</span>
-                        </div>
+                        <img src="{{ asset('images/rentalpower-logo.png') }}" 
+                             alt="{{ config('app.name', 'Rental Power UAE') }}" 
+                             class="h-8 sm:h-9 w-auto object-contain">
                     </a>
 
                     <!-- Desktop Nav Links -->
-                    <nav class="hidden lg:flex items-center gap-5 xl:gap-6 text-sm font-semibold text-slate-700">
+                    <!-- Desktop Nav Links -->
+                    @php
+                        $hasHeaderContactLink = isset($headerMenuItems) && $headerMenuItems->contains(function ($menuItem) {
+                            $menuPath = trim(parse_url((string) $menuItem->url, PHP_URL_PATH) ?: '', '/');
+
+                            return $menuItem->route_name === 'contact'
+                                || in_array(strtolower(trim($menuItem->title)), ['contact', 'contact us'], true)
+                                || $menuPath === 'contact-us';
+                        });
+                    @endphp
+                    <nav class="hidden lg:flex items-center gap-4 xl:gap-6 text-sm font-semibold text-slate-800">
                         @if(isset($headerMenuItems) && $headerMenuItems->isNotEmpty())
                             @foreach($headerMenuItems as $item)
+                                @php
+                                    $itemPath = trim(parse_url((string) $item->url, PHP_URL_PATH) ?: '', '/');
+                                    $isContactMenuItem = $item->route_name === 'contact'
+                                        || in_array(strtolower(trim($item->title)), ['contact', 'contact us'], true)
+                                        || $itemPath === 'contact-us';
+                                @endphp
                                 @if($item->activeChildren->isNotEmpty())
-                                    <!-- Dropdown Menu Item -->
+                                    <!-- Dropdown Menu Item (Level 1) -->
                                     <div class="relative" 
                                          x-data="{ open: false }" 
                                          @mouseenter="open = true" 
                                          @mouseleave="open = false">
-                                        <button type="button" @click="open = !open" 
-                                                class="inline-flex items-center gap-1 transition hover:text-amber-600 py-2 {{ $item->isActive() ? 'text-amber-600 font-bold' : '' }}">
+                                        <a href="{{ $item->getUrl() }}" 
+                                           class="inline-flex items-center gap-1 transition py-2 text-sm font-semibold {{ $item->isActive() ? 'text-[#f25c05] font-bold' : 'text-slate-800 hover:text-[#f25c05]' }}">
                                             <span>{{ $item->title }}</span>
-                                            <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform duration-200" :class="open ? 'rotate-180' : ''"></i>
-                                        </button>
+                                            <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform duration-200" :class="open ? 'rotate-180 text-[#f25c05]' : 'text-slate-400'"></i>
+                                        </a>
 
-                                        <!-- Dropdown Panel -->
+                                        <!-- Level 2 Dropdown Panel -->
                                         <div x-show="open" x-cloak 
                                              x-transition:enter="transition ease-out duration-150"
                                              x-transition:enter-start="opacity-0 translate-y-2"
@@ -172,83 +173,125 @@
                                              x-transition:leave="transition ease-in duration-100"
                                              x-transition:leave-start="opacity-100 translate-y-0"
                                              x-transition:leave-end="opacity-0 translate-y-2"
-                                             class="absolute -left-6 top-full w-72 sm:w-80 bg-white rounded-2xl border border-slate-200 shadow-2xl p-3 space-y-1 z-50">
+                                             class="absolute left-0 top-full w-56 bg-white border border-slate-200/90 shadow-2xl py-1.5 z-50">
                                             @foreach($item->activeChildren as $child)
-                                                <a href="{{ $child->getUrl() }}" class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-amber-50/70 transition group">
-                                                    <div class="w-7 h-7 rounded-lg bg-slate-100 group-hover:bg-amber-500 group-hover:text-slate-950 text-slate-600 flex items-center justify-center shrink-0 transition-colors">
-                                                        <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+                                                @if($child->activeChildren->isNotEmpty())
+                                                    <!-- Submenu Item with Flyout (Level 2) -->
+                                                    <div class="relative" 
+                                                         x-data="{ subOpen: false }" 
+                                                         @mouseenter="subOpen = true" 
+                                                         @mouseleave="subOpen = false">
+                                                        <a href="{{ $child->getUrl() }}" 
+                                                           class="flex items-center justify-between px-4 py-2.5 text-xs font-semibold transition hover:bg-slate-50"
+                                                           :class="subOpen ? 'text-[#f25c05] font-bold bg-orange-50/50' : 'text-slate-800'">
+                                                            <span :class="subOpen ? 'text-[#f25c05]' : ''">{{ $child->title }}</span>
+                                                            <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-2 transition-colors shrink-0" :class="subOpen ? 'text-[#f25c05]' : 'text-slate-400'"></i>
+                                                        </a>
+
+                                                        <!-- Level 3 Flyout Panel (Positioned on the Right) -->
+                                                        <div x-show="subOpen" x-cloak 
+                                                             x-transition:enter="transition ease-out duration-100"
+                                                             x-transition:enter-start="opacity-0 translate-x-1"
+                                                             x-transition:enter-end="opacity-100 translate-x-0"
+                                                             x-transition:leave="transition ease-in duration-75"
+                                                             x-transition:leave-start="opacity-100 translate-x-0"
+                                                             x-transition:leave-end="opacity-0 translate-x-1"
+                                                             class="absolute left-full top-0 w-64 bg-white border border-slate-200/90 shadow-2xl py-1.5 z-50 min-h-full">
+                                                            @foreach($child->activeChildren as $subChild)
+                                                                <a href="{{ $subChild->getUrl() }}" 
+                                                                   class="block px-4 py-2 text-xs font-semibold text-slate-700 hover:text-[#f25c05] hover:bg-slate-50 transition">
+                                                                    {{ $subChild->title }}
+                                                                </a>
+                                                                @if($subChild->activeChildren->isNotEmpty())
+                                                                    <div class="pl-3 py-0.5 space-y-0.5 bg-slate-50/60 border-l border-orange-200 ml-4 mb-1">
+                                                                        @foreach($subChild->activeChildren as $leaf)
+                                                                            <a href="{{ $leaf->getUrl() }}" 
+                                                                               class="block px-3 py-1 text-[11px] font-semibold text-slate-600 hover:text-[#f25c05] transition">
+                                                                                &bull; {{ $leaf->title }}
+                                                                            </a>
+                                                                        @endforeach
+                                                                    </div>
+                                                                @endif
+                                                            @endforeach
+                                                        </div>
                                                     </div>
-                                                    <span class="text-xs font-semibold text-slate-800 group-hover:text-amber-700 transition truncate">{{ $child->title }}</span>
-                                                </a>
+                                                @else
+                                                    <a href="{{ $child->getUrl() }}" 
+                                                       class="block px-4 py-2.5 text-xs font-semibold text-slate-800 hover:text-[#f25c05] hover:bg-slate-50 transition">
+                                                        {{ $child->title }}
+                                                    </a>
+                                                @endif
                                             @endforeach
                                         </div>
                                     </div>
                                 @else
                                     <!-- Standard Menu Link -->
                                     <a href="{{ $item->getUrl() }}" target="{{ $item->target }}" 
-                                       class="transition hover:text-amber-600 py-2 {{ $item->isActive() ? 'text-amber-600 font-bold' : '' }}">
-                                        {{ $item->title }}
-                                        @if($item->badge)
-                                            <span class="ml-1 text-[9px] font-extrabold px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-800">{{ $item->badge }}</span>
-                                        @endif
+                                       class="{{ $isContactMenuItem ? 'inline-flex items-center justify-center px-3 py-2 text-sm font-bold text-[#f25c05] border border-[#f25c05] hover:bg-orange-50 rounded-md transition whitespace-nowrap' : 'transition py-2 text-sm font-semibold '.($item->isActive() ? 'text-[#f25c05] font-bold' : 'text-slate-800 hover:text-[#f25c05]') }}">
+                                        {{ $isContactMenuItem ? 'Contact Us' : $item->title }}
                                     </a>
                                 @endif
                             @endforeach
                         @else
                             <!-- Fallback Links -->
-                            <a href="{{ route('home') }}" class="transition hover:text-amber-600 py-2 font-bold">Home</a>
-                            <a href="{{ route('about') }}" class="transition hover:text-amber-600 py-2">About Us</a>
-                            <a href="{{ route('fleet.index') }}" class="transition hover:text-amber-600 py-2">Fleet</a>
-                            <a href="{{ route('service.index') }}" class="transition hover:text-amber-600 py-2">Services</a>
-                            <a href="{{ route('industries') }}" class="transition hover:text-amber-600 py-2">Industries</a>
-                            <a href="{{ route('used-generators') }}" class="transition hover:text-amber-600 py-2">Used & Refurbished</a>
-                            <a href="{{ route('locations.index') }}" class="transition hover:text-amber-600 py-2">Locations</a>
-                            <a href="{{ route('contact') }}" class="transition hover:text-amber-600 py-2">Contact Us</a>
+                            <a href="{{ route('home') }}" class="transition py-2 text-sm font-bold text-[#f25c05]">Home</a>
+                            <a href="{{ route('service.index') }}" class="transition py-2 text-sm font-semibold text-slate-800 hover:text-[#f25c05]">Services</a>
+                            <a href="{{ route('fleet.index') }}" class="transition py-2 text-sm font-semibold text-slate-800 hover:text-[#f25c05]">Products</a>
+                            <a href="{{ route('about') }}" class="transition py-2 text-sm font-semibold text-slate-800 hover:text-[#f25c05]">About Us</a>
+                            <a href="{{ route('blog.index') }}" class="transition py-2 text-sm font-semibold text-slate-800 hover:text-[#f25c05]">Blog</a>
                         @endif
+                        @unless($hasHeaderContactLink)
+                            <a href="{{ route('contact') }}" class="inline-flex items-center justify-center px-3 py-2 text-sm font-bold text-[#f25c05] border border-[#f25c05] hover:bg-orange-50 rounded-md transition whitespace-nowrap">Contact Us</a>
+                        @endunless
                     </nav>
                 </div>
 
-                <!-- Right Side: Emergency Hotline & Quote CTA -->
+                <!-- Right Side: Search Form, Contact, Phone Button (+971 56 921 3754) & Admin Link -->
                 <div class="hidden lg:flex items-center gap-3 xl:gap-4 shrink-0">
-                    <!-- WhatsApp / Call Hotline -->
-                    <a href="tel:+971569213754" class="flex items-center gap-2 text-xs font-bold text-slate-800 hover:text-amber-600 px-3 py-2 rounded-xl hover:bg-slate-100 transition">
-                        <div class="w-8 h-8 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center">
-                            <i data-lucide="phone" class="w-4 h-4"></i>
-                        </div>
-                        <div class="text-left">
-                            <span class="block text-[10px] text-slate-400 uppercase font-semibold leading-none">24/7 Hotline</span>
-                            <span class="font-extrabold text-sm text-slate-900 leading-tight">+971 56 921 3754</span>
-                        </div>
+                    <!-- Search Input Form -->
+                    <form action="{{ route('search') }}" method="GET" class="relative flex items-center">
+                        <input type="text" 
+                               name="q" 
+                               placeholder="Search fleet, services..." 
+                               value="{{ request('q') }}" 
+                               class="w-44 xl:w-56 pl-8 pr-3 py-1.5 text-xs bg-slate-100 hover:bg-white focus:bg-white border border-slate-300 focus:border-[#f25c05] rounded-full text-slate-800 placeholder-slate-400 focus:outline-none transition shadow-xs">
+                        <button type="submit" class="absolute left-2.5 text-slate-400 hover:text-[#f25c05] transition" title="Search">
+                            <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </form>
+
+                    <!-- 24/7 Phone Hotline Button -->
+                    <a href="tel:+971569213754" 
+                       class="inline-flex items-center justify-center gap-2 px-4 py-2 text-white text-xs xl:text-sm font-bold shadow-sm hover:shadow-md transition whitespace-nowrap rounded-md group"
+                       style="background-color: #f25c05;"
+                       onmouseover="this.style.backgroundColor='#d95204'"
+                       onmouseout="this.style.backgroundColor='#f25c05'"
+                       title="Call 24/7 UAE Emergency Hotline">
+                        <i data-lucide="phone-call" class="w-3.5 h-3.5 text-white shrink-0 group-hover:scale-110 transition-transform"></i>
+                        <span>+971 56 921 3754</span>
                     </a>
 
                     @auth
-                        <div class="flex items-center gap-3 pl-2 border-l border-slate-200">
+                        <div class="flex items-center gap-2 pl-2 border-l border-slate-200">
                             @if(auth()->user()->canManageContent())
-                                <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold rounded-xl bg-slate-950 text-amber-400 hover:bg-slate-900 transition shadow-sm border border-amber-500/30">
+                                <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-bold rounded bg-slate-900 text-amber-400 hover:bg-slate-800 transition">
                                     <i data-lucide="layout-dashboard" class="w-3.5 h-3.5"></i>
-                                    Admin CMS
+                                    Admin
                                 </a>
                             @endif
                             <form action="{{ route('logout') }}" method="POST" class="inline">
                                 @csrf
-                                <button type="submit" class="p-2 text-slate-500 hover:text-rose-600 transition rounded-lg hover:bg-slate-100" title="Logout">
+                                <button type="submit" class="p-1.5 text-slate-400 hover:text-rose-600 transition" title="Logout">
                                     <i data-lucide="log-out" class="w-4 h-4"></i>
                                 </button>
                             </form>
                         </div>
-                    @else
-                        <!-- Action CTA Button -->
-                        <a href="{{ route('contact') }}" 
-                           class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 hover:from-amber-600 hover:to-yellow-500 text-slate-950 text-xs font-extrabold shadow-md shadow-amber-500/30 hover:shadow-lg transition-all transform hover:-translate-y-0.5 whitespace-nowrap">
-                            <i data-lucide="zap" class="w-4 h-4 fill-current"></i>
-                            <span>Request Rapid Quote</span>
-                        </a>
-                    @endif
+                    @endauth
                 </div>
 
                 <!-- Mobile Hamburger Button -->
                 <div class="lg:hidden flex items-center gap-2">
-                    <a href="tel:+971569213754" class="p-2 text-amber-600 rounded-lg hover:bg-amber-50">
+                    <a href="tel:+971569213754" class="p-2 text-[#f25c05] rounded-lg hover:bg-orange-50">
                         <i data-lucide="phone-call" class="w-5 h-5"></i>
                     </a>
                     <button @click="mobileMenuOpen = !mobileMenuOpen" class="p-2 text-slate-700 hover:text-slate-900 rounded-lg hover:bg-slate-100">
@@ -262,47 +305,94 @@
 
         <!-- Mobile Navigation Menu Dropdown -->
         <div x-show="mobileMenuOpen" x-cloak class="lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-3 shadow-xl">
-            <div class="flex flex-col space-y-2 text-sm font-semibold text-slate-700">
+            <!-- Mobile Search Bar -->
+            <form action="{{ route('search') }}" method="GET" class="relative flex items-center mb-2">
+                <input type="text" 
+                       name="q" 
+                       placeholder="Search fleet, services..." 
+                       value="{{ request('q') }}" 
+                       class="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 border border-slate-300 focus:border-[#f25c05] rounded-lg text-slate-800 placeholder-slate-400 focus:outline-none transition">
+                <button type="submit" class="absolute left-3 text-slate-400 hover:text-[#f25c05]">
+                    <i data-lucide="search" class="w-4 h-4"></i>
+                </button>
+            </form>
+            <div class="flex flex-col space-y-1 text-sm font-semibold text-slate-800">
                 @if(isset($headerMenuItems) && $headerMenuItems->isNotEmpty())
                     @foreach($headerMenuItems as $item)
+                        @php
+                            $itemPath = trim(parse_url((string) $item->url, PHP_URL_PATH) ?: '', '/');
+                            $isContactMenuItem = $item->route_name === 'contact'
+                                || in_array(strtolower(trim($item->title)), ['contact', 'contact us'], true)
+                                || $itemPath === 'contact-us';
+                        @endphp
                         @if($item->activeChildren->isNotEmpty())
-                            <div x-data="{ open: false }" class="py-1">
-                                <button @click="open = !open" class="flex items-center justify-between w-full py-1 text-slate-900 font-bold">
-                                    <span>{{ $item->title }}</span>
-                                    <i data-lucide="chevron-down" class="w-4 h-4 transition-transform" :class="open ? 'rotate-180' : ''"></i>
-                                </button>
-                                <div x-show="open" class="pl-4 pt-2 pb-1 space-y-1.5 border-l-2 border-amber-300 ml-1">
+                            <div x-data="{ open: false }" class="border-b border-slate-100 py-1.5">
+                                <div class="flex items-center justify-between">
+                                    <a href="{{ $item->getUrl() }}" class="font-bold text-slate-900 hover:text-[#f25c05] py-1">
+                                        {{ $item->title }}
+                                    </a>
+                                    <button type="button" @click="open = !open" class="p-1.5 text-slate-400 hover:text-[#f25c05]">
+                                        <i data-lucide="chevron-down" class="w-4 h-4 transition-transform" :class="open ? 'rotate-180 text-[#f25c05]' : ''"></i>
+                                    </button>
+                                </div>
+                                <div x-show="open" x-cloak class="pl-3 pt-1 pb-1 space-y-1 border-l-2 border-orange-400 ml-1">
                                     @foreach($item->activeChildren as $child)
-                                        <a href="{{ $child->getUrl() }}" class="block py-1 text-xs text-slate-600 hover:text-amber-600">
-                                            {{ $child->title }}
-                                        </a>
+                                        @if($child->activeChildren->isNotEmpty())
+                                            <div x-data="{ subOpen: false }" class="py-1">
+                                                <div class="flex items-center justify-between">
+                                                    <a href="{{ $child->getUrl() }}" class="text-xs font-semibold text-slate-800 hover:text-[#f25c05]">
+                                                        {{ $child->title }}
+                                                    </a>
+                                                    <button type="button" @click="subOpen = !subOpen" class="p-1 text-slate-400 hover:text-[#f25c05]">
+                                                        <i data-lucide="chevron-down" class="w-3.5 h-3.5 transition-transform" :class="subOpen ? 'rotate-180 text-[#f25c05]' : ''"></i>
+                                                    </button>
+                                                </div>
+                                                <div x-show="subOpen" x-cloak class="pl-3 pt-1 space-y-1 border-l-2 border-slate-200 ml-1">
+                                                    @foreach($child->activeChildren as $subChild)
+                                                        <a href="{{ $subChild->getUrl() }}" class="block py-1 text-xs text-slate-600 hover:text-[#f25c05]">
+                                                            {{ $subChild->title }}
+                                                        </a>
+                                                        @if($subChild->activeChildren->isNotEmpty())
+                                                            <div class="pl-2 space-y-0.5">
+                                                                @foreach($subChild->activeChildren as $leaf)
+                                                                    <a href="{{ $leaf->getUrl() }}" class="block py-0.5 text-[11px] text-slate-500 hover:text-[#f25c05]">
+                                                                        &bull; {{ $leaf->title }}
+                                                                    </a>
+                                                                @endforeach
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        @else
+                                            <a href="{{ $child->getUrl() }}" class="block py-1 text-xs text-slate-600 hover:text-[#f25c05]">
+                                                {{ $child->title }}
+                                            </a>
+                                        @endif
                                     @endforeach
                                 </div>
                             </div>
                         @else
-                            <a href="{{ $item->getUrl() }}" class="py-1 hover:text-amber-600 {{ $item->isActive() ? 'text-amber-600 font-bold' : '' }}">
-                                {{ $item->title }}
+                            <a href="{{ $item->getUrl() }}" class="py-2 border-b border-slate-100 hover:text-[#f25c05] {{ $item->isActive() ? 'text-[#f25c05] font-bold' : 'text-slate-800' }}">
+                                {{ $isContactMenuItem ? 'Contact Us' : $item->title }}
                             </a>
                         @endif
                     @endforeach
                 @else
-                    <a href="{{ route('home') }}" class="py-1 hover:text-amber-600">Home</a>
-                    <a href="{{ route('about') }}" class="py-1 hover:text-amber-600">About Us</a>
-                    <a href="{{ route('fleet.index') }}" class="py-1 hover:text-amber-600">Fleet</a>
-                    <a href="{{ route('service.index') }}" class="py-1 hover:text-amber-600">Services</a>
-                    <a href="{{ route('industries') }}" class="py-1 hover:text-amber-600">Industries</a>
-                    <a href="{{ route('used-generators') }}" class="py-1 hover:text-amber-600">Used & Refurbished</a>
-                    <a href="{{ route('locations.index') }}" class="py-1 hover:text-amber-600">Locations</a>
-                    <a href="{{ route('contact') }}" class="py-1 hover:text-amber-600">Contact Us</a>
+                    <a href="{{ route('home') }}" class="py-1 text-[#f25c05] font-bold">Home</a>
+                    <a href="{{ route('about') }}" class="py-1 hover:text-[#f25c05]">About Us</a>
+                    <a href="{{ route('fleet.index') }}" class="py-1 hover:text-[#f25c05]">Products</a>
+                    <a href="{{ route('service.index') }}" class="py-1 hover:text-[#f25c05]">Services</a>
+                    <a href="{{ route('blog.index') }}" class="py-1 hover:text-[#f25c05]">Blog</a>
                 @endif
+                @unless($hasHeaderContactLink)
+                    <a href="{{ route('contact') }}" class="py-1 hover:text-[#f25c05]">Contact Us</a>
+                @endunless
             </div>
 
             <div class="pt-4 border-t border-slate-100 space-y-2">
-                <a href="{{ route('contact') }}" class="block w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 text-center font-extrabold text-xs shadow-md">
-                    Request Rapid Quote
-                </a>
-                <a href="tel:+971569213754" class="block w-full py-3 rounded-xl bg-slate-900 text-white text-center font-bold text-xs">
-                    Call 24/7 Hotline: +971 56 921 3754
+                <a href="tel:+971569213754" class="block w-full py-3 bg-[#f25c05] hover:bg-[#d95204] text-white text-center font-bold text-xs rounded transition shadow-sm">
+                    +971 56 921 3754
                 </a>
             </div>
         </div>
@@ -356,14 +446,13 @@
                 
                 <!-- Col 1: Brand & Heritage -->
                 <div class="space-y-4 lg:col-span-2">
-                    <a href="{{ route('home') }}" class="flex items-center gap-2.5">
-                        <div class="w-9 h-9 rounded-xl bg-amber-500 flex items-center justify-center text-slate-950 font-black">
-                            <i data-lucide="zap" class="w-5 h-5 fill-current"></i>
-                        </div>
-                        <span class="text-xl font-black font-display tracking-tight text-white">GENERATOR <span class="text-amber-400">DUBAI</span></span>
+                    <a href="{{ route('home') }}" class="inline-flex items-center">
+                        <img src="{{ asset('images/rentalpower-logo.png') }}" 
+                             alt="{{ config('app.name', 'Rental Power UAE') }}" 
+                             class="h-8 sm:h-9 w-auto object-contain brightness-110">
                     </a>
                     <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
-                        Generator Dubai is the United Arab Emirates' premier provider of heavy-duty temporary power solutions, sound-attenuated diesel generators from 50 kVA to 2500 kVA, synchronized multi-megawatt power plants, and turnkey balance-of-plant electrical distribution.
+                        Rental Power UAE is the premier provider of reliable rental power and temporary cooling solutions across Dubai, Abu Dhabi, Sharjah, and Northern Emirates. Soundproof diesel generators, industrial chillers, packaged AC units, and portacabins with 24/7 turnkey service.
                     </p>
                     <div class="space-y-2 text-xs text-slate-300 pt-2">
                         <div class="flex items-center gap-2">
@@ -372,11 +461,11 @@
                         </div>
                         <div class="flex items-center gap-2">
                             <i data-lucide="mail" class="w-4 h-4 text-amber-400"></i>
-                            <a href="mailto:hello@generatordubai.com" class="text-slate-300 hover:underline">hello@generatordubai.com</a>
+                            <a href="mailto:sales@rentalpower.ae" class="text-slate-300 hover:underline">sales@rentalpower.ae</a>
                         </div>
                         <div class="flex items-start gap-2">
                             <i data-lucide="map-pin" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
-                            <span class="text-slate-300">Suit 44, King Faisal Street, Sharjah, U.A.E.</span>
+                            <span class="text-slate-300">Dubai & Sharjah, United Arab Emirates</span>
                         </div>
                     </div>
                 </div>
@@ -441,13 +530,14 @@
             <!-- Bottom Legal & Compliance -->
             <div class="pt-10 mt-12 border-t border-slate-900 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 gap-4">
                 <div class="flex items-center gap-4 flex-wrap">
-                    <p>&copy; {{ date('Y') }} Generator Dubai. All rights reserved.</p>
+                    <p>&copy; {{ date('Y') }} {{ config('app.name', 'Rental Power UAE') }}. All rights reserved.</p>
                     <span class="text-slate-700 hidden sm:inline">&bull;</span>
-                    <span class="text-slate-400">ISO 8528 Rated Prime & Standby Diesel Power Solutions</span>
+                    <span class="text-slate-400">Reliable Power & Rental Cooling Solutions Across UAE</span>
                 </div>
                 <div class="flex items-center gap-6">
                     <a href="{{ route('about') }}" class="hover:text-slate-300">About Us</a>
                     <a href="{{ route('fleet.index') }}" class="hover:text-slate-300">Fleet</a>
+                    <a href="{{ route('blog.index') }}" class="hover:text-slate-300">Blog</a>
                     <a href="{{ route('contact') }}" class="hover:text-slate-300">Contact Us</a>
                     <a href="{{ route('login') }}" class="text-slate-600 hover:text-slate-400">Admin Login</a>
                 </div>
@@ -456,7 +546,7 @@
     </footer>
 
     <!-- Floating WhatsApp CTA -->
-    <a href="https://wa.me/971569213754?text=Hello%20Generator%20Dubai%2C%20I%20would%20like%20to%20inquire%20about%20generator%20rental." 
+    <a href="https://wa.me/971569213754?text={{ urlencode('Hello Rental Power UAE, I would like to inquire about rental power and cooling solutions.') }}" 
        target="_blank" 
        rel="noopener noreferrer"
        class="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full shadow-2xl hover:scale-105 transition-all group font-bold text-xs"

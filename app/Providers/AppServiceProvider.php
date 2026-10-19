@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
             $headerMenuItems = collect();
 
             if (Schema::hasTable('menu_items')) {
-                $headerMenuItems = MenuItem::with(['activeChildren'])
+                $headerMenuItems = MenuItem::with(['activeChildren.activeChildren.activeChildren'])
                     ->header()
                     ->root()
                     ->active()

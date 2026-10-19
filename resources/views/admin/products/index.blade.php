@@ -126,7 +126,7 @@
                             <!-- Yoast SEO Score -->
                             <td class="py-4 px-4">
                                 @php
-                                    $score = $product->seo_score ?? 0;
+                                    $score = (int) ($product->seo_score > 0 ? $product->seo_score : $product->calculated_seo_score);
                                     $rating = $score >= 80 ? 'good' : ($score >= 50 ? 'ok' : 'poor');
                                 @endphp
                                 <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold border {{ $rating === 'good' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : ($rating === 'ok' ? 'bg-amber-50 text-amber-700 border-amber-200' : 'bg-rose-50 text-rose-700 border-rose-200') }}">

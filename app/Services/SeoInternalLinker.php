@@ -90,15 +90,13 @@ class SeoInternalLinker
      */
     public function getRelatedPostsForService(Service $service, int $limit = 3): Collection
     {
-        $keywords = match ($service->slug) {
-            'portacabin' => ['portacabin', 'cabin', 'site office', 'wiring'],
-            'we-offer' => ['ats', 'switch', 'distribution', 'electrical'],
-            'power-plant' => ['power plant', 'synchronized', 'prime', 'standby', 'mw'],
-            'amc-generator' => ['amc', 'maintenance', 'preventive', 'oil'],
-            'maintenance' => ['maintenance', 'repair', '50c', 'high ambient', 'cooling'],
-            'used-refurbished-generators' => ['used', 'refurbished', 'fuel', 'sizing'],
-            'new-generators' => ['kva', 'sizing', 'prime', 'standby'],
-            default => ['generator', 'rental', 'diesel', 'fuel', 'sizing'],
+        $keywords = match (true) {
+            $service->isCooling() => ['cooling', 'chiller', 'hvac', 'ac', 'temperature', 'air'],
+            $service->isTrading() => ['portacabin', 'cabin', 'container', 'caravan', 'refurbished', 'site office'],
+            str_contains($service->slug, 'cummins') => ['cummins', 'generator', 'diesel', 'fuel'],
+            str_contains($service->slug, 'caterpillar') => ['caterpillar', 'cat', 'generator', 'industrial'],
+            str_contains($service->slug, 'honda') => ['honda', 'portable', 'silent', 'inverter'],
+            default => ['generator', 'rental', 'diesel', 'fuel', 'sizing', 'power'],
         };
 
         $query = Post::published()

@@ -3,11 +3,13 @@
 namespace Tests\Feature;
 
 use App\Models\Category;
+use App\Models\OdooPage;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Cache;
 use Tests\TestCase;
 
 class SitemapAndRobotsTest extends TestCase
@@ -66,7 +68,7 @@ class SitemapAndRobotsTest extends TestCase
         $this->assertStringContainsString('<?xml version="1.0" encoding="UTF-8"?>', $content);
         $this->assertStringContainsString('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"', $content);
         $this->assertStringContainsString('/service/hard-drive-recovery', $content);
-        $this->assertStringContainsString('/post/recovering-formatted-nvme-ssd', $content);
+        $this->assertStringContainsString('/recovering-formatted-nvme-ssd', $content);
         $this->assertStringContainsString('/category/storage-technology', $content);
         $this->assertStringContainsString('/laboratory-certifications', $content);
     }
@@ -114,7 +116,7 @@ class SitemapAndRobotsTest extends TestCase
             $response->assertHeader('Content-Type', 'application/xml; charset=utf-8');
             $content = $response->getContent();
 
-            $this->assertStringContainsString('/post/recovering-formatted-nvme-ssd', $content);
+            $this->assertStringContainsString('/recovering-formatted-nvme-ssd', $content);
             $this->assertStringNotContainsString('draft-post-not-listed', $content);
             $this->assertStringNotContainsString('noindex-post-not-listed', $content);
         }
@@ -133,8 +135,14 @@ class SitemapAndRobotsTest extends TestCase
             $this->assertStringContainsString(route('home'), $content);
             $this->assertStringContainsString(route('about'), $content);
             $this->assertStringContainsString(route('contact'), $content);
-            $this->assertStringContainsString(route('odoo.index'), $content);
+            $this->assertStringNotContainsString(route('odoo.index'), $content);
         }
+
+        // Verify odoo is included when explicitly enabled and indexable
+        OdooPage::create(['is_indexable' => true]);
+        Cache::flush();
+        $response = $this->get('/sitemap-pages.xml');
+        $this->assertStringContainsString(route('odoo.index'), $response->getContent());
     }
 
     public function test_categories_sitemap_returns_active_categories(): void
@@ -187,5 +195,32 @@ class SitemapAndRobotsTest extends TestCase
         $this->assertStringContainsString('/sitemap-posts.xml', $content);
         $this->assertStringContainsString('/sitemap-pages.xml', $content);
         $this->assertStringContainsString('/sitemap-categories.xml', $content);
+    }
+
+    public function test_sitemap_canonical_and_route_share_identical_host_and_scheme(): void
+    {
+        $homeUrl = route('home');
+        $homeHost = parse_url($homeUrl, PHP_URL_HOST);
+        $homeScheme = parse_url($homeUrl, PHP_URL_SCHEME);
+
+        $sitemapResponse = $this->get('/sitemap.xml');
+        $sitemapResponse->assertStatus(200);
+        $content = $sitemapResponse->getContent();
+
+        preg_match_all('/<loc>(.*?)<\/loc>/', $content, $matches);
+        $this->assertNotEmpty($matches[1]);
+
+        $firstLoc = $matches[1][0];
+        $this->assertEquals($homeHost, parse_url($firstLoc, PHP_URL_HOST));
+        $this->assertEquals($homeScheme, parse_url($firstLoc, PHP_URL_SCHEME));
+
+        $homeResponse = $this->get('/');
+        $homeResponse->assertStatus(200);
+        $homeHtml = $homeResponse->getContent();
+
+        preg_match('/<link rel="canonical" href="(.*?)"/i', $homeHtml, $canonicalMatches);
+        $this->assertNotEmpty($canonicalMatches[1] ?? null);
+        $this->assertEquals($homeHost, parse_url($canonicalMatches[1], PHP_URL_HOST));
+        $this->assertEquals($homeScheme, parse_url($canonicalMatches[1], PHP_URL_SCHEME));
     }
 }

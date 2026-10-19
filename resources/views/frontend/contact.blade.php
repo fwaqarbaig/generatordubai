@@ -1,29 +1,47 @@
 @extends('layouts.app')
 
 @section('seo_meta')
-    <title>Contact Generator Dubai | 24/7 Hotline & Technical Inquiries</title>
-    <meta name="description" content="Get in touch with Generator Dubai for immediate quotes, site audits, and 24/7 emergency generator dispatch. Hotline: +971 56 921 3754.">
-    <meta name="keywords" content="contact generator dubai, generator rental phone number, rent diesel generator uae, emergency generator hotline dubai">
+    <title>Contact Rental Power UAE | 24/7 Hotline &amp; Technical Inquiries</title>
+    <meta name="description" content="Get in touch with Rental Power UAE for immediate quotes, site audits, and 24/7 emergency generator and chiller dispatch. Hotline: +971 56 921 3754.">
+    <meta name="keywords" content="contact rental power, rental cooling uae, generator rental phone number, rent diesel generator uae, emergency chiller hotline dubai">
     <link rel="canonical" href="{{ route('contact') }}">
-    <meta property="og:title" content="Contact Generator Dubai | 24/7 Emergency Dispatch">
-    <meta property="og:description" content="Speak directly with a power engineering specialist. Free load audits and itemized quotes across all 7 Emirates.">
+    <meta property="og:title" content="Contact Rental Power UAE | 24/7 Emergency Dispatch">
+    <meta property="og:description" content="Speak directly with an equipment specialist. Free load audits and itemized quotes across all 7 Emirates.">
     <meta property="og:url" content="{{ route('contact') }}">
     <meta property="og:type" content="website">
+
+    <!-- Schema.org ContactPage JSON-LD -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@@context' => 'https://schema.org',
+      '@@type' => 'ContactPage',
+      'name' => 'Contact Rental Power UAE',
+      'description' => '24/7 Emergency Dispatch and Generator & Chiller Rental Consultations across Dubai and UAE.',
+      'url' => route('contact'),
+      'primaryImageOfPage' => [
+        '@@type' => 'ImageObject',
+        'url' => asset('storage/media/contact.jpg'),
+      ],
+      'mainEntity' => [
+        '@id' => url('/#organization'),
+      ],
+    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
 
     <!-- Schema.org BreadcrumbList JSON-LD -->
     <script type="application/ld+json">
     {!! json_encode([
       '@@context' => 'https://schema.org',
-      '@type' => 'BreadcrumbList',
+      '@@type' => 'BreadcrumbList',
       'itemListElement' => [
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 1,
           'name' => 'Home',
           'item' => route('home'),
         ],
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 2,
           'name' => 'Contact Us',
           'item' => route('contact'),
@@ -47,10 +65,10 @@
                 <span>24/7 EMERGENCY DISPATCH ACROSS ALL 7 EMIRATES</span>
             </span>
             <h1 class="text-3xl sm:text-5xl font-black font-display tracking-tight text-white">
-                Contact <span class="text-amber-400">Generator Dubai</span>
+                Contact <span class="text-amber-400">Rental Power UAE</span>
             </h1>
             <p class="mt-4 text-sm sm:text-base text-slate-300 font-normal leading-relaxed">
-                Need urgent site power or planning long-term generator hire? Our electrical engineering team is available 24/7 to provide immediate technical consultations, load assessments, and competitive itemized quotes.
+                Need urgent site power, rental chillers, or planning long-term equipment hire? Our technical team is available 24/7 to provide immediate consultations, load assessments, and competitive itemized quotes.
             </p>
         </div>
     </section>
@@ -62,14 +80,13 @@
             <!-- Contact Info & Logistics (5 cols) -->
             <div class="lg:col-span-5 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white rounded-3xl p-8 sm:p-10 space-y-8 shadow-2xl border border-slate-800">
                 <div>
-                    <div class="flex items-center gap-2 mb-2">
-                        <div class="w-7 h-7 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-black">
-                            <i data-lucide="zap" class="w-4 h-4 fill-current"></i>
-                        </div>
-                        <span class="text-base font-black tracking-tight text-white">GENERATOR <span class="text-amber-400">DUBAI</span></span>
+                    <div class="mb-3">
+                        <img src="{{ asset('images/rentalpower-logo.png') }}" 
+                             alt="{{ config('app.name', 'Rental Power UAE') }}" 
+                             class="h-8 w-auto object-contain brightness-110">
                     </div>
                     <p class="text-slate-400 text-xs leading-relaxed">
-                        Temporary power engineering, soundproof diesel generator fleet, and turnkey electrical distribution across the United Arab Emirates.
+                        Rental power engineering, soundproof diesel generator fleet, industrial chillers, AC units and turnkey electrical distribution across the United Arab Emirates.
                     </p>
                 </div>
 
@@ -92,7 +109,7 @@
                         <div>
                             <span class="text-[10px] font-bold uppercase text-slate-400 block">Instant WhatsApp Support</span>
                             <a href="https://wa.me/971569213754" target="_blank" class="font-bold text-white hover:text-emerald-400 transition text-xs">+971 56 921 3754</a>
-                            <span class="text-[11px] text-slate-400 block mt-0.5">Direct chat with fleet controller</span>
+                            <span class="text-[11px] text-slate-400 block mt-0.5">Direct chat with equipment specialist</span>
                         </div>
                     </div>
 
@@ -101,9 +118,9 @@
                             <i data-lucide="mail" class="w-4 h-4"></i>
                         </div>
                         <div>
-                            <span class="text-[10px] font-bold uppercase text-slate-400 block">Commercial Tender Email</span>
-                            <a href="mailto:hello@generatordubai.com" class="font-bold text-white hover:text-amber-400 transition text-xs">hello@generatordubai.com</a>
-                            <span class="text-[11px] text-slate-400 block mt-0.5">RFPs & Project tender inquiries</span>
+                            <span class="text-[10px] font-bold uppercase text-slate-400 block">Commercial Inquiry Email</span>
+                            <a href="mailto:sales@rentalpower.ae" class="font-bold text-white hover:text-amber-400 transition text-xs">sales@rentalpower.ae</a>
+                            <span class="text-[11px] text-slate-400 block mt-0.5">RFPs & Project quote inquiries</span>
                         </div>
                     </div>
 
@@ -112,25 +129,25 @@
                             <i data-lucide="map-pin" class="w-4 h-4"></i>
                         </div>
                         <div>
-                            <span class="text-[10px] font-bold uppercase text-slate-400 block">Head Office Location</span>
-                            <span class="font-medium text-white block">Suit 44, King Faisal Street, Sharjah, U.A.E.</span>
-                            <span class="text-[11px] text-slate-400 block mt-0.5">Depots in Dubai, Abu Dhabi, Sharjah & RAK</span>
+                            <span class="text-[10px] font-bold uppercase text-slate-400 block">Regional Operations</span>
+                            <span class="font-medium text-white block">Dubai &amp; Sharjah, United Arab Emirates</span>
+                            <span class="text-[11px] text-slate-400 block mt-0.5">Depots in Dubai, Abu Dhabi, Sharjah & Northern Emirates</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 text-[11px] text-slate-400 space-y-1">
                     <span class="text-amber-400 font-bold block">Regional Service Coverage:</span>
-                    <p>Dubai &bull; Abu Dhabi &bull; Sharjah &bull; Ajman &bull; Ras Al Khaimah &bull; Fujairah &bull; Umm Al Quwain &bull; Oman</p>
+                    <p>Dubai &bull; Abu Dhabi &bull; Sharjah &bull; Ajman &bull; Ras Al Khaimah &bull; Fujairah &bull; Umm Al Quwain</p>
                 </div>
             </div>
 
             <!-- Online Quote Request Form (7 cols) -->
             <div class="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-slate-200">
                 <div class="space-y-1 mb-8">
-                    <h3 class="text-2xl font-black font-display text-slate-900">Request Rapid Generator Quote</h3>
+                    <h3 class="text-2xl font-black font-display text-slate-900">Request Rapid Equipment Quote</h3>
                     <p class="text-xs text-slate-500">
-                        Fill in your project details below and an electrical engineer will contact you within 30 minutes with an itemized technical proposal.
+                        Fill in your project details below and an engineer will contact you within 30 minutes with an itemized technical proposal.
                     </p>
                 </div>
 

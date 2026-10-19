@@ -1,29 +1,35 @@
 @extends('layouts.app')
 
 @section('seo_meta')
-    <title>{{ $cityData['metaTitle'] ?? 'Generator Rental in ' . $cityData['name'] . ' | Generator Dubai' }}</title>
+    <title>{{ $cityData['metaTitle'] ?? ('Generator & Chiller Rental in ' . $cityData['name'] . ' | ' . config('app.name', 'Rental Power UAE')) }}</title>
     <meta name="description" content="{{ $cityData['metaDescription'] ?? 'Rapid generator rental in ' . $cityData['name'] . ': 50–2500 kVA soundproof diesel generators delivered in 45-90 minutes. 24/7 technical support.' }}">
+    <meta name="keywords" content="generator rental {{ $cityData['name'] }}, chiller rental {{ $cityData['name'] }}, emergency power {{ $cityData['name'] }}, diesel generator hire {{ $cityData['name'] }}, temporary cooling {{ $cityData['name'] }}, rental power uae">
     <link rel="canonical" href="{{ route('locations.show', $cityKey) }}">
     <meta property="og:title" content="{{ $cityData['metaTitle'] ?? 'Generator Rental in ' . $cityData['name'] }}">
     <meta property="og:description" content="{{ $cityData['metaDescription'] ?? 'Emergency generator rental in ' . $cityData['name'] . ' with 24/7 dispatch.' }}">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ route('locations.show', $cityKey) }}">
+    <meta property="og:image" content="{{ ($page?->seo_image) ?: asset('storage/media/rental-generator.webp') }}">
 
     <!-- Schema.org LocalBusiness JSON-LD -->
     <script type="application/ld+json">
     {!! json_encode([
       '@@context' => 'https://schema.org',
-      '@type' => 'LocalBusiness',
-      'name' => 'Generator Dubai - ' . $cityData['name'] . ' Depot',
-      'image' => 'https://generatordubai.com' . ($page->featured_image ?? '/storage/media/2026/10/a-s4fzr8.jpg'),
+      '@@type' => 'Service',
+      'name' => 'Generator and chiller rental in ' . $cityData['name'],
+      'serviceType' => 'Generator and chiller rental',
       'url' => route('locations.show', $cityKey),
-      'telephone' => '+971569213754',
-      'areaServed' => $cityData['name'],
-      'address' => [
-        '@type' => 'PostalAddress',
-        'addressLocality' => $cityData['name'],
-        'addressCountry' => 'AE',
-      ],
       'description' => $cityData['metaDescription'] ?? '',
+      'provider' => [
+        '@@type' => 'Organization',
+        '@@id' => url('/#organization'),
+        'name' => config('app.name', 'Rental Power UAE'),
+        'url' => url('/'),
+      ],
+      'areaServed' => [
+        '@@type' => 'City',
+        'name' => $cityData['name'],
+      ],
     ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
     </script>
 
@@ -32,13 +38,13 @@
     <script type="application/ld+json">
     {!! json_encode([
       '@@context' => 'https://schema.org',
-      '@type' => 'FAQPage',
+      '@@type' => 'FAQPage',
       'mainEntity' => array_map(function($faq) {
           return [
-              '@type' => 'Question',
+              '@@type' => 'Question',
               'name' => $faq['q'] ?? ($faq['question'] ?? ''),
               'acceptedAnswer' => [
-                  '@type' => 'Answer',
+                  '@@type' => 'Answer',
                   'text' => strip_tags($faq['a'] ?? ($faq['answer'] ?? '')),
               ],
           ];
@@ -51,22 +57,22 @@
     <script type="application/ld+json">
     {!! json_encode([
       '@@context' => 'https://schema.org',
-      '@type' => 'BreadcrumbList',
+      '@@type' => 'BreadcrumbList',
       'itemListElement' => [
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 1,
           'name' => 'Home',
           'item' => route('home'),
         ],
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 2,
           'name' => 'Locations',
           'item' => route('locations.index'),
         ],
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 3,
           'name' => $cityData['name'],
           'item' => route('locations.show', $cityKey),

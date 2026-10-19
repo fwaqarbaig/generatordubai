@@ -137,7 +137,7 @@ class DatabaseBackupCommand extends Command
 
         // Post-dump sanitization: ensure no local dev URLs remain in exported SQL
         $content = File::get($targetPath);
-        $content = str_replace(['http://127.0.0.1:8000', 'http://localhost:8000'], 'https://generatordubai.com', $content);
+        $content = str_replace(['http://127.0.0.1:8000', 'http://localhost:8000'], config('app.url', 'https://rentalpower.ae'), $content);
         File::put($targetPath, $content);
 
         if (! $this->option('filename') && ! $this->option('timestamp')) {

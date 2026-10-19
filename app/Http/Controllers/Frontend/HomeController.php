@@ -60,7 +60,7 @@ class HomeController extends Controller
     {
         $servicesCount = Service::published()->count();
         $productsCount = Product::published()->count();
-        $page = Page::where('slug', 'about-us')->first();
+        $page = Page::whereIn('slug', ['about', 'about-us'])->first();
 
         return view('frontend.about', compact('servicesCount', 'productsCount', 'page'));
     }

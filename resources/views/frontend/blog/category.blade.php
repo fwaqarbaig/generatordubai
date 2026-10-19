@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('seo_meta')
-    <title>{{ $category->name }} - {{ config('app.name', 'Generator Dubai') }}</title>
-    <meta name="description" content="{{ $category->description ?: 'Browse articles in category ' . $category->name }}">
+    <title>{{ $category->name }} - {{ config('app.name', 'Rental Power UAE') }}</title>
+    <meta name="description" content="{{ $category->description && strlen($category->description) > 40 ? $category->description : ('Explore technical guides, engineering insights, and equipment rental advice for ' . $category->name . ' across Dubai, Abu Dhabi, and the UAE.') }}">
+    <meta name="keywords" content="{{ strtolower($category->name) }}, {{ strtolower($category->name) }} uae, generator guides, rental power engineering, temporary cooling dubai">
     <link rel="canonical" href="{{ $posts->currentPage() > 1 ? $posts->url($posts->currentPage()) : route('category.show', $category->slug) }}">
     @if($posts->previousPageUrl())
         <link rel="prev" href="{{ $posts->previousPageUrl() }}">
@@ -10,32 +11,61 @@
     @if($posts->nextPageUrl())
         <link rel="next" href="{{ $posts->nextPageUrl() }}">
     @endif
+    <meta property="og:title" content="{{ $category->name }} - {{ config('app.name', 'Rental Power UAE') }}">
+    <meta property="og:description" content="{{ $category->description && strlen($category->description) > 40 ? $category->description : ('Explore technical guides, engineering insights, and equipment rental advice for ' . $category->name . ' across Dubai, Abu Dhabi, and the UAE.') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ route('category.show', $category->slug) }}">
+    <meta property="og:image" content="{{ asset('storage/media/rental-generator.webp') }}">
 
 
     <!-- Schema.org BreadcrumbList JSON-LD -->
     <script type="application/ld+json">
     {!! json_encode([
       '@@context' => 'https://schema.org',
-      '@type' => 'BreadcrumbList',
+      '@@type' => 'BreadcrumbList',
       'itemListElement' => [
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 1,
           'name' => 'Home',
           'item' => route('home'),
         ],
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 2,
           'name' => 'Articles',
           'item' => route('blog.index'),
         ],
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 3,
           'name' => $category->name,
           'item' => route('category.show', $category->slug),
         ],
+      ],
+    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
+
+    <!-- Schema.org CollectionPage / ItemList JSON-LD -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@@context' => 'https://schema.org',
+      '@@type' => 'CollectionPage',
+      'name' => $category->name . ' - Technical Power Articles',
+      'description' => $category->description ?: ('Explore technical guides and case studies in ' . $category->name . ' from Rental Power UAE.'),
+      'url' => route('category.show', $category->slug),
+      'mainEntity' => [
+        '@@type' => 'ItemList',
+        'itemListElement' => $posts->map(function($p, $idx) {
+            return [
+                '@@type' => 'ListItem',
+                'position' => $idx + 1,
+                'name' => $p->title,
+                'url' => route('post.show', $p->slug),
+                'description' => $p->seo_description,
+                'image' => $p->seo_image ?: ($p->featured_image_url ?: asset('storage/media/rental-generator.webp')),
+            ];
+        })->values()->all(),
       ],
     ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
     </script>

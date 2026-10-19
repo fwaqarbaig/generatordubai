@@ -69,7 +69,7 @@
             <tbody class="divide-y divide-slate-100 text-slate-700">
                 @forelse($pages as $page)
                     @php
-                        $score = $page->seo_score ?? 0;
+                        $score = (int) ($page->seo_score > 0 ? $page->seo_score : $page->calculated_seo_score);
                         $rating = $score >= 80 ? 'good' : ($score >= 50 ? 'ok' : 'poor');
                     @endphp
                     <tr id="seo-row-page-{{ $page->id }}" class="hover:bg-slate-50/80 transition">

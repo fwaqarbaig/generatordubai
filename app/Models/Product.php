@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HasFeaturedImageSeo;
+use App\Models\Traits\HasYoastSeo;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,6 +12,8 @@ use Illuminate\Support\Str;
 class Product extends Model
 {
     use HasFactory;
+    use HasFeaturedImageSeo;
+    use HasYoastSeo;
 
     protected $fillable = [
         'title',
@@ -108,7 +112,7 @@ class Product extends Model
      */
     public function getSeoTitleAttribute(): string
     {
-        return $this->meta_title ?: ($this->title.' - Generator Dubai');
+        return $this->meta_title ?: ($this->title.' - '.config('app.name', 'Rental Power UAE'));
     }
 
     /**
@@ -128,15 +132,33 @@ class Product extends Model
             return Str::limit(strip_tags($this->content), 160);
         }
 
-        return "Hire {$this->title} in Dubai and across the UAE. Turnkey setup, 24/7 fuel support, and rapid emergency power deployment from Generator Dubai.";
+        return "Hire {$this->title} in Dubai and across the UAE. Turnkey setup, 24/7 fuel support, and rapid emergency power deployment from Rental Power UAE.";
     }
 
     /**
      * SEO Image fallback.
      */
-    public function getSeoImageAttribute(): ?string
+    public function getSeoImageAttribute(): string
     {
-        return $this->og_image ?: $this->featured_image_url;
+        $image = $this->og_image ?: $this->featured_image;
+
+        if (! $image) {
+            return asset('storage/media/rental-generator.webp');
+        }
+
+        if (str_starts_with($image, 'http://') || str_starts_with($image, 'https://')) {
+            return $image;
+        }
+
+        if (str_starts_with($image, '/storage/')) {
+            return asset(ltrim($image, '/'));
+        }
+
+        if (str_starts_with($image, 'storage/')) {
+            return asset($image);
+        }
+
+        return asset('storage/'.ltrim($image, '/'));
     }
 
     /**

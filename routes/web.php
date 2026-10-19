@@ -24,6 +24,7 @@ use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\OdooController;
 use App\Http\Controllers\Frontend\PageController as FrontendPageController;
 use App\Http\Controllers\Frontend\ProductController as FrontendProductController;
+use App\Http\Controllers\Frontend\SearchController;
 use App\Http\Controllers\Frontend\ServiceController as FrontendServiceController;
 use App\Http\Controllers\Frontend\SitemapController;
 use App\Models\Page;
@@ -38,6 +39,7 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/search', [SearchController::class, 'index'])->name('search');
 Route::get('/about-us', [HomeController::class, 'about'])->name('about');
 Route::redirect('/about', '/about-us', 301);
 
@@ -53,10 +55,34 @@ Route::get('/products/{slug}', fn (string $slug) => redirect('/fleet/'.$slug, 30
 
 // Services Routes (Canonical is /services for index and /service/{slug} for detail)
 Route::get('/services', [FrontendServiceController::class, 'index'])->name('service.index');
-Route::get('/service/{slug}', [FrontendServiceController::class, 'show'])->name('service.show');
-Route::get('/services/{slug}', fn (string $slug) => redirect('/service/'.$slug, 301));
+Route::redirect('/buy-sell', '/services/buy-sell', 301);
+Route::redirect('/cooling', '/services/cooling', 301);
+Route::get('/services/{section}/{slug}', function (string $section, string $slug) {
+    if ($service = Service::where('slug', $slug)->first()) {
+        return redirect()->route('service.show', $slug, 301);
+    }
+    $fullSlug = "services/{$section}/{$slug}";
+    $page = Page::where('slug', $fullSlug)->first() ?? Page::where('slug', $slug)->first();
+    if ($page) {
+        return app(FrontendPageController::class)->show($page->slug);
+    }
+    abort(404);
+})->where(['section' => '[a-zA-Z0-9\-_]+', 'slug' => '[a-zA-Z0-9\-_]+']);
 
-// Generator Dubai Specialized Pages
+Route::get('/services/{slug}', function (string $slug) {
+    if ($service = Service::where('slug', $slug)->first()) {
+        return redirect()->route('service.show', $slug, 301);
+    }
+    $fullSlug = "services/{$slug}";
+    if ($page = Page::where('slug', $fullSlug)->orWhere('slug', $slug)->first()) {
+        return app(FrontendPageController::class)->show($page->slug);
+    }
+    abort(404);
+})->where('slug', '[a-zA-Z0-9\-_]+');
+
+Route::get('/service/{slug}', [FrontendServiceController::class, 'show'])->name('service.show');
+
+// Specialized Landing Pages
 Route::get('/industries', [FrontendPageController::class, 'industries'])->name('page.industries');
 Route::get('/used-refurbished-generators', [FrontendPageController::class, 'usedGenerators'])->name('page.used-generators');
 Route::redirect('/used-generators', '/used-refurbished-generators', 301);
@@ -64,9 +90,21 @@ Route::get('/locations', [FrontendPageController::class, 'locations'])->name('lo
 Route::redirect('/locations/al-ain', '/locations/abu-dhabi', 301);
 Route::get('/locations/{city}', [FrontendPageController::class, 'locationDetail'])->name('locations.show');
 
+// Strip /public/ prefix if accessed directly
+Route::any('/public/{any}', fn (string $any) => redirect('/'.$any, 301))->where('any', '.*');
+Route::redirect('/public', '/', 301);
+
 // Blog & Content Routes
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
-Route::get('/post/{slug}', [BlogController::class, 'show'])->name('post.show');
+Route::redirect('/category/blog', '/blog', 301);
+Route::get('/post/{slug}', function (string $slug) {
+    if (! Post::where('slug', $slug)->where('status', 'published')->exists()) {
+        abort(404);
+    }
+
+    return redirect('/'.$slug, 301);
+});
+Route::get('/blog/{slug}', fn (string $slug) => redirect('/'.$slug, 301));
 Route::get('/category/{slug}', [BlogController::class, 'category'])->name('category.show');
 Route::get('/tag/{slug}', [BlogController::class, 'tag'])->name('tag.show');
 Route::get('/author/{slug}', [BlogController::class, 'author'])->name('author.show');
@@ -80,6 +118,7 @@ Route::post('/contact', [ContactController::class, 'submit'])->middleware('throt
 
 // XML Sitemaps (Master Unified Sitemap, Sitemap Index, & Section Sitemaps)
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+Route::get('/sitemap_index.xml', [SitemapController::class, 'sitemapIndex'])->name('sitemap.yoast_index');
 Route::get('/sitemap-index.xml', [SitemapController::class, 'sitemapIndex'])->name('sitemap.index');
 Route::get('/sitemap-products.xml', [SitemapController::class, 'products'])->name('sitemap.products');
 Route::get('/product-sitemap.xml', [SitemapController::class, 'products']);
@@ -183,7 +222,7 @@ Route::middleware(['auth', 'two_factor', 'content.manager'])->prefix('admin')->n
     // Media Library
     Route::get('/media', [MediaController::class, 'index'])->name('media.index');
     Route::post('/media', [MediaController::class, 'store'])->name('media.store');
-    Route::put('/media/{medium}', [MediaController::class, 'update'])->name('media.update');
+    Route::match(['put', 'patch'], '/media/{medium}', [MediaController::class, 'update'])->name('media.update');
     Route::delete('/media/{medium}', [MediaController::class, 'destroy'])->name('media.destroy');
     Route::get('/media-modal-list', [MediaController::class, 'modalList'])->name('media.modal-list');
 
@@ -240,9 +279,10 @@ Route::get('/{slug}', function (string $slug) {
     // 0. Canonical 301 redirects for aliases & root permalinks
     $canonicalPermalinks = [
         'about-us' => route('about'),
-        'contact-us' => route('contact'),
-        'fleet' => route('fleet.index'),
+        'contact' => route('contact'),
+        'fleet' => route('product.index'),
         'services' => route('service.index'),
+        'products' => route('product.index'),
         'industries' => route('page.industries'),
         'used-refurbished-generators' => route('page.used-generators'),
         'used-generators' => route('page.used-generators'),
@@ -264,9 +304,9 @@ Route::get('/{slug}', function (string $slug) {
         return redirect()->route('service.show', $slug, 301);
     }
 
-    // 3. Check if it matches a Blog Post -> 301 redirect to canonical /post/{slug}
+    // 3. Check if it matches a Blog Post -> renders canonical /{slug} directly without /post/
     if (Post::where('slug', $slug)->where('status', 'published')->exists()) {
-        return redirect()->route('post.show', $slug, 301);
+        return app(BlogController::class)->show($slug);
     }
 
     // 4. Check if it matches a CMS Page -> renders canonical /{slug}
@@ -274,7 +314,7 @@ Route::get('/{slug}', function (string $slug) {
         return app(FrontendPageController::class)->show($slug);
     }
 
-    // 5. If logged-in admin, allow draft redirect / preview
+    // 5. If logged-in admin, allow draft preview
     if (auth()->check() && auth()->user()->canManageContent()) {
         if (Product::where('slug', $slug)->exists()) {
             return redirect()->route('fleet.show', $slug);
@@ -283,7 +323,7 @@ Route::get('/{slug}', function (string $slug) {
             return redirect()->route('service.show', $slug);
         }
         if (Post::where('slug', $slug)->exists()) {
-            return redirect()->route('post.show', $slug);
+            return app(BlogController::class)->show($slug);
         }
         if (Page::where('slug', $slug)->exists()) {
             return app(FrontendPageController::class)->show($slug);
@@ -291,4 +331,4 @@ Route::get('/{slug}', function (string $slug) {
     }
 
     abort(404);
-})->where('slug', '[a-zA-Z0-9\-_]+');
+})->where('slug', '[a-zA-Z0-9\-_]+')->name('post.show');

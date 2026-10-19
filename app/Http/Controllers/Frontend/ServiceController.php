@@ -38,8 +38,13 @@ class ServiceController extends Controller
 
         $relatedPosts = $linker->getRelatedPostsForService($service, 4);
 
-        $fleetProducts = Product::where('status', 'published')
-            ->orderBy('order', 'asc')
+        $fleetQuery = Product::where('status', 'published');
+        if ($service->isCooling()) {
+            $fleetQuery->orderByRaw("CASE WHEN slug LIKE '%chiller%' OR slug LIKE '%refrigeration%' THEN 0 ELSE 1 END");
+        } elseif ($service->isPower()) {
+            $fleetQuery->orderByRaw("CASE WHEN slug LIKE '%generator%' THEN 0 ELSE 1 END");
+        }
+        $fleetProducts = $fleetQuery->orderBy('order', 'asc')
             ->take(6)
             ->get();
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\OdooPage;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\Product;
@@ -165,17 +166,15 @@ class SitemapController extends Controller
      */
     public function robots(): Response
     {
-        $sitemapUrl = $this->formatSitemapUrl(route('sitemap'));
         $sitemapIndexUrl = $this->formatSitemapUrl(route('sitemap.index'));
-        $sitemapPagesUrl = $this->formatSitemapUrl(route('sitemap.pages'));
-        $sitemapProductsUrl = $this->formatSitemapUrl(route('sitemap.products'));
-        $sitemapServicesUrl = $this->formatSitemapUrl(route('sitemap.services'));
+        $sitemapXmlUrl = $this->formatSitemapUrl(route('sitemap'));
         $sitemapPostsUrl = $this->formatSitemapUrl(route('sitemap.posts'));
+        $sitemapPagesUrl = $this->formatSitemapUrl(route('sitemap.pages'));
         $sitemapCategoriesUrl = $this->formatSitemapUrl(route('sitemap.categories'));
 
         $content = <<<ROBOTS
-# robots.txt for Generator Dubai
-# Website: https://generatordubai.com
+# robots.txt for Rental Power UAE
+# Website: https://rentalpower.ae
 
 User-agent: *
 Allow: /
@@ -195,12 +194,10 @@ Disallow: /api/
 Disallow: /storage/framework/
 
 # Sitemaps
-Sitemap: {$sitemapUrl}
 Sitemap: {$sitemapIndexUrl}
-Sitemap: {$sitemapPagesUrl}
-Sitemap: {$sitemapProductsUrl}
-Sitemap: {$sitemapServicesUrl}
+Sitemap: {$sitemapXmlUrl}
 Sitemap: {$sitemapPostsUrl}
+Sitemap: {$sitemapPagesUrl}
 Sitemap: {$sitemapCategoriesUrl}
 ROBOTS;
 
@@ -220,6 +217,31 @@ ROBOTS;
             ->latest('updated_at')
             ->get();
 
+        $productSlugs = Product::where('status', 'published')->pluck('slug')->all();
+        $serviceSlugs = Service::published()->pluck('slug')->all();
+        $postSlugs = Post::published()->pluck('slug')->all();
+
+        $pages = $pages->reject(function (Page $page) use ($productSlugs, $serviceSlugs, $postSlugs): bool {
+            $slug = trim($page->slug, '/');
+            $leafSlug = basename($slug);
+
+            if (str_starts_with($slug, 'products/')) {
+                return true;
+            }
+
+            foreach ([$productSlugs, $serviceSlugs, $postSlugs] as $entitySlugs) {
+                if (in_array($slug, $entitySlugs, true) || in_array($leafSlug, $entitySlugs, true)) {
+                    return true;
+                }
+            }
+
+            $canonicalPath = parse_url((string) $page->canonical_url, PHP_URL_PATH);
+
+            return is_string($canonicalPath)
+                && $canonicalPath !== ''
+                && rtrim($canonicalPath, '/') !== '/'.rtrim($slug, '/');
+        });
+
         $entries = [];
 
         // Core High-Priority Landing Pages
@@ -229,8 +251,8 @@ ROBOTS;
             'changefreq' => 'daily',
             'priority' => '1.0',
             'image' => [
-                'loc' => $this->formatSitemapUrl('/images/logo.png'),
-                'title' => 'Generator Dubai - Generator Rental & Commercial Power Dubai',
+                'loc' => $this->formatSitemapUrl('/images/rentalpower-logo.png'),
+                'title' => 'Rental Power UAE - Turnkey Generator & Chiller Rental UAE',
             ],
         ];
 
@@ -305,12 +327,15 @@ ROBOTS;
             'priority' => '0.8',
         ];
 
-        $entries[] = [
-            'loc' => $this->formatSitemapUrl(route('odoo.index')),
-            'lastmod' => now()->subDays(5)->toAtomString(),
-            'changefreq' => 'monthly',
-            'priority' => '0.3',
-        ];
+        $odooSettings = OdooPage::first();
+        if ($odooSettings && $odooSettings->is_indexable) {
+            $entries[] = [
+                'loc' => $this->formatSitemapUrl(route('odoo.index')),
+                'lastmod' => $odooSettings->updated_at?->toAtomString() ?? now()->subDays(5)->toAtomString(),
+                'changefreq' => 'monthly',
+                'priority' => '0.3',
+            ];
+        }
 
         // Standalone CMS Pages
         foreach ($pages as $page) {
@@ -322,9 +347,7 @@ ROBOTS;
             ];
 
             if ($page->featured_image) {
-                $imgUrl = str_starts_with($page->featured_image, 'http')
-                    ? $page->featured_image
-                    : asset('storage/'.$page->featured_image);
+                $imgUrl = $page->featured_image_url;
 
                 $entry['image'] = [
                     'loc' => $this->formatSitemapUrl($imgUrl),
@@ -344,6 +367,7 @@ ROBOTS;
     protected function getProductsEntries(): array
     {
         $products = Product::where('status', 'published')
+            ->where('is_indexable', true)
             ->latest('updated_at')
             ->get();
 
@@ -359,7 +383,7 @@ ROBOTS;
             if ($product->featured_image_url) {
                 $entry['image'] = [
                     'loc' => $this->formatSitemapUrl($product->featured_image_url),
-                    'title' => $product->title.' - Generator Dubai Fleet',
+                    'title' => $product->title.' - '.config('app.name', 'Rental Power UAE'),
                 ];
             }
 
@@ -374,7 +398,7 @@ ROBOTS;
      */
     protected function getServicesEntries(): array
     {
-        $services = Service::published()->latest('updated_at')->get();
+        $services = Service::published()->where('is_indexable', true)->latest('updated_at')->get();
 
         $entries = [];
         foreach ($services as $service) {
@@ -388,7 +412,7 @@ ROBOTS;
             if ($service->image_url) {
                 $entry['image'] = [
                     'loc' => $this->formatSitemapUrl($service->image_url),
-                    'title' => $service->title.' - Generator Dubai',
+                    'title' => $service->title.' - '.config('app.name', 'Rental Power UAE'),
                 ];
             }
 
@@ -435,7 +459,8 @@ ROBOTS;
      */
     protected function getCategoriesEntries(): array
     {
-        $categories = Category::has('publishedPosts')
+        $categories = Category::where('slug', '!=', 'blog')
+            ->has('publishedPosts')
             ->with(['publishedPosts' => fn ($q) => $q->latest('updated_at')->take(1)])
             ->get();
 
@@ -512,19 +537,11 @@ ROBOTS;
 
     /**
      * Resolve the canonical base URL for public sitemaps.
+     * Ensures sitemap, canonical, and og:url always share the exact same host and scheme.
      */
     protected function getBaseUrl(): string
     {
-        if (app()->environment('testing')) {
-            return rtrim(url('/'), '/');
-        }
-
-        $appUrl = config('app.url');
-        if (! empty($appUrl) && ! str_contains($appUrl, 'localhost') && ! str_contains($appUrl, '127.0.0.1')) {
-            return rtrim($appUrl, '/');
-        }
-
-        return 'https://generatordubai.com';
+        return rtrim(url('/'), '/');
     }
 
     /**
@@ -539,7 +556,7 @@ ROBOTS;
             $host = strtolower($parsed['host'] ?? '');
 
             $appHost = strtolower(parse_url(config('app.url') ?? '', PHP_URL_HOST) ?? '');
-            $isLocalOrAppHost = in_array($host, ['localhost', '127.0.0.1', 'generatordubai.com', 'www.generatordubai.com', $appHost], true)
+            $isLocalOrAppHost = in_array($host, ['localhost', '127.0.0.1', 'rentalpower.ae', 'www.rentalpower.ae', 'generatordubai.com', 'www.generatordubai.com', $appHost], true)
                 || str_ends_with($host, '.test')
                 || str_ends_with($host, '.local')
                 || empty($host);
@@ -571,6 +588,6 @@ ROBOTS;
      */
     protected function getCacheKey(string $key): string
     {
-        return $key.'_'.md5($this->getBaseUrl());
+        return 'seo_v3_'.$key.'_'.md5($this->getBaseUrl());
     }
 }

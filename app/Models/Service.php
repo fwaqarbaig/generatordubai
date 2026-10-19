@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HasFeaturedImageSeo;
+use App\Models\Traits\HasYoastSeo;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,6 +12,8 @@ use Illuminate\Support\Str;
 class Service extends Model
 {
     use HasFactory;
+    use HasFeaturedImageSeo;
+    use HasYoastSeo;
 
     protected $fillable = [
         'title',
@@ -55,11 +59,80 @@ class Service extends Model
     }
 
     /**
+     * Determine if this service belongs to cooling/HVAC/chillers.
+     */
+    public function isCooling(): bool
+    {
+        $coolingSlugs = [
+            'rental-cooling', 'rental-chiller-in-uae', 'rental-ac-in-uae',
+            'packaged-ac-units-rental-uae', 'wild-air-in-uae',
+            'temporary-cooling-in-uae', 'industrial-chiller-rental-uae',
+            'chiller-maintenance',
+        ];
+
+        return $this->category === 'cooling' ||
+               in_array($this->slug, $coolingSlugs) ||
+               str_contains($this->slug, 'chiller') ||
+               str_contains($this->slug, 'cooling') ||
+               str_contains($this->slug, 'ac-');
+    }
+
+    /**
+     * Determine if this service belongs to generators / power.
+     */
+    public function isPower(): bool
+    {
+        $powerSlugs = [
+            'rental-generator-in-uae', 'honda-generator-rental-uae',
+            'caterpillar-generator-rental-uae', 'cummins-generator-rental-uae',
+            'rental-power', 'power-plant',
+        ];
+
+        return $this->category === 'generator' ||
+               $this->category === 'power' ||
+               in_array($this->slug, $powerSlugs) ||
+               str_contains($this->slug, 'generator') ||
+               str_contains($this->slug, 'power');
+    }
+
+    /**
+     * Determine if this service belongs to buy/sell, portacabins, containers, caravans.
+     */
+    public function isTrading(): bool
+    {
+        $tradingSlugs = [
+            'portacabin-for-sale-in-uae', 'used-container-in-uae',
+            'used-caravan-in-uae', 'used-chiller-in-uae',
+            'used-chiller-ac-buyer-in-uae', 'buy-sell',
+        ];
+
+        return $this->category === 'buy-sell' ||
+               $this->category === 'trading' ||
+               in_array($this->slug, $tradingSlugs) ||
+               str_contains($this->slug, 'portacabin') ||
+               str_contains($this->slug, 'container') ||
+               str_contains($this->slug, 'caravan') ||
+               str_contains($this->slug, 'used-');
+    }
+
+    /**
      * Get effective hero badge with standard default.
      */
     public function getEffectiveHeroBadgeAttribute(): string
     {
-        return $this->hero_badge ?: 'UAE Commercial Power Hub • ISO 8528 Certified Diesel Gensets';
+        if ($this->hero_badge) {
+            return $this->hero_badge;
+        }
+
+        if ($this->isCooling()) {
+            return '50 TR to 1500 TR Modular Chiller Fleet • 52°C Desert Tropicalized • 2-Hour Rapid Dispatch';
+        }
+
+        if ($this->isTrading()) {
+            return 'Modular Site Infrastructure • Heavy-Duty Steel Chassis • Turnkey Buy & Sell in UAE';
+        }
+
+        return 'UAE Commercial Power Hub • ISO 8528 Certified Diesel Gensets • 24/7 Rapid Dispatch';
     }
 
     /**
@@ -131,7 +204,7 @@ class Service extends Model
      */
     public function getSeoTitleAttribute(): string
     {
-        return $this->meta_title ?: ($this->title.' - Generator Dubai');
+        return $this->meta_title ?: ($this->title.' - '.config('app.name', 'Rental Power UAE'));
     }
 
     /**
@@ -153,9 +226,27 @@ class Service extends Model
     /**
      * SEO Image fallback.
      */
-    public function getSeoImageAttribute(): ?string
+    public function getSeoImageAttribute(): string
     {
-        return $this->og_image ?: $this->featured_image_url;
+        $image = $this->og_image ?: $this->featured_image;
+
+        if (! $image) {
+            return asset('storage/media/rental-generator.webp');
+        }
+
+        if (str_starts_with($image, 'http://') || str_starts_with($image, 'https://')) {
+            return $image;
+        }
+
+        if (str_starts_with($image, '/storage/')) {
+            return asset(ltrim($image, '/'));
+        }
+
+        if (str_starts_with($image, 'storage/')) {
+            return asset($image);
+        }
+
+        return asset('storage/'.ltrim($image, '/'));
     }
 
     /**

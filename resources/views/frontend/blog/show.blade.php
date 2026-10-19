@@ -2,18 +2,16 @@
 
 @section('seo_meta')
     <!-- Primary Meta Tags -->
-    <title>{{ $post->seo_title }} - {{ config('app.name', 'Generator Dubai') }}</title>
-    <meta name="title" content="{{ $post->seo_title }} - {{ config('app.name', 'Generator Dubai') }}">
+    <title>{{ $post->seo_title }} - {{ config('app.name', 'Rental Power UAE') }}</title>
+    <meta name="title" content="{{ $post->seo_title }} - {{ config('app.name', 'Rental Power UAE') }}">
     <meta name="description" content="{{ $post->seo_description }}">
-    @if($post->meta_keywords)
-        <meta name="keywords" content="{{ $post->meta_keywords }}">
-    @endif
+    <meta name="keywords" content="{{ $post->meta_keywords ?: (($post->focus_keyword ? $post->focus_keyword . ', ' : '') . strtolower($post->title) . ', rental power uae, generator engineering guide, power rental dubai') }}">
     @php
         $canonicalUrl = route('post.show', $post->slug);
         if (! empty($post->canonical_url) && ! str_contains($post->canonical_url, 'localhost') && ! str_contains($post->canonical_url, '127.0.0.1')) {
             $parsedCanonical = parse_url($post->canonical_url);
             // Allow external canonicals (e.g. syndicated on Medium/external domain)
-            if (! empty($parsedCanonical['host']) && ! in_array(strtolower($parsedCanonical['host']), ['generatordubai.com', 'www.generatordubai.com'], true)) {
+            if (! empty($parsedCanonical['host']) && ! in_array(strtolower($parsedCanonical['host']), ['rentalpower.ae', 'www.rentalpower.ae', 'generatordubai.com', 'www.generatordubai.com'], true)) {
                 $canonicalUrl = $post->canonical_url;
             }
         }
@@ -29,7 +27,7 @@
     @if($post->seo_image)
         <meta property="og:image" content="{{ $post->seo_image }}">
     @endif
-    <meta property="og:site_name" content="{{ config('app.name', 'Generator Dubai') }}">
+    <meta property="og:site_name" content="{{ config('app.name', 'Rental Power UAE') }}">
     @if($post->published_at)
         <meta property="article:published_time" content="{{ $post->published_at->toIso8601String() }}">
     @endif
@@ -43,35 +41,75 @@
         <meta name="twitter:image" content="{{ $post->seo_image }}">
     @endif
 
+    @php
+        $normalizeImageUrl = function (?string $src): ?string {
+            if (empty($src)) {
+                return null;
+            }
+            if (preg_match('#^https?://#i', $src)) {
+                $path = parse_url($src, PHP_URL_PATH) ?? '';
+                return url(ltrim($path, '/'));
+            }
+            return url(ltrim($src, '/'));
+        };
+
+        $schemaImages = [];
+        if ($post->seo_image) {
+            $schemaImages[] = $normalizeImageUrl($post->seo_image);
+        } elseif ($post->featured_image_url) {
+            $schemaImages[] = $normalizeImageUrl($post->featured_image_url);
+        }
+        if (!empty($post->content)) {
+            preg_match_all('/<img[^>]+src=["\']([^"\']+)["\']/i', $post->content, $contentImgs);
+            if (!empty($contentImgs[1])) {
+                foreach ($contentImgs[1] as $cSrc) {
+                    $cleanSrc = $normalizeImageUrl($cSrc);
+                    if ($cleanSrc) {
+                        $schemaImages[] = $cleanSrc;
+                    }
+                }
+            }
+        }
+        $schemaImages = array_values(array_unique(array_filter($schemaImages)));
+        if (empty($schemaImages)) {
+            $schemaImages[] = url('storage/media/rental-generator.webp');
+        }
+    @endphp
+
     <!-- Schema.org BlogPosting JSON-LD -->
     <script type="application/ld+json">
     {!! json_encode([
       '@@context' => 'https://schema.org',
-      '@type' => 'BlogPosting',
+      '@@type' => 'BlogPosting',
       'mainEntityOfPage' => [
-        '@type' => 'WebPage',
+        '@@type' => 'WebPage',
         '@id' => route('post.show', $post->slug),
       ],
       'headline' => $post->title,
       'description' => $post->seo_description,
-      'image' => $post->featured_image_url ? [$post->featured_image_url] : [url('/storage/media/2026/09/1-y7ja6x.webp')],
+      'image' => $schemaImages,
       'datePublished' => $post->published_at ? $post->published_at->toIso8601String() : $post->created_at->toIso8601String(),
       'dateModified' => $post->updated_at->toIso8601String(),
+      'inLanguage' => 'en-AE',
+      'articleSection' => $post->category?->name ?: 'Power Engineering',
+      'wordCount' => max(50, str_word_count(strip_tags($post->content ?? ''))),
       'author' => [
-        '@type' => 'Organization',
-        'name' => 'Generator Dubai Engineering Team',
-        'url' => 'https://generatordubai.com',
+        '@@type' => 'Organization',
+        'name' => 'Rental Power Engineering Team',
+        'url' => url('/'),
+        'logo' => [
+          '@@type' => 'ImageObject',
+          'url' => asset('images/rentalpower-logo.png'),
+        ],
       ],
       'publisher' => [
-        '@type' => 'LocalBusiness',
-        'name' => 'Generator Dubai',
-        'url' => 'https://generatordubai.com',
-        'telephone' => '+971569213754',
-        'address' => [
-          '@type' => 'PostalAddress',
-          'streetAddress' => 'Suit 44, King Faisal Street',
-          'addressLocality' => 'Sharjah',
-          'addressCountry' => 'AE',
+        '@@type' => 'Organization',
+        '@id' => url('/#organization'),
+        'name' => config('app.name', 'Rental Power UAE'),
+        'url' => url('/'),
+        'logo' => [
+          '@@type' => 'ImageObject',
+          'url' => asset('images/rentalpower-logo.png'),
         ],
       ],
     ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
@@ -81,22 +119,22 @@
     <script type="application/ld+json">
     {!! json_encode([
       '@@context' => 'https://schema.org',
-      '@type' => 'BreadcrumbList',
+      '@@type' => 'BreadcrumbList',
       'itemListElement' => [
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 1,
           'name' => 'Home',
           'item' => route('home'),
         ],
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 2,
           'name' => 'Articles',
           'item' => route('blog.index'),
         ],
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 3,
           'name' => $post->title,
           'item' => route('post.show', $post->slug),
@@ -176,20 +214,27 @@
 
                     <!-- Featured Image -->
                     @if($post->featured_image_url)
-                        <div class="rounded-2xl overflow-hidden aspect-[21/9] sm:aspect-[16/8] shadow-md bg-slate-100">
-                            <img src="{{ $post->featured_image_url }}" 
-                                 alt="{{ $post->title }}" 
-                                 width="1200" 
-                                 height="600" 
-                                 loading="eager" 
-                                 fetchpriority="high" 
-                                 class="w-full h-full object-cover">
-                        </div>
-
+                        <figure class="rounded-2xl overflow-hidden shadow-md bg-slate-100">
+                            <div class="aspect-[21/9] sm:aspect-[16/8] overflow-hidden">
+                                <img src="{{ $post->featured_image_url }}" 
+                                     alt="{{ $post->featured_image_alt }}" 
+                                     title="{{ $post->featured_image_title }}"
+                                     width="1200" 
+                                     height="600" 
+                                     loading="eager" 
+                                     fetchpriority="high" 
+                                     class="w-full h-full object-cover">
+                            </div>
+                            @if($post->featured_image_caption)
+                                <figcaption class="p-3 text-xs text-slate-500 italic text-center bg-slate-50 border-t border-slate-100">
+                                    {{ $post->featured_image_caption }}
+                                </figcaption>
+                            @endif
+                        </figure>
                     @endif
 
                     <!-- Article WYSIWYG Content Body -->
-                    <div class="prose prose-slate prose-lg max-w-none py-4 leading-relaxed">
+                    <div class="prose prose-slate prose-lg max-w-none py-4 leading-relaxed article-content">
                         {!! $post->content !!}
                     </div>
 
@@ -314,7 +359,7 @@
                     'post' => $post,
                     'services' => $services ?? null,
                     'subject' => 'Power Solution Inquiry from Article: ' . $post->title,
-                    'whatsappMessage' => 'Hello Generator Dubai, I am reading "' . $post->title . '" and would like to request generator rental & engineering support.'
+                    'whatsappMessage' => 'Hello Rental Power UAE, I am reading "' . $post->title . '" and would like to request generator rental & engineering support.'
                 ])
             </aside>
 

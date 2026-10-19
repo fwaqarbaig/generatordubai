@@ -115,7 +115,8 @@
 
             <!-- Ultimate Content Editor (Dual-Mode: Visual / HTML Source / Live Preview) -->
             <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden" 
-                 x-data="serviceContentEditor({ initial: @js(old('content', $service->content ?? '')) })">
+                 x-data="serviceContentEditor({ initial: @js(old('content', $service->content ?? '')) })"
+                 x-init="init()">
                 
                 <!-- Editor Header Toolbar & Tabs -->
                 <div class="p-4 bg-slate-900 text-white flex flex-wrap items-center justify-between gap-3 border-b border-slate-800">
@@ -174,7 +175,7 @@
                             </div>
                         </div>
 
-                        <button type="button" onclick="openMediaModal(function(item) { window.insertMediaIntoEditor(item.url, item.name); })" 
+                        <button type="button" onclick="openMediaModal(function(item) { window.insertMediaIntoEditor(item.url, item.name, item.alt_text, item.title, item.caption, item.is_decorative); })" 
                                 class="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 border border-slate-700 transition">
                             <i data-lucide="image" class="w-3.5 h-3.5 text-brand-400"></i>
                             <span>Add Media</span>
@@ -210,13 +211,29 @@
                         <button type="button" @click="execCommand('insertUnorderedList')" class="p-1.5 hover:bg-slate-200 rounded" title="Bullet List">&bull; List</button>
                         <button type="button" @click="execCommand('insertOrderedList')" class="p-1.5 hover:bg-slate-200 rounded" title="Numbered List">1. List</button>
                         <span class="text-slate-300">|</span>
+                        <!-- Text Alignment & LTR Controls -->
+                        <button type="button" @click="execCommand('justifyLeft')" class="p-1.5 hover:bg-slate-200 rounded text-xs font-semibold" title="Align Left (English / LTR)">
+                            <i data-lucide="align-left" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <button type="button" @click="execCommand('justifyCenter')" class="p-1.5 hover:bg-slate-200 rounded text-xs font-semibold" title="Align Center">
+                            <i data-lucide="align-center" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <button type="button" @click="execCommand('justifyRight')" class="p-1.5 hover:bg-slate-200 rounded text-xs font-semibold" title="Align Right">
+                            <i data-lucide="align-right" class="w-3.5 h-3.5"></i>
+                        </button>
+                        <button type="button" @click="forceLtrDirection()" class="px-2 py-1 bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 rounded text-xs font-bold flex items-center gap-1 shadow-2xs" title="Force English LTR (Left-To-Right)">
+                            <i data-lucide="arrow-right-left" class="w-3 h-3 text-sky-600"></i>
+                            <span>LTR (English)</span>
+                        </button>
+                        <span class="text-slate-300">|</span>
                         <button type="button" @click="execPromptLink()" class="px-2 py-1 hover:bg-slate-200 rounded text-xs" title="Insert Link">🔗 Link</button>
                         <button type="button" @click="execCommand('removeFormat')" class="px-2 py-1 hover:bg-slate-200 rounded text-xs text-slate-500" title="Clear Formatting">Clear</button>
                     </div>
 
-                    <div id="visualEditorContainer" contenteditable="true" @input="syncFromVisual()" 
-                         class="p-6 min-h-[460px] focus:outline-none prose prose-slate max-w-none text-slate-800 text-sm leading-relaxed"
-                         x-html="content"></div>
+                    <div id="visualEditorContainer" contenteditable="true" dir="ltr" lang="en"
+                         style="direction: ltr !important; text-align: left !important; unicode-bidi: isolate !important;"
+                         @input="syncFromVisual()" 
+                         class="p-6 min-h-[460px] focus:outline-none prose prose-slate max-w-none text-slate-800 text-sm leading-relaxed text-left">{!! old('content', $service->content ?? '') !!}</div>
                 </div>
 
                 <!-- TAB 3: Full Frontend Live Preview -->
@@ -252,7 +269,7 @@
 
                 <!-- Benefits / Impact Card -->
                 <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-2">
-                    <label for="benefitsInput" class="block text-xs font-bold uppercase tracking-wider text-slate-700">Why Choose Generator Dubai Power Solutions</label>
+                    <label for="benefitsInput" class="block text-xs font-bold uppercase tracking-wider text-slate-700">Why Choose Rental Power UAE</label>
                     <p class="text-[11px] text-slate-400">Enter one benefit per line. Rendered in the verified commercial advantage box.</p>
                     <textarea id="benefitsInput" name="benefits_input" rows="6" 
                               placeholder="Single-Source Accountability: Generator hire, fuel delivery, cabling & operators&#10;Zero Hidden Charges: Fully itemized, transparent quotations with predictable billing&#10;100% Load-Bank Certified: Every genset tested under full load before dispatching&#10;DEWA & ADDC Compliant: 4-pole motorized circuit breakers, spark arrestors & grounding"
@@ -387,6 +404,41 @@ function serviceContentEditor(config) {
     return {
         activeTab: 'code', // Default to Code mode so nothing gets stripped
         content: config.initial || '',
+
+        init() {
+            this.$nextTick(() => {
+                const vis = document.getElementById('visualEditorContainer');
+                if (vis && !vis.innerHTML.trim() && this.content) {
+                    vis.innerHTML = this.content;
+                }
+                this.enforceLtr();
+            });
+        },
+
+        enforceLtr() {
+            const vis = document.getElementById('visualEditorContainer');
+            if (vis) {
+                vis.setAttribute('dir', 'ltr');
+                vis.setAttribute('lang', 'en');
+                vis.style.direction = 'ltr';
+                vis.style.textAlign = 'left';
+                const rtlEls = vis.querySelectorAll('[dir="rtl"], [style*="direction: rtl"]');
+                if (rtlEls.length > 0) {
+                    rtlEls.forEach(el => {
+                        el.removeAttribute('dir');
+                        el.style.direction = 'ltr';
+                        el.style.textAlign = 'left';
+                    });
+                }
+            }
+        },
+
+        forceLtrDirection() {
+            this.enforceLtr();
+            document.execCommand('justifyLeft', false, null);
+            this.syncFromVisual();
+        },
+
         setTab(tab) {
             if (this.activeTab === 'visual') {
                 const vis = document.getElementById('visualEditorContainer');
@@ -398,9 +450,10 @@ function serviceContentEditor(config) {
             if (tab === 'visual') {
                 this.$nextTick(() => {
                     const vis = document.getElementById('visualEditorContainer');
-                    if (vis) {
+                    if (vis && vis.innerHTML !== this.content) {
                         vis.innerHTML = this.content;
                     }
+                    this.enforceLtr();
                 });
             }
         },
@@ -411,7 +464,11 @@ function serviceContentEditor(config) {
             const vis = document.getElementById('visualEditorContainer');
             if (vis) {
                 this.content = vis.innerHTML;
-                document.getElementById('serviceContentInput').value = this.content;
+                const hiddenInput = document.getElementById('serviceContentInput');
+                if (hiddenInput) {
+                    hiddenInput.value = this.content;
+                    hiddenInput.dispatchEvent(new Event('input', { bubbles: true }));
+                }
             }
         },
         execCommand(cmd, val = null) {
@@ -451,8 +508,16 @@ function serviceContentEditor(config) {
 }
 
 // Global media helper
-window.insertMediaIntoEditor = function(url, name) {
-    const imgHtml = `\n<img src="${url}" alt="${name || 'Generator Dubai'}" class="rounded-2xl max-w-full h-auto my-4 shadow-sm" />\n`;
+window.insertMediaIntoEditor = function(url, name, alt = '', title = '', caption = '', isDecorative = false) {
+    const altAttr = isDecorative ? '' : (alt || title || name || '');
+    const titleAttr = title || name || '';
+    let imgHtml = '';
+    if (caption) {
+        imgHtml = `\n<figure class="my-6 rounded-2xl overflow-hidden border border-slate-200 bg-white">\n    <img src="${url}" alt="${altAttr}" title="${titleAttr}" class="w-full h-auto rounded-xl" />\n    <figcaption class="p-3 bg-slate-50 text-center text-xs text-slate-600">${caption}</figcaption>\n</figure>\n`;
+    } else {
+        imgHtml = `\n<img src="${url}" alt="${altAttr}" title="${titleAttr}" class="rounded-2xl max-w-full h-auto my-4 shadow-sm" />\n`;
+    }
+
     const textarea = document.getElementById('codeTextarea');
     const vis = document.getElementById('visualEditorContainer');
     const hiddenInput = document.getElementById('serviceContentInput');

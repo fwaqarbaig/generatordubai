@@ -183,9 +183,9 @@
                     <div class="bg-white p-4 rounded-lg border border-slate-200/80 space-y-1.5 font-sans">
                         <!-- URL Bar -->
                         <div class="flex items-center gap-2 text-xs text-slate-600">
-                            <span class="w-4 h-4 rounded-full bg-purple-600 text-white flex items-center justify-center text-[10px] font-bold">G</span>
+                            <span class="w-4 h-4 rounded-full bg-purple-600 text-white flex items-center justify-center text-[10px] font-bold">R</span>
                             <div class="flex items-center gap-1 truncate text-[11px]">
-                                <span class="font-medium text-slate-900">{{ config('app.name', 'Generator Dubai') }}</span>
+                                <span class="font-medium text-slate-900">{{ config('app.name', 'Rental Power UAE') }}</span>
                                 <span class="text-slate-400">&rsaquo;</span>
                                 <span class="text-slate-500 truncate" x-text="currentSlug ? urlPrefix + '/' + currentSlug : urlPrefix"></span>
                             </div>
@@ -341,7 +341,7 @@
                             </template>
                         </div>
                         <div class="p-3.5 space-y-1 bg-slate-50 border-t border-slate-100">
-                            <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">GENERATORDUBAI.COM</span>
+                            <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">RENTALPOWER.AE</span>
                             <h5 class="text-xs font-bold text-slate-900 truncate" x-text="ogTitle || metaTitle || effectiveTitle || 'Shared Title'"></h5>
                             <p class="text-[11px] text-slate-500 line-clamp-2 leading-relaxed" x-text="ogDescription || metaDescription || effectiveDescription || 'Shared description snippet.'"></p>
                         </div>
@@ -355,7 +355,7 @@
             <div>
                 <label for="canonicalUrlInput" class="block text-xs font-bold text-slate-700 mb-1.5">Canonical URL</label>
                 <input type="url" id="canonicalUrlInput" name="canonical_url" value="{{ $canonicalUrl }}"
-                       placeholder="https://generatordubai.com/original-page"
+                       placeholder="https://rentalpower.ae/original-page"
                        class="w-full px-3.5 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-600">
                 <p class="text-[11px] text-slate-400 mt-1">Leave empty to use this item's default permalink.</p>
             </div>
@@ -827,8 +827,8 @@ document.addEventListener('alpine:init', () => {
         },
 
         insertSchemaTemplate(type) {
-            const currentTitle = this.effectiveTitle || this.metaTitle || 'Generator Dubai';
-            const currentDesc = this.effectiveDescription || this.metaDescription || 'Premium generator rental and sales services in Dubai, UAE.';
+            const currentTitle = this.effectiveTitle || this.metaTitle || 'Rental Power UAE';
+            const currentDesc = this.effectiveDescription || this.metaDescription || 'Premium generator and chiller rental services in Dubai & UAE.';
             let tpl = {};
 
             if (type === 'article') {
@@ -839,15 +839,15 @@ document.addEventListener('alpine:init', () => {
                     "description": currentDesc,
                     "author": {
                         "@type": "Organization",
-                        "name": "Generator Dubai Engineering Team",
-                        "url": "https://generatordubai.com"
+                        "name": "Rental Power Engineering Team",
+                        "url": "https://rentalpower.ae"
                     },
                     "publisher": {
                         "@type": "Organization",
-                        "name": "Generator Dubai",
+                        "name": "Rental Power UAE",
                         "logo": {
                             "@type": "ImageObject",
-                            "url": "https://generatordubai.com/assets/images/logo.png"
+                            "url": "https://rentalpower.ae/images/rentalpower-logo.png"
                         }
                     },
                     "inLanguage": "en-AE"
@@ -883,16 +883,10 @@ document.addEventListener('alpine:init', () => {
                     "serviceType": "Diesel Generator Rental & Maintenance",
                     "description": currentDesc,
                     "provider": {
-                        "@type": "LocalBusiness",
-                        "name": "Generator Dubai",
-                        "telephone": "+971501234567",
-                        "url": "https://generatordubai.com",
-                        "address": {
-                            "@type": "PostalAddress",
-                            "streetAddress": "Al Quoz Industrial Area 3",
-                            "addressLocality": "Dubai",
-                            "addressCountry": "AE"
-                        }
+                        "@type": "Organization",
+                        "@id": "https://rentalpower.ae/#organization",
+                        "name": "Rental Power UAE",
+                        "url": "https://rentalpower.ae"
                     },
                     "areaServed": "United Arab Emirates"
                 };
@@ -923,30 +917,11 @@ document.addEventListener('alpine:init', () => {
                 tpl = {
                     ["@" + "context"]: "https://schema.org",
                     "@type": "LocalBusiness",
-                    "name": "Generator Dubai",
-                    "image": "https://generatordubai.com/assets/images/hero-gen.jpg",
-                    "telephone": "+971501234567",
-                    "email": "hello@generatordubai.com",
-                    "url": "https://generatordubai.com",
-                    "address": {
-                        "@type": "PostalAddress",
-                        "streetAddress": "Al Quoz Industrial Area 3",
-                        "addressLocality": "Dubai",
-                        "addressRegion": "Dubai",
-                        "postalCode": "00000",
-                        "addressCountry": "AE"
-                    },
-                    "geo": {
-                        "@type": "GeoCoordinates",
-                        "latitude": "25.1325",
-                        "longitude": "55.2345"
-                    },
-                    "openingHoursSpecification": {
-                        "@type": "OpeningHoursSpecification",
-                        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-                        "opens": "00:00",
-                        "closes": "23:59"
-                    }
+                    "name": "Rental Power UAE",
+                    "image": "https://rentalpower.ae/images/rentalpower-logo.png",
+                    "telephone": "+971 56 921 3754",
+                    "email": "sales@rentalpower.ae",
+                    "url": "https://rentalpower.ae",
                 };
             }
 

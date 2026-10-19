@@ -1,6 +1,6 @@
 @php
-    $sidebarSubject = $subject ?? (isset($service) ? 'Generator Inquiry: ' . $service->title : (isset($product) ? 'Fleet Model Inquiry: ' . $product->title : 'Generator Power Rental Inquiry'));
-    $whatsappText = $whatsappMessage ?? (isset($service) ? 'Hello Generator Dubai, I need urgent pricing & availability for ' . $service->title : (isset($product) ? 'Hello Generator Dubai, I am inquiring about ' . $product->title : 'Hello Generator Dubai, I need a rental power quote.'));
+    $sidebarSubject = $subject ?? (isset($service) ? 'Equipment Inquiry: ' . $service->title : (isset($product) ? 'Fleet Model Inquiry: ' . $product->title : 'Rental Power & Cooling Inquiry'));
+    $whatsappText = $whatsappMessage ?? (isset($service) ? 'Hello Rental Power UAE, I need urgent pricing & availability for ' . $service->title : (isset($product) ? 'Hello Rental Power UAE, I am inquiring about ' . $product->title : 'Hello Rental Power UAE, I need an equipment quote.'));
 
     // Resolve services list for the navigator
     if (!isset($navServices)) {
@@ -30,12 +30,16 @@
 
     <!-- 1. Rapid Sizing & Quote Form Card -->
     <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm space-y-4">
-        <div class="flex items-center gap-2 text-xs font-bold uppercase text-amber-600">
-            <i data-lucide="zap" class="w-4 h-4"></i>
-            <span>Instant Technical Sizing</span>
+        <div class="flex items-center gap-2 text-xs font-bold uppercase {{ isset($service) && $service->isTrading() ? 'text-emerald-600' : 'text-amber-600' }}">
+            <i data-lucide="{{ isset($service) && $service->isCooling() ? 'snowflake' : (isset($service) && $service->isTrading() ? 'dollar-sign' : 'zap') }}" class="w-4 h-4"></i>
+            <span>{{ isset($service) && $service->isTrading() ? 'Instant Asset Valuation' : 'Instant Technical Sizing' }}</span>
         </div>
-        <h4 class="text-xl font-black text-slate-900 font-display">Request Power Quote</h4>
-        <p class="text-xs text-slate-500">Submit your load requirements for an itemized engineering quote within <strong>15 minutes</strong>.</p>
+        <h4 class="text-xl font-black text-slate-900 font-display">
+            {{ isset($service) && $service->isCooling() ? 'Request Cooling Quote' : (isset($service) && $service->isTrading() ? 'Asset Valuation & Inquiry' : 'Request Power Quote') }}
+        </h4>
+        <p class="text-xs text-slate-500">
+            {{ isset($service) && $service->isTrading() ? 'Submit your equipment details for a top cash valuation or purchase quotation within 15 minutes.' : 'Submit your load requirements for an itemized engineering quote within 15 minutes.' }}
+        </p>
 
         <form action="{{ route('contact.submit') }}" method="POST" class="space-y-4 pt-1">
             @csrf
@@ -64,16 +68,42 @@
 
             <div class="grid grid-cols-2 gap-2">
                 <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Power kVA</label>
-                    <select name="kva_capacity" class="w-full px-3 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 bg-white">
-                        <option value="50-150 kVA">50 – 150 kVA</option>
-                        <option value="200-350 kVA">200 – 350 kVA</option>
-                        <option value="500-800 kVA" selected>500 – 800 kVA</option>
-                        <option value="1000-1250 kVA">1000 – 1250 kVA</option>
-                        <option value="Multi-MW Plant">Multi-MW Plant</option>
-                        <option value="Portacabin">Portacabin Office</option>
-                        <option value="AMC / Maintenance">AMC / Maintenance</option>
-                    </select>
+                    @if(isset($service) && $service->isCooling())
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Cooling TR</label>
+                        <select name="kva_capacity" class="w-full px-3 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 bg-white">
+                            <option value="50-150 TR Scroll">50 – 150 TR Scroll</option>
+                            <option value="200-400 TR Screw" selected>200 – 400 TR Screw</option>
+                            <option value="500-1000 TR Modular">500 – 1000 TR Modular</option>
+                            <option value="1200-2500+ TR Multi-MW">1200 – 2500+ TR Multi-MW</option>
+                            <option value="AHU / Wild Air">5000–35000 CFM AHU</option>
+                            <option value="Pump Skid (500-4000 GPM)">Pump Skid (500–4000 GPM)</option>
+                            <option value="Chiller AMC / Repair">Chiller AMC / Repair</option>
+                        </select>
+                    @elseif(isset($service) && $service->isTrading())
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Unit / Size</label>
+                        <select name="kva_capacity" class="w-full px-3 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 bg-white">
+                            <option value="10x10ft Security Cabin">10x10ft Security Cabin</option>
+                            <option value="20x10ft Site Office" selected>20x10ft Site Office</option>
+                            <option value="40x10ft Executive Complex">40x10ft Executive Complex</option>
+                            <option value="20ft ISO Shipping Container">20ft ISO Container</option>
+                            <option value="40ft ISO Shipping Container">40ft ISO Container</option>
+                            <option value="Mobile Camp Caravan">Mobile Camp Caravan</option>
+                            <option value="Used Industrial Chiller">Used Chiller (50–500 TR)</option>
+                            <option value="Scrap AC / Chiller Buyback">Scrap Chiller Cash Buyback</option>
+                        </select>
+                    @else
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Power kVA</label>
+                        <select name="kva_capacity" class="w-full px-3 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 bg-white">
+                            <option value="20-60 kVA">20 – 60 kVA</option>
+                            <option value="60-150 kVA">60 – 150 kVA</option>
+                            <option value="200-350 kVA">200 – 350 kVA</option>
+                            <option value="500-800 kVA" selected>500 – 800 kVA</option>
+                            <option value="1000-1250 kVA">1000 – 1250 kVA</option>
+                            <option value="Multi-MW Plant">Multi-MW Plant</option>
+                            <option value="Portacabin Office">Portacabin Office</option>
+                            <option value="AMC / Maintenance">AMC / Maintenance</option>
+                        </select>
+                    @endif
                 </div>
                 <div>
                     <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Location</label>
@@ -92,16 +122,24 @@
 
             <div>
                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">Project Details / Duration</label>
-                <textarea name="message" rows="3" placeholder="Specify load type (tower crane, chillers, site office), rental duration (daily, weekly, monthly), and site conditions..." class="w-full px-3.5 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500"></textarea>
+                <textarea name="message" rows="3" placeholder="{{ isset($service) && $service->isTrading() ? 'Specify unit type, dimensions, condition (good/refurbished/scrap), and pickup/delivery location...' : 'Specify load requirements, equipment duration (daily, weekly, monthly), and site conditions...' }}" class="w-full px-3.5 py-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500"></textarea>
             </div>
 
             <div class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200/80">
-                <input type="checkbox" id="fuel_tank_needed" name="fuel_tank_needed" value="yes" class="rounded text-amber-600 focus:ring-amber-500">
-                <label for="fuel_tank_needed" class="text-[11px] text-slate-600 font-medium">Include <strong>Turnkey Fuel Tank & ADNOC Diesel</strong> delivery</label>
+                @if(isset($service) && $service->isCooling())
+                    <input type="checkbox" id="ancillaries_needed" name="ancillaries_needed" value="yes" checked class="rounded text-amber-600 focus:ring-amber-500">
+                    <label for="ancillaries_needed" class="text-[11px] text-slate-600 font-medium">Include <strong>Secondary Pump Skid & Cam-Lock Hoses</strong></label>
+                @elseif(isset($service) && $service->isTrading())
+                    <input type="checkbox" id="crane_transport_needed" name="crane_transport_needed" value="yes" checked class="rounded text-emerald-600 focus:ring-emerald-500">
+                    <label for="crane_transport_needed" class="text-[11px] text-slate-600 font-medium">Include <strong>Free Crane Rigging & Site Transport</strong></label>
+                @else
+                    <input type="checkbox" id="fuel_tank_needed" name="fuel_tank_needed" value="yes" checked class="rounded text-amber-600 focus:ring-amber-500">
+                    <label for="fuel_tank_needed" class="text-[11px] text-slate-600 font-medium">Include <strong>Turnkey Fuel Tank & ADNOC Diesel</strong> delivery</label>
+                @endif
             </div>
 
-            <button type="submit" class="w-full py-3.5 rounded-xl font-bold text-xs bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 shadow-lg shadow-amber-500/20 transition transform hover:-translate-y-0.5">
-                Request Engineering Quote
+            <button type="submit" class="w-full py-3.5 rounded-xl font-bold text-xs {{ isset($service) && $service->isTrading() ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white shadow-emerald-500/20' : 'bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 shadow-amber-500/20' }} shadow-lg transition transform hover:-translate-y-0.5">
+                {{ isset($service) && $service->isTrading() ? 'Request Valuation / Quote' : 'Request Engineering Quote' }}
             </button>
         </form>
     </div>

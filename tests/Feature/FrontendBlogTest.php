@@ -49,11 +49,15 @@ class FrontendBlogTest extends TestCase
             'is_indexable' => true,
         ]);
 
-        $response = $this->get('/post/article-with-seo');
+        // Clean URL renders 200 OK
+        $response = $this->get('/article-with-seo');
         $response->assertStatus(200);
         $response->assertSee('<title>Targeted SEO Title for Crawlers', false);
         $response->assertSee('content="Targeted meta description for Google index."', false);
         $response->assertSee('content="keyword1, keyword2"', false);
+
+        // Legacy /post/ URL 301-redirects to clean /{slug}
+        $this->get('/post/article-with-seo')->assertStatus(301)->assertRedirect('/article-with-seo');
     }
 
     public function test_static_page_renders_with_seo_meta(): void
@@ -88,8 +92,11 @@ class FrontendBlogTest extends TestCase
             'status' => 'draft',
         ]);
 
-        $response = $this->get('/post/draft-post-title');
+        $response = $this->get('/draft-post-title');
         $response->assertStatus(404);
+
+        $legacyResponse = $this->get('/post/draft-post-title');
+        $legacyResponse->assertStatus(404);
     }
 
     public function test_author_name_is_not_displayed_on_blog_pages(): void
@@ -120,7 +127,7 @@ class FrontendBlogTest extends TestCase
         $blogResponse->assertDontSee('Shafia Begum');
 
         // Single post
-        $showResponse = $this->get('/post/comprehensive-data-recovery-strategy');
+        $showResponse = $this->get('/comprehensive-data-recovery-strategy');
         $showResponse->assertStatus(200);
         $showResponse->assertSee('Comprehensive Data Recovery Strategy');
         $showResponse->assertDontSee('Shafia Begum');
@@ -159,7 +166,7 @@ class FrontendBlogTest extends TestCase
             'order' => 1,
         ]);
 
-        $response = $this->get('/post/turnkey-diesel-generator-sizing-in-uae');
+        $response = $this->get('/turnkey-diesel-generator-sizing-in-uae');
         $response->assertStatus(200);
 
         // Right sidebar power quote form

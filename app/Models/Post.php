@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HasFeaturedImageSeo;
+use App\Models\Traits\HasYoastSeo;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,6 +14,8 @@ use Illuminate\Support\Str;
 class Post extends Model
 {
     use HasFactory;
+    use HasFeaturedImageSeo;
+    use HasYoastSeo;
 
     protected $fillable = [
         'user_id',
@@ -52,8 +56,8 @@ class Post extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class)->withDefault([
-            'name' => 'Generator Dubai Engineering Team',
-            'email' => 'hello@generatordubai.com',
+            'name' => 'Rental Power Engineering Team',
+            'email' => 'sales@rentalpower.ae',
         ]);
     }
 
@@ -160,9 +164,27 @@ class Post extends Model
     /**
      * SEO Image fallback.
      */
-    public function getSeoImageAttribute(): ?string
+    public function getSeoImageAttribute(): string
     {
-        return $this->og_image ?: $this->featured_image_url;
+        $image = $this->og_image ?: $this->featured_image;
+
+        if (! $image) {
+            return asset('storage/media/rental-generator.webp');
+        }
+
+        if (str_starts_with($image, 'http://') || str_starts_with($image, 'https://')) {
+            return $image;
+        }
+
+        if (str_starts_with($image, '/storage/')) {
+            return asset(ltrim($image, '/'));
+        }
+
+        if (str_starts_with($image, 'storage/')) {
+            return asset($image);
+        }
+
+        return asset('storage/'.ltrim($image, '/'));
     }
 
     /**

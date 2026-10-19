@@ -3,28 +3,47 @@
 @section('seo_meta')
     <title>{{ $page->meta_title ?? 'Industries We Power | Generator Rental Dubai & UAE' }}</title>
     <meta name="description" content="{{ $page->meta_description ?? 'Specialized temporary generator hire for construction, events, oil & gas, healthcare, data centers, and hospitality across UAE.' }}">
+    <meta name="keywords" content="construction generator rental uae, oil and gas power rental, event generator rental dubai, healthcare standby power, data center backup generators uae">
     <link rel="canonical" href="{{ route('page.industries') }}">
     <meta property="og:title" content="{{ $page->meta_title ?? 'Industries We Power | Generator Rental Dubai' }}">
+    <meta property="og:description" content="{{ $page->meta_description ?? 'Specialized temporary generator hire for construction, events, oil & gas, healthcare, data centers, and hospitality across UAE.' }}">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ route('page.industries') }}">
+    <meta property="og:image" content="{{ ($page?->seo_image) ?: asset('storage/media/rental-generator.webp') }}">
 
     <!-- Schema.org BreadcrumbList JSON-LD -->
     <script type="application/ld+json">
     {!! json_encode([
       '@@context' => 'https://schema.org',
-      '@type' => 'BreadcrumbList',
+      '@@type' => 'BreadcrumbList',
       'itemListElement' => [
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 1,
           'name' => 'Home',
           'item' => route('home'),
         ],
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 2,
           'name' => 'Industries',
           'item' => route('page.industries'),
         ],
+      ],
+    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
+
+    <!-- Schema.org CollectionPage JSON-LD -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@@context' => 'https://schema.org',
+      '@@type' => 'CollectionPage',
+      'name' => 'Industries We Power Across UAE',
+      'description' => 'Turnkey generator hire and cooling solutions engineered for construction, oil & gas, events, hospitality, and healthcare.',
+      'url' => route('page.industries'),
+      'primaryImageOfPage' => [
+        '@@type' => 'ImageObject',
+        'url' => asset('storage/media/rental-generator.webp'),
       ],
     ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
     </script>
@@ -58,7 +77,7 @@
                     Engineered Temporary Power for <span class="bg-gradient-to-r from-amber-400 via-amber-200 to-yellow-400 bg-clip-text text-transparent">Every UAE Industry</span>
                 </h1>
                 <p class="mt-6 text-lg sm:text-xl text-slate-300 leading-relaxed font-light">
-                    Every commercial sector carries unique power profiles, environmental challenges, and safety standards. Generator Dubai supplies purpose-engineered power generation fleets tailored to your operational reality.
+                    Every commercial sector carries unique power profiles, environmental challenges, and safety standards. Rental Power UAE supplies purpose-engineered power generation fleets tailored to your operational reality.
                 </p>
                 <div class="mt-8 flex flex-wrap items-center gap-4">
                     <a href="#industries-list" class="px-6 py-3.5 rounded-xl font-bold text-sm bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 shadow-lg shadow-amber-500/20 transition transform hover:-translate-y-0.5 flex items-center gap-2">

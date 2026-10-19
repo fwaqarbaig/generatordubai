@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('seo_meta')
-    <title>{{ $search ? "Search results for '{$search}'" : "Technical Power Guides & Generator Engineering Knowledge Base" }} - {{ config('app.name', 'Generator Dubai') }}</title>
+    <title>{{ $search ? "Search results for '{$search}'" : "Technical Power Guides & Generator Engineering Knowledge Base" }} - {{ config('app.name', 'Rental Power UAE') }}</title>
     <meta name="description" content="Explore expert diesel generator sizing guides, ISO 8528 standards, fuel consumption calculations, and high-ambient desert engineering insights across UAE.">
+    <meta name="keywords" content="generator blog uae, diesel generator sizing, generator fuel consumption, chiller cooling guides, wild air construction, temporary power technical insights">
     <link rel="canonical" href="{{ $posts->currentPage() > 1 ? $posts->url($posts->currentPage()) : route('blog.index') }}">
     @if($posts->previousPageUrl())
         <link rel="prev" href="{{ $posts->previousPageUrl() }}">
@@ -10,6 +11,57 @@
     @if($posts->nextPageUrl())
         <link rel="next" href="{{ $posts->nextPageUrl() }}">
     @endif
+    <meta property="og:title" content="{{ $search ? "Search results for '{$search}'" : "Technical Power Guides & Generator Engineering Knowledge Base" }} - {{ config('app.name', 'Rental Power UAE') }}">
+    <meta property="og:description" content="Explore expert diesel generator sizing guides, ISO 8528 standards, fuel consumption calculations, and high-ambient desert engineering insights across UAE.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ route('blog.index') }}">
+    <meta property="og:image" content="{{ asset('storage/media/rental-generator.webp') }}">
+
+    <!-- Schema.org BreadcrumbList JSON-LD -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@@context' => 'https://schema.org',
+      '@@type' => 'BreadcrumbList',
+      'itemListElement' => [
+        [
+          '@@type' => 'ListItem',
+          'position' => 1,
+          'name' => 'Home',
+          'item' => route('home'),
+        ],
+        [
+          '@@type' => 'ListItem',
+          'position' => 2,
+          'name' => 'Articles',
+          'item' => route('blog.index'),
+        ],
+      ],
+    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
+
+    <!-- Schema.org CollectionPage / ItemList JSON-LD -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@@context' => 'https://schema.org',
+      '@@type' => 'CollectionPage',
+      'name' => 'Technical Power Guides & Generator Engineering Knowledge Base',
+      'description' => 'Explore expert diesel generator sizing guides, ISO 8528 standards, fuel consumption calculations, and high-ambient desert engineering insights across UAE.',
+      'url' => route('blog.index'),
+      'mainEntity' => [
+        '@@type' => 'ItemList',
+        'itemListElement' => $posts->map(function($p, $idx) {
+            return [
+                '@@type' => 'ListItem',
+                'position' => $idx + 1,
+                'name' => $p->title,
+                'url' => route('post.show', $p->slug),
+                'description' => $p->seo_description,
+                'image' => $p->seo_image ?: ($p->featured_image_url ?: asset('storage/media/rental-generator.webp')),
+            ];
+        })->values()->all(),
+      ],
+    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
 @endsection
 
 @section('content')

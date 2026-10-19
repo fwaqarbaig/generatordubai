@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full bg-slate-900">
+<html lang="en" dir="ltr" class="h-full bg-slate-900">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title', 'Dashboard') - {{ config('app.name', 'Generator Dubai') }} Admin Panel</title>
+    <title>@yield('title', 'Dashboard') - {{ config('app.name', 'Rental Power UAE') }} Admin Panel</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,10 +55,37 @@
         [x-cloak] { display: none !important; }
         .ql-toolbar.ql-snow { border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem; border-color: #e2e8f0; background: #f8fafc; }
         .ql-container.ql-snow { border-bottom-left-radius: 0.5rem; border-bottom-right-radius: 0.5rem; border-color: #e2e8f0; min-height: 360px; font-size: 1rem; }
+
+        /* Strict English Left-To-Right (LTR) enforcement across all editor inputs & prose */
+        html[dir="ltr"], body[dir="ltr"] {
+            direction: ltr !important;
+            text-align: left;
+        }
+
+        [contenteditable="true"],
+        #visualEditorContainer,
+        #pageVisualEditorContainer,
+        #productVisualEditorContainer,
+        .prose,
+        textarea,
+        input[type="text"] {
+            direction: ltr !important;
+            text-align: left;
+            unicode-bidi: isolate;
+        }
+
+        [contenteditable="true"] > *:not([style*="text-align"]) {
+            text-align: left;
+            direction: ltr !important;
+        }
+
+        [contenteditable="true"] * {
+            direction: ltr !important;
+        }
     </style>
     @stack('styles')
 </head>
-<body class="h-full bg-slate-100 font-sans text-slate-800 antialiased" x-data="{ sidebarOpen: false }">
+<body dir="ltr" class="h-full bg-slate-100 font-sans text-slate-800 antialiased text-left" x-data="{ sidebarOpen: false }">
     <div class="min-h-full flex">
         <!-- Sidebar Backdrop for Mobile -->
         <div x-show="sidebarOpen" x-cloak @click="sidebarOpen = false" 
@@ -73,7 +100,7 @@
                     <div class="w-7 h-7 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-black">
                         <i data-lucide="zap" class="w-4 h-4 fill-current"></i>
                     </div>
-                    <span class="text-sm font-black tracking-tight text-white">GENERATOR <span class="text-amber-400">DUBAI</span></span>
+                    <span class="text-sm font-black tracking-tight text-white">RENTAL <span class="text-amber-400">POWER</span></span>
                     <span class="text-[9px] uppercase tracking-widest font-extrabold text-amber-300 bg-amber-950/60 px-1.5 py-0.5 rounded border border-amber-500/30">CMS</span>
                 </a>
                 <button @click="sidebarOpen = false" class="lg:hidden text-slate-400 hover:text-white">

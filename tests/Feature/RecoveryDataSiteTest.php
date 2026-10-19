@@ -67,9 +67,8 @@ class RecoveryDataSiteTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
-        $response->assertSee('Generator Dubai');
-        $response->assertSee('GENERATOR');
-        $response->assertSee('DUBAI');
+        $response->assertSee('Rental Power UAE');
+        $response->assertSee('Rental Power');
     }
 
     public function test_about_page_renders_with_cleanroom_details(): void
@@ -80,7 +79,7 @@ class RecoveryDataSiteTest extends TestCase
 
         $response = $this->get('/about-us');
         $response->assertStatus(200);
-        $response->assertSee('Generator Dubai');
+        $response->assertSee('Rental Power UAE');
     }
 
     public function test_blog_index_and_post_detail_render_successfully(): void
@@ -89,18 +88,24 @@ class RecoveryDataSiteTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('SSD Showing Wrong Capacity Recovery Dubai');
 
-        $postResponse = $this->get('/post/ssd-showing-wrong-capacity-recovery-dubai');
+        // Direct clean post slug renders 200 OK
+        $postResponse = $this->get('/ssd-showing-wrong-capacity-recovery-dubai');
         $postResponse->assertStatus(200);
         $postResponse->assertSee('SSD Showing Wrong Capacity Recovery Dubai');
         $postResponse->assertSee('Detailed SSD recovery guide in Dubai.');
+
+        // Legacy /post/ URL 301-redirects to clean /{slug}
+        $legacyResponse = $this->get('/post/ssd-showing-wrong-capacity-recovery-dubai');
+        $legacyResponse->assertStatus(301);
+        $legacyResponse->assertRedirect('/ssd-showing-wrong-capacity-recovery-dubai');
     }
 
     public function test_wordpress_direct_slug_resolution(): void
     {
-        // 1. Post via direct slug 301-redirects to canonical /post/{slug} (Item 8)
+        // 1. Post via direct slug renders canonical 200 without /post/
         $postSlugResponse = $this->get('/ssd-showing-wrong-capacity-recovery-dubai');
-        $postSlugResponse->assertStatus(301);
-        $postSlugResponse->assertRedirect(route('post.show', 'ssd-showing-wrong-capacity-recovery-dubai'));
+        $postSlugResponse->assertStatus(200);
+        $postSlugResponse->assertSee('SSD Showing Wrong Capacity Recovery Dubai');
 
         // 2. Page via direct slug renders canonical 200
         $pageSlugResponse = $this->get('/data-recovery-dubai');
@@ -130,7 +135,7 @@ class RecoveryDataSiteTest extends TestCase
         $response = $this->get('/login');
 
         $response->assertStatus(200);
-        $response->assertSee('images/logo.png');
+        $response->assertSee('images/rentalpower-logo.png');
         $response->assertSee('CMS to manage operations');
     }
 
@@ -315,7 +320,7 @@ class RecoveryDataSiteTest extends TestCase
         $this->assertStringContainsString('<?xml version="1.0" encoding="UTF-8"?>', $content);
         $this->assertStringContainsString('xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"', $content);
         $this->assertStringContainsString('/service/hard-drive-recovery', $content);
-        $this->assertStringContainsString('/post/', $content);
+        $this->assertStringContainsString('/ssd-showing-wrong-capacity-recovery-dubai', $content);
     }
 
     public function test_cannibalizing_and_legacy_urls_return_301_redirects_to_canonical_targets(): void
@@ -377,12 +382,18 @@ class RecoveryDataSiteTest extends TestCase
         $post = Post::published()->first();
         $this->assertNotNull($post);
 
-        $response = $this->get('/post/'.$post->slug);
+        // Clean post URL renders 200 OK
+        $response = $this->get('/'.$post->slug);
 
         $response->assertStatus(200);
         $response->assertSee('"@type": "BlogPosting"', false);
         $response->assertSee('"@type": "BreadcrumbList"', false);
         $response->assertSee('RAPID POWER DISPATCH');
         $response->assertSee('Planning a Power Installation or Facing an Outage? Deploy');
+
+        // Legacy /post/ URL 301-redirects to clean /{slug}
+        $legacyResponse = $this->get('/post/'.$post->slug);
+        $legacyResponse->assertStatus(301);
+        $legacyResponse->assertRedirect('/'.$post->slug);
     }
 }

@@ -8,7 +8,7 @@
     <div class="relative overflow-hidden bg-gradient-to-r from-slate-900 via-slate-800 to-brand-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl shadow-slate-900/10">
         <div class="relative z-10 max-w-2xl">
             <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-400/30 mb-3">
-                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Generator Dubai &bull; Commercial Power CMS
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Rental Power UAE &bull; Commercial Power & Cooling CMS
             </span>
             <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Welcome, {{ auth()->user()->name }}!</h1>
             <p class="mt-2 text-sm text-slate-300 leading-relaxed">
@@ -156,7 +156,7 @@
                 'meta_title' => $svc->meta_title ?? '',
                 'meta_description' => $svc->meta_description ?? '',
                 'schema_markup' => $svc->schema_markup ?? '',
-                'seo_score' => (int) ($svc->seo_score ?? 0),
+                'seo_score' => (int) ($svc->seo_score > 0 ? $svc->seo_score : $svc->calculated_seo_score),
             ];
         }
         foreach ($recentPosts as $pst) {
@@ -172,7 +172,7 @@
                 'meta_title' => $pst->meta_title ?? '',
                 'meta_description' => $pst->meta_description ?? '',
                 'schema_markup' => $pst->schema_markup ?? '',
-                'seo_score' => (int) ($pst->seo_score ?? 0),
+                'seo_score' => (int) ($pst->seo_score > 0 ? $pst->seo_score : $pst->calculated_seo_score),
             ];
         }
         foreach ($pages as $pg) {
@@ -188,7 +188,7 @@
                 'meta_title' => $pg->meta_title ?? '',
                 'meta_description' => $pg->meta_description ?? '',
                 'schema_markup' => $pg->schema_markup ?? '',
-                'seo_score' => (int) ($pg->seo_score ?? 0),
+                'seo_score' => (int) ($pg->seo_score > 0 ? $pg->seo_score : $pg->calculated_seo_score),
             ];
         }
         $defaultKey = 'service-' . ($services->first()->id ?? 0);
@@ -456,9 +456,9 @@
                              :class="previewMode === 'mobile' ? 'max-w-xs mx-auto border-purple-200' : 'w-full'">
                             <!-- URL Line -->
                             <div class="flex items-center gap-1.5 text-xs text-slate-600 truncate">
-                                <div class="w-4 h-4 rounded-full bg-purple-600 text-white flex items-center justify-center text-[10px] font-bold">G</div>
+                                <div class="w-4 h-4 rounded-full bg-purple-600 text-white flex items-center justify-center text-[10px] font-bold">R</div>
                                 <div class="truncate text-[11px] text-slate-500 font-mono">
-                                    https://generatordubai.com &rsaquo; <span x-text="studio.type"></span> &rsaquo; <span class="font-bold text-slate-700" x-text="studio.slug"></span>
+                                    https://rentalpower.ae &rsaquo; <span x-text="studio.type"></span> &rsaquo; <span class="font-bold text-slate-700" x-text="studio.slug"></span>
                                 </div>
                             </div>
 
@@ -621,7 +621,7 @@
                     <tbody class="divide-y divide-slate-100 text-slate-700">
                     @forelse($services as $svc)
                         @php
-                            $score = $svc->seo_score ?? 0;
+                            $score = (int) ($svc->seo_score > 0 ? $svc->seo_score : $svc->calculated_seo_score);
                             $rating = $score >= 80 ? 'good' : ($score >= 50 ? 'ok' : 'poor');
                             $hasDesc = !empty($svc->meta_description);
                             $hasCustomSchema = !empty($svc->schema_markup);
@@ -773,7 +773,7 @@
                 <tbody class="divide-y divide-slate-100 text-slate-700">
                     @forelse($recentPosts as $post)
                         @php
-                            $score = $post->seo_score ?? 0;
+                            $score = (int) ($post->seo_score > 0 ? $post->seo_score : $post->calculated_seo_score);
                             $rating = $score >= 80 ? 'good' : ($score >= 50 ? 'ok' : 'poor');
                             $hasDesc = !empty($post->meta_description);
                         @endphp
@@ -914,7 +914,7 @@
                 <tbody class="divide-y divide-slate-100 text-slate-700">
                     @forelse($pages as $pg)
                         @php
-                            $score = $pg->seo_score ?? 0;
+                            $score = (int) ($pg->seo_score > 0 ? $pg->seo_score : $pg->calculated_seo_score);
                             $rating = $score >= 80 ? 'good' : ($score >= 50 ? 'ok' : 'poor');
                             $hasDesc = !empty($pg->meta_description);
                         @endphp
@@ -1397,7 +1397,7 @@ function dashboardSeoStudio(config) {
 
         insertTemplate(templateName) {
             const title = this.studio.title || 'Commercial Diesel Generator Rental';
-            const url = this.studio.url || 'https://generatordubai.com';
+            const url = this.studio.url || 'https://rentalpower.ae';
             const desc = this.studio.meta_description || this.studio.title || 'Generator rental in UAE.';
             let obj = null;
 
@@ -1409,9 +1409,9 @@ function dashboardSeoStudio(config) {
                 obj['serviceType'] = 'Diesel Generator Rental & Turnkey Temporary Power';
                 obj['provider'] = {
                     '@type': 'LocalBusiness',
-                    'name': 'Generator Dubai Power Solutions',
-                    'telephone': '+971501234567',
-                    'url': 'https://generatordubai.com',
+                    'name': 'Rental Power UAE',
+                    'telephone': '+971 56 921 3754',
+                    'url': 'https://rentalpower.ae',
                     'address': {
                         '@type': 'PostalAddress',
                         'addressLocality': 'Dubai',
@@ -1435,14 +1435,14 @@ function dashboardSeoStudio(config) {
                 obj['description'] = desc;
                 obj['author'] = {
                     '@type': 'Organization',
-                    'name': 'Generator Dubai Power Solutions Engineering Team'
+                    'name': 'Rental Power Engineering Team'
                 };
                 obj['publisher'] = {
                     '@type': 'Organization',
-                    'name': 'Generator Dubai Power Solutions',
+                    'name': 'Rental Power UAE',
                     'logo': {
                         '@type': 'ImageObject',
-                        'url': 'https://generatordubai.com/assets/images/logo.png'
+                        'url': 'https://rentalpower.ae/images/rentalpower-logo.png'
                     }
                 };
                 obj['mainEntityOfPage'] = {
@@ -1475,30 +1475,10 @@ function dashboardSeoStudio(config) {
                 obj = {};
                 obj['@' + 'context'] = 'https://schema.org';
                 obj['@' + 'type'] = 'LocalBusiness';
-                obj['name'] = 'Generator Dubai Power Solutions';
+                obj['name'] = 'Rental Power UAE';
                 obj['description'] = desc;
-                obj['url'] = 'https://generatordubai.com';
-                obj['telephone'] = '+971501234567';
-                obj['priceRange'] = '$$';
-                obj['address'] = {
-                    '@type': 'PostalAddress',
-                    'streetAddress': 'Industrial Area',
-                    'addressLocality': 'Dubai',
-                    'addressRegion': 'Dubai',
-                    'postalCode': '00000',
-                    'addressCountry': 'AE'
-                };
-                obj['geo'] = {
-                    '@type': 'GeoCoordinates',
-                    'latitude': 25.2048,
-                    'longitude': 55.2708
-                };
-                obj['openingHoursSpecification'] = {
-                    '@type': 'OpeningHoursSpecification',
-                    'dayOfWeek': ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
-                    'opens': '00:00',
-                    'closes': '23:59'
-                };
+                obj['url'] = 'https://rentalpower.ae';
+                obj['telephone'] = '+971 56 921 3754';
             }
 
             if (obj) {

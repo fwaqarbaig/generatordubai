@@ -88,7 +88,7 @@
                 <tbody class="divide-y divide-slate-100 text-slate-700">
                     @forelse($services as $service)
                         @php
-                            $score = $service->seo_score ?? 0;
+                            $score = (int) ($service->seo_score > 0 ? $service->seo_score : $service->calculated_seo_score);
                             $rating = $score >= 80 ? 'good' : ($score >= 50 ? 'ok' : 'poor');
                             $hasDesc = !empty($service->meta_description);
                             $hasCustomSchema = !empty($service->schema_markup);

@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
 @section('seo_meta')
-    <title>{{ $product->seo_title ?: ($product->title . ' - Generator Dubai') }}</title>
+    <title>{{ $product->seo_title ?: ($product->title . ' - ' . config('app.name', 'Rental Power UAE')) }}</title>
     <meta name="description" content="{{ $product->seo_description ?: $product->summary }}">
-    @if($product->meta_keywords)
-        <meta name="keywords" content="{{ $product->meta_keywords }}">
-    @endif
+    <meta name="keywords" content="{{ $product->meta_keywords ?: (($product->focus_keyword ? $product->focus_keyword . ', ' : '') . strtolower($product->title) . ', rental power uae, generator hire dubai, commercial equipment uae') }}">
     <link rel="canonical" href="{{ route('fleet.show', $product->slug) }}">
     <meta name="robots" content="{{ $product->is_indexable ? 'index, follow' : 'noindex, nofollow' }}">
     <meta property="og:title" content="{{ $product->seo_title ?: $product->title }}">
@@ -14,19 +12,77 @@
     <meta property="og:url" content="{{ route('fleet.show', $product->slug) }}">
     <meta name="twitter:card" content="summary_large_image">
 
+    @php
+        $normalizeImageUrl = function (?string $src): ?string {
+            if (empty($src)) {
+                return null;
+            }
+            if (preg_match('#^https?://#i', $src)) {
+                $path = parse_url($src, PHP_URL_PATH) ?? '';
+                return url(ltrim($path, '/'));
+            }
+            return url(ltrim($src, '/'));
+        };
+
+        $productSchemaImages = [];
+        if ($product->seo_image) {
+            $productSchemaImages[] = $normalizeImageUrl($product->seo_image);
+        } elseif ($product->featured_image_url) {
+            $productSchemaImages[] = $normalizeImageUrl($product->featured_image_url);
+        }
+        if (!empty($product->content)) {
+            preg_match_all('/<img[^>]+src=["\']([^"\']+)["\']/i', $product->content, $contentImgs);
+            if (!empty($contentImgs[1])) {
+                foreach ($contentImgs[1] as $cSrc) {
+                    $cleanSrc = $normalizeImageUrl($cSrc);
+                    if ($cleanSrc) {
+                        $productSchemaImages[] = $cleanSrc;
+                    }
+                }
+            }
+        }
+        $productSchemaImages = array_values(array_unique(array_filter($productSchemaImages)));
+        if (empty($productSchemaImages)) {
+            $productSchemaImages[] = url('storage/media/rental-generator.webp');
+        }
+    @endphp
+
     <!-- Schema.org Product JSON-LD -->
     <script type="application/ld+json">
     {!! json_encode([
       '@@context' => 'https://schema.org',
-      '@type' => 'Product',
+      '@@type' => 'Product',
       'name' => $product->title,
       'description' => $product->seo_description ?: $product->summary,
-      'image' => $product->featured_image_url ? [$product->featured_image_url] : ['https://generatordubai.com/storage/media/2026/10/2-im4l8z.jpg'],
+      'url' => route('fleet.show', $product->slug),
+      'image' => $productSchemaImages,
+      'sku' => 'RP-FLEET-' . $product->id,
+      'mpn' => 'RP-' . strtoupper(\Illuminate\Support\Str::slug($product->slug)),
       'brand' => [
-        '@type' => 'Brand',
-        'name' => 'Generator Dubai',
+        '@@type' => 'Brand',
+        'name' => 'Rental Power UAE',
       ],
-      'category' => 'Diesel Generator',
+      'category' => 'Rental Power & Cooling Equipment',
+      'offers' => [
+        '@@type' => 'Offer',
+        'priceCurrency' => 'AED',
+        'price' => '0',
+        'priceSpecification' => [
+          '@@type' => 'UnitPriceSpecification',
+          'priceCurrency' => 'AED',
+          'price' => '0',
+          'valueAddedTaxIncluded' => 'true',
+          'unitText' => 'Commercial Rental Lease per Day, Week or Month',
+        ],
+        'availability' => 'https://schema.org/InStock',
+        'url' => route('fleet.show', $product->slug),
+        'businessFunction' => 'http://purl.org/goodrelations/v1#LeaseOut',
+        'seller' => [
+          '@@type' => 'Organization',
+          'name' => 'Rental Power UAE',
+          'url' => route('home'),
+        ],
+      ],
     ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
     </script>
 
@@ -35,22 +91,22 @@
     <script type="application/ld+json">
     {!! json_encode([
       '@@context' => 'https://schema.org',
-      '@type' => 'BreadcrumbList',
+      '@@type' => 'BreadcrumbList',
       'itemListElement' => [
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 1,
           'name' => 'Home',
           'item' => route('home'),
         ],
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 2,
           'name' => 'Fleet',
           'item' => route('fleet.index'),
         ],
         [
-          '@type' => 'ListItem',
+          '@@type' => 'ListItem',
           'position' => 3,
           'name' => $product->title,
           'item' => route('fleet.show', $product->slug),
@@ -145,9 +201,9 @@
 
                     <!-- Direct Action Buttons -->
                     <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-                        <a href="tel:+971569213754" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-extrabold text-xs shadow-lg transition flex items-center justify-center gap-2">
-                            <i data-lucide="phone-call" class="w-4 h-4 fill-current"></i>
-                            <span>Call 24/7 Hotline: +971 56 921 3754</span>
+                        <a href="https://wa.me/971569213754?text={{ urlencode('Hello Rental Power UAE, I am inquiring about ' . $product->title) }}" target="_blank" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-extrabold text-xs shadow-lg transition flex items-center justify-center gap-2">
+                            <i data-lucide="message-circle" class="w-4 h-4 fill-current"></i>
+                            <span>Call / WhatsApp: +971 56 921 3754</span>
                         </a>
                         <a href="{{ route('contact') }}" class="px-7 py-3.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition flex items-center justify-center gap-2">
                             <span>Request Written Quote</span>
@@ -158,16 +214,21 @@
 
                 <!-- Right 5 cols: Image & Quick Specs Card -->
                 <div class="lg:col-span-5 space-y-4">
-                    <div class="rounded-3xl overflow-hidden bg-slate-900 border border-slate-200 shadow-lg">
+                    <figure class="rounded-3xl overflow-hidden bg-slate-900 border border-slate-200 shadow-lg">
                         <img src="{{ asset($product->featured_image ?: 'storage/media/2026/10/2-im4l8z.jpg') }}" 
-                             alt="{{ $product->title }}" 
+                             alt="{{ $product->featured_image_alt }}" 
+                             title="{{ $product->featured_image_title }}"
                              width="800"
                              height="600"
                              loading="eager"
                              fetchpriority="high"
                              class="w-full h-72 sm:h-80 object-cover">
-
-                    </div>
+                        @if($product->featured_image_caption)
+                            <figcaption class="p-3 text-xs text-slate-300 italic text-center bg-slate-950/80 border-t border-slate-800">
+                                {{ $product->featured_image_caption }}
+                            </figcaption>
+                        @endif
+                    </figure>
 
                     <div class="p-4 rounded-2xl bg-amber-50/70 border border-amber-200 text-xs text-amber-950 space-y-1">
                         <div class="font-bold flex items-center gap-1.5">
@@ -252,6 +313,21 @@
             </div>
         @endif
 
+        <!-- Comprehensive Engineering & Technical Operating Guide -->
+        @if(!empty($product->content))
+            <div class="rounded-3xl bg-white border border-slate-200 shadow-md p-6 sm:p-10 space-y-8">
+                <div class="border-b border-slate-100 pb-4">
+                    <span class="text-xs font-bold uppercase tracking-wider text-amber-600">Technical Documentation</span>
+                    <h2 class="text-2xl sm:text-3xl font-black font-display text-slate-950 mt-1">
+                        Comprehensive Engineering Analysis & Field Operating Guide
+                    </h2>
+                </div>
+                <div class="prose prose-slate prose-amber max-w-none text-slate-600 leading-relaxed article-content">
+                    {!! $product->content !!}
+                </div>
+            </div>
+        @endif
+
         <!-- Related Fleet Capacities -->
         @if(isset($relatedProducts) && $relatedProducts->isNotEmpty())
             <div class="space-y-6">
@@ -277,7 +353,7 @@
                 <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Complete Power Package</span>
                 <h3 class="text-lg sm:text-xl font-bold font-display">Need Turnkey Installation, Sizing & Maintenance?</h3>
                 <p class="text-xs text-slate-300 max-w-xl">
-                    Every generator hire can be paired with our certified <a href="{{ route('service.show', 'rental-power') }}" class="text-amber-400 underline font-semibold hover:text-white">turnkey rental power operations</a>, scheduled <a href="{{ route('service.show', 'maintenance') }}" class="text-amber-400 underline font-semibold hover:text-white">preventative maintenance</a>, and 24/7 technical dispatch from <a href="{{ route('locations.show', 'dubai') }}" class="text-amber-400 underline font-semibold hover:text-white">Dubai</a>, <a href="{{ route('locations.show', 'abu-dhabi') }}" class="text-amber-400 underline font-semibold hover:text-white">Abu Dhabi</a>, and <a href="{{ route('locations.show', 'sharjah') }}" class="text-amber-400 underline font-semibold hover:text-white">Sharjah</a> depots.
+                    Every generator hire can be paired with our certified <a href="{{ route('service.show', 'rental-generator-in-uae') }}" class="text-amber-400 underline font-semibold hover:text-white">turnkey rental power operations</a>, scheduled <a href="{{ route('service.show', 'chiller-maintenance') }}" class="text-amber-400 underline font-semibold hover:text-white">preventative maintenance</a>, and 24/7 technical dispatch from <a href="{{ route('locations.show', 'dubai') }}" class="text-amber-400 underline font-semibold hover:text-white">Dubai</a>, <a href="{{ route('locations.show', 'abu-dhabi') }}" class="text-amber-400 underline font-semibold hover:text-white">Abu Dhabi</a>, and <a href="{{ route('locations.show', 'sharjah') }}" class="text-amber-400 underline font-semibold hover:text-white">Sharjah</a> depots.
                 </p>
             </div>
             <div class="flex flex-wrap items-center gap-3 shrink-0">

@@ -34,11 +34,21 @@
             </div>
             <div>
                 <p class="text-sm font-bold text-slate-800">Select files to upload</p>
-                <p class="text-xs text-slate-400 mt-0.5">Maximum file size: 20MB. Images, SVGs, PDFs, and Documents accepted.</p>
+                <p class="text-xs text-slate-400 mt-0.5">Maximum file size: 20MB. Images are automatically converted to optimized WebP format with SEO metadata.</p>
             </div>
-            <div class="flex items-center justify-center gap-3">
+            <div class="max-w-md mx-auto space-y-2 text-left">
+                <input type="text" name="context" placeholder="Page Topic / SEO Context (optional, e.g. Diesel Generator Rental Dubai)"
+                       class="w-full px-3 py-1.5 text-xs rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500/20">
+                <div class="flex items-center justify-between">
+                    <label class="inline-flex items-center gap-1.5 text-xs text-slate-600 cursor-pointer">
+                        <input type="checkbox" name="is_decorative" value="1" class="rounded text-brand-600">
+                        <span>Decorative image (empty alt="")</span>
+                    </label>
+                </div>
+            </div>
+            <div class="flex items-center justify-center gap-3 pt-2">
                 <input type="file" name="files[]" multiple required class="text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100 cursor-pointer">
-                <button type="submit" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-xs font-bold transition">Upload Now</button>
+                <button type="submit" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-xs font-bold transition">Upload &amp; Optimize</button>
             </div>
         </form>
     </div>
@@ -203,20 +213,35 @@
                         @method('PUT')
                         <div>
                             <label class="block text-[10px] font-bold uppercase text-slate-500 mb-1">Title</label>
-                            <input type="text" name="name" :value="selectedItem ? selectedItem.name : ''" required
+                            <input type="text" name="name" :value="selectedItem ? (selectedItem.title || selectedItem.name) : ''" required
                                    class="w-full px-2.5 py-1.5 text-xs rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500/20">
                         </div>
 
                         <div>
                             <label class="block text-[10px] font-bold uppercase text-slate-500 mb-1">Alternative Text (Alt)</label>
                             <input type="text" name="alt_text" :value="selectedItem ? selectedItem.alt_text : ''" placeholder="Describe the image for accessibility & SEO"
+                                   :disabled="selectedItem && selectedItem.is_decorative"
                                    class="w-full px-2.5 py-1.5 text-xs rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500/20">
+                        </div>
+
+                        <div>
+                            <label class="block text-[10px] font-bold uppercase text-slate-500 mb-1">SEO File Name (Disk)</label>
+                            <input type="text" name="file_name" :value="selectedItem ? selectedItem.file_name : ''"
+                                   class="w-full px-2.5 py-1.5 text-xs font-mono rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500/20">
+                            <p class="text-[10px] text-slate-400 mt-0.5">Renaming will safely update all site references.</p>
                         </div>
 
                         <div>
                             <label class="block text-[10px] font-bold uppercase text-slate-500 mb-1">Caption</label>
                             <textarea name="caption" rows="2" :value="selectedItem ? selectedItem.caption : ''"
                                       class="w-full px-2.5 py-1.5 text-xs rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500/20"></textarea>
+                        </div>
+
+                        <div class="pt-1">
+                            <label class="inline-flex items-center gap-2 cursor-pointer">
+                                <input type="checkbox" name="is_decorative" value="1" :checked="selectedItem && selectedItem.is_decorative" class="rounded text-brand-600">
+                                <span class="text-[11px] text-slate-600 font-medium">Decorative image (empty alt text)</span>
+                            </label>
                         </div>
 
                         <div class="flex items-center justify-between pt-2">

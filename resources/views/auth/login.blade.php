@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sign In - {{ config('app.name', 'Generator Dubai') }}</title>
-
+    <title>Sign In - {{ config('app.name', 'Rental Power UAE') }}</title>
+ 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -28,10 +28,10 @@
         <!-- Logo & Title -->
         <div class="text-center">
             <a href="{{ route('home') }}" class="inline-block mb-4">
-                <img src="{{ asset('images/logo.png') }}" alt="Generator Dubai" class="h-12 w-auto mx-auto object-contain">
+                <img src="{{ asset('images/rentalpower-logo.png') }}" alt="{{ config('app.name', 'Rental Power UAE') }}" class="h-10 w-auto mx-auto object-contain">
             </a>
             <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight">Welcome back</h2>
-            <p class="mt-2 text-sm text-slate-500">Sign in to Generator Dubai CMS to manage operations</p>
+            <p class="mt-2 text-sm text-slate-500">Sign in to {{ config('app.name', 'Rental Power UAE') }} CMS to manage operations</p>
         </div>
 
         @if(session('success'))

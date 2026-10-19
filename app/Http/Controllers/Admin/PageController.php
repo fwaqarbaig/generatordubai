@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Page;
+use App\Services\YoastSeoScoreCalculator;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -216,27 +217,20 @@ class PageController extends Controller
             'seo_score' => ['nullable', 'integer'],
         ]);
 
-        $score = $validated['seo_score'] ?? null;
-        if ($score === null || $score <= 0) {
-            $score = 40;
-            if (! empty($validated['focus_keyword'])) {
-                $score += 30;
-            }
-            if (! empty($validated['meta_title'])) {
-                $score += 15;
-            }
-            if (! empty($validated['meta_description'])) {
-                $score += 15;
-            }
-        }
-
-        $page->update([
+        $page->fill([
             'focus_keyword' => $validated['focus_keyword'] ?? null,
             'meta_title' => $validated['meta_title'] ?? null,
             'meta_description' => $validated['meta_description'] ?? null,
             'schema_markup' => $validated['schema_markup'] ?? null,
-            'seo_score' => min(100, max(0, (int) $score)),
         ]);
+
+        $score = $validated['seo_score'] ?? null;
+        if ($score === null || $score <= 0) {
+            $score = app(YoastSeoScoreCalculator::class)->calculateForModel($page)['seo_score'];
+        }
+
+        $page->seo_score = min(100, max(0, (int) $score));
+        $page->save();
 
         if ($request->wantsJson() || $request->ajax()) {
             return response()->json([

@@ -5,6 +5,7 @@
     <meta name="description" content="{{ $odoo->meta_description ?? 'Recovery Data Dubai is an Official Odoo Partner in UAE. Certified Odoo ERP implementation, FTA-compliant VAT accounting, UAE WPS payroll, and customization in Dubai & Abu Dhabi.' }}">
     <meta name="keywords" content="{{ $odoo->meta_keywords ?? 'odoo partner dubai, odoo uae, official odoo partner uae, odoo erp dubai, odoo implementation uae, odoo vat accounting fta, odoo wps payroll dubai' }}">
     <link rel="canonical" href="{{ route('odoo.index') }}">
+    <meta name="robots" content="{{ ($odoo->is_indexable ?? false) ? 'index, follow' : 'noindex, nofollow' }}">
     <meta property="og:title" content="{{ $odoo->meta_title ?? 'Official Odoo Partner Dubai & UAE | Certified ERP Implementation | Recovery Data' }}">
     <meta property="og:description" content="{{ $odoo->meta_description ?? 'Accelerate your business with certified Odoo ERP implementation in the UAE. 100% localized for UAE FTA VAT, WPS payroll, and multi-warehouse operations.' }}">
     <meta property="og:type" content="website">
@@ -15,20 +16,46 @@
     <script type="application/ld+json">
     {!! json_encode([
       '@@context' => 'https://schema.org',
-      '@type' => 'Service',
+      '@@type' => 'Service',
       'name' => 'Official Odoo ERP Implementation Partner UAE',
       'serviceType' => 'Enterprise Resource Planning Implementation',
       'description' => 'Certified Odoo Partner providing end-to-end ERP implementation, customization, data migration, and UAE regulatory localization.',
+      'url' => route('odoo.index'),
+      'image' => [
+        asset('storage/media/rental-generator.webp'),
+      ],
       'provider' => [
-        '@type' => 'Organization',
+        '@@type' => 'Organization',
         'name' => 'Recovery Data Dubai',
         'url' => 'https://recoverydata.ae',
         'telephone' => '+971569763386',
         'address' => [
-          '@type' => 'PostalAddress',
+          '@@type' => 'PostalAddress',
           'streetAddress' => 'Office 402, DasselDorf Business Point, Al Barsha 1',
           'addressLocality' => 'Dubai',
           'addressCountry' => 'AE',
+        ],
+      ],
+    ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}
+    </script>
+
+    <!-- Schema.org BreadcrumbList JSON-LD -->
+    <script type="application/ld+json">
+    {!! json_encode([
+      '@@context' => 'https://schema.org',
+      '@@type' => 'BreadcrumbList',
+      'itemListElement' => [
+        [
+          '@@type' => 'ListItem',
+          'position' => 1,
+          'name' => 'Home',
+          'item' => route('home'),
+        ],
+        [
+          '@@type' => 'ListItem',
+          'position' => 2,
+          'name' => 'Odoo ERP Partner UAE',
+          'item' => route('odoo.index'),
         ],
       ],
     ], JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) !!}

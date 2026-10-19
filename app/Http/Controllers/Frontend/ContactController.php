@@ -28,7 +28,7 @@ class ContactController extends Controller
     {
         // 1. Silent Bot Honeypot: Discard automated spam bots cleanly
         if ($request->filled('_hp_website') || $request->filled('bot_check')) {
-            return back()->with('success', 'Thank you for contacting Generator Dubai! We have received your request.');
+            return back()->with('success', 'Thank you for contacting Rental Power UAE! We have received your request.');
         }
 
         $validated = $request->validate([
@@ -88,6 +88,6 @@ class ContactController extends Controller
             'is_read' => false,
         ]);
 
-        return back()->with('success', 'Thank you for contacting Generator Dubai! We have received your inquiry and our power engineering team will reach out to you shortly.');
+        return back()->with('success', 'Thank you for contacting Rental Power UAE! We have received your inquiry and our power engineering team will reach out to you shortly.');
     }
 }

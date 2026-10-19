@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('seo_meta')
-    <title>{{ $page->seo_title }} - {{ config('app.name', 'Generator Dubai') }}</title>
+    <title>{{ $page->seo_title }} - {{ config('app.name', 'Rental Power UAE') }}</title>
     <meta name="description" content="{{ $page->seo_description }}">
     @if($page->meta_keywords)
         <meta name="keywords" content="{{ $page->meta_keywords }}">

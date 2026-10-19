@@ -25,8 +25,7 @@ class ProductsAndServicesTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
-        $response->assertSee('GENERATOR');
-        $response->assertSee('DUBAI');
+        $response->assertSee('Rental Power UAE');
         $response->assertSee('+971 56 921 3754');
     }
 
@@ -104,7 +103,7 @@ class ProductsAndServicesTest extends TestCase
 
         $response = $this->get('/about-us');
         $response->assertStatus(200);
-        $response->assertSee('Generator Dubai');
+        $response->assertSee('Rental Power UAE');
         $response->assertSee('Sharjah');
         $response->assertSee('Dubai');
     }
@@ -232,8 +231,8 @@ class ProductsAndServicesTest extends TestCase
         $response = $this->get('/');
 
         $response->assertStatus(200);
-        $response->assertSee('GENERATOR');
-        $response->assertSee('DUBAI');
+        $response->assertSee('Rental Power UAE');
+        $response->assertSee('rentalpower-logo.png');
         $response->assertSee('Fleet');
         $response->assertSee('Contact');
 
