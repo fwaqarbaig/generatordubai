@@ -91,7 +91,8 @@
             </div>
         </form>
 
-        <div class="pt-4 border-t border-slate-100 text-center text-xs text-slate-500">
+        <div class="pt-4 border-t border-slate-100 text-center text-xs text-slate-500 space-y-2">
+            <p>Don't have an account? <a href="{{ route('register') }}" class="font-bold text-brand-600 hover:underline">Register now</a></p>
             <p><a href="{{ route('home') }}" class="text-slate-400 hover:text-slate-600 inline-flex items-center gap-1">← Return to website</a></p>
         </div>
     </div>

@@ -16,8 +16,6 @@ class AuthTest extends TestCase
         $response = $this->get('/login');
         $response->assertStatus(200);
         $response->assertSee('Welcome back');
-        $response->assertDontSee('Register now');
-        $response->assertDontSee("Don't have an account?");
     }
 
     public function test_user_cannot_login_with_invalid_credentials(): void
@@ -221,22 +219,21 @@ class AuthTest extends TestCase
         $response->assertSessionMissing('auth.2fa.user_id');
     }
 
-    public function test_public_registration_is_disabled_and_redirects_to_login(): void
+    public function test_user_can_register_and_is_redirected_to_two_factor_setup(): void
     {
-        $getResponse = $this->get('/register');
-        $getResponse->assertRedirect(route('login'));
-
-        $postResponse = $this->post('/register', [
-            'name' => 'Unauthorized Register',
-            'email' => 'unauthorized@domain.com',
+        $response = $this->post('/register', [
+            'name' => 'First Admin',
+            'email' => 'admin@domain.com',
             'password' => 'Secret123!',
             'password_confirmation' => 'Secret123!',
         ]);
 
-        $postResponse->assertStatus(403);
-        $this->assertDatabaseMissing('users', [
-            'email' => 'unauthorized@domain.com',
+        $response->assertRedirect(route('login.two-factor.setup'));
+        $this->assertDatabaseHas('users', [
+            'email' => 'admin@domain.com',
+            'role' => 'admin',
         ]);
+        $response->assertSessionHas('auth.2fa.user_id');
         $this->assertGuest();
     }
 
